@@ -67,11 +67,13 @@ function createActorsArrayInJSON(filePath){
                 }
             }
 
-            //put new actor list in JSON with correct movie
+            //put new lists in JSON object with correct movie
             obj[i]['Actors'] = actorsArray;
             obj[i]['Genre'] = genresArray;
         }
-        FileSystem.writeFile('MovieData.json', JSON.stringify(obj), (error) => {
+
+        //write object into a JSON file
+        FileSystem.writeFile('MovieData.json', JSON.stringify(obj, null, 4), (error) => {
             if (error) throw error;
         });
     }
