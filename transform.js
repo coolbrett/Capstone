@@ -31,8 +31,8 @@ function convertCSVToJSON(filePath) {
 }
 
 /**
- * When the CSV's get converted to JSON, the actors attribute for each movie is just a string of actors. This function
- * separates each actor into a list while also clearing leading/trailing whitespace
+ * When the CSV's get converted to JSON, the actors and genres attributes for each movie is just a string. This function
+ * separates each actor and genre into a list while also clearing leading/trailing whitespace.
  * @param {String} filePath file path of JSON to go through
  */
 function createActorsArrayInJSON(filePath){
