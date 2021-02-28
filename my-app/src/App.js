@@ -7,38 +7,42 @@ function App() {
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
 
-  // process CSV data
+  //Process the CSV data
   const processData = dataString => {
     const dataStringLines = dataString.split(/\r\n|\n/);
-    const headers = dataStringLines[0].split(/,(?![^"]*"(?:(?:[^"]*"){2})*[^"]*$)/);
+    //Regex used to properly get the headers of each column
+    const colHeaders = dataStringLines[0].split(/,(?![^"]*"(?:(?:[^"]*"){2})*[^"]*$)/);
 
     const list = [];
     for (let i = 1; i < dataStringLines.length; i++) {
+      //Regex used to split each row
       const row = dataStringLines[i].split(/,(?![^"]*"(?:(?:[^"]*"){2})*[^"]*$)/);
-      if (headers && row.length == headers.length) {
+      //Making sure the length of a row isn't longer then amount of headers bc it'll cause an error
+      if (colHeaders && row.length === colHeaders.length) {
         const obj = {};
-        for (let j = 0; j < headers.length; j++) {
-          let d = row[j];
-          if (d.length > 0) {
-            if (d[0] == '"')
-              d = d.substring(1, d.length - 1);
-            if (d[d.length - 1] == '"')
-              d = d.substring(d.length - 2, 1);
+        //Looping through each column of the row
+        for (let j = 0; j < colHeaders.length; j++) {
+          let value = row[j]; //This is the data stored in the column of the row
+          if (value.length > 0) {
+            if (value[0] === '"')//Is an empty value
+              value = value.substring(1, value.length - 1);
+            if (value[value.length - 1] === '"')
+              value = value.substring(value.length - 2, 1);
           }
-          if (headers[j]) {
-            obj[headers[j]] = d;
+          if (colHeaders[j]) {
+            obj[colHeaders[j]] = value;
           }
         }
 
-        // remove the blank rows
+        //Removing any blank rows
         if (Object.values(obj).filter(x => x).length > 0) {
           list.push(obj);
         }
       }
     }
 
-    // prepare columns list from headers
-    const columns = headers.map(c => ({
+    //Prepare the columns list from colHeaders
+    const columns = colHeaders.map(c => ({
       name: c,
       selector: c,
     }));
@@ -47,27 +51,29 @@ function App() {
     setColumns(columns);
   }
 
-  // handle file upload
+  //This handles the file uploading
   const handleFileUpload = e => {
     const file = e.target.files[0];
-    const reader = new FileReader();
+    const reader = new FileReader();//To read in file
     reader.onload = (evt) => {
-      /* Parse data */
-      const bstr = evt.target.result;
-      const wb = XLSX.read(bstr, { type: 'binary' });
-      /* Get first worksheet */
-      const wsname = wb.SheetNames[0];
-      const ws = wb.Sheets[wsname];
-      /* Convert array of arrays */
-      const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
+      //Parse the data
+      const basicString = evt.target.result;
+      const wbook = XLSX.read(basicString, { type: 'binary' });
+      //Get the first worksheet
+      const wsheetName = wbook.SheetNames[0];
+      const worksheet = wbook.Sheets[wsheetName];
+      //Convert the array of arrays
+      const data = XLSX.utils.sheet_to_csv(worksheet, { header: 1 });
       processData(data);
     };
     reader.readAsBinaryString(file);
   }
 
   return (
+      //This is the title of the page above the upload button
+      //Also where we declare what types of files can be read in
       <div>
-        <h3>Read CSV file in React - <a href="https://www.cluemediator.com" target="_blank">Clue Mediator</a></h3>
+        <h3> --- Upload CSV File --- </h3>
         <input
             type="file"
             accept=".csv,.xlsx,.xls"
