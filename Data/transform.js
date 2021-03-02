@@ -20,7 +20,7 @@ function convertCSVToJSON(filePath) {
 
         // convert file to JSON array
         CSVToJSON().fromFile(filePath).then(movies => {
-            fs.writeFile('rawMovieData.json', JSON.stringify(movies, null, 4), (err) => {
+            fs.writeFile('Data/rawMovieData.json', JSON.stringify(movies, null, 4), (err) => {
                 if (err) {
                     throw err;
                 }
@@ -73,7 +73,7 @@ function createActorsArrayInJSON(filePath){
         }
 
         //write object into a JSON file
-        FileSystem.writeFile('MovieData.json', JSON.stringify(obj, null, 4), (error) => {
+        FileSystem.writeFile('Data/MovieData.json', JSON.stringify(obj, null, 4), (error) => {
             if (error) throw error;
         });
     }
@@ -83,8 +83,8 @@ function createActorsArrayInJSON(filePath){
  * Main function to manipulate the JSON data file
  */
 function main(){
-    convertCSVToJSON('IMDB-Movie-Data.csv');
-    createActorsArrayInJSON('rawMovieData.json');
+    convertCSVToJSON('Data/IMDB-Movie-Data.csv');
+    createActorsArrayInJSON('Data/rawMovieData.json');
 }
 
 main();
