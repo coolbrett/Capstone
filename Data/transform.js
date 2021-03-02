@@ -7,7 +7,6 @@
 
 const CSVToJSON = require('csvtojson');
 const fs = require("fs");
-const FileSystem = require("fs");
 
 /**
  * Converts CSV file to a JSON file
@@ -73,7 +72,7 @@ function createActorsArrayInJSON(filePath){
         }
 
         //write object into a JSON file
-        FileSystem.writeFile('Data/MovieData.json', JSON.stringify(obj, null, 4), (error) => {
+        fs.writeFile('Data/MovieData.json', JSON.stringify(obj, null, 4), (error) => {
             if (error) throw error;
         });
     }
