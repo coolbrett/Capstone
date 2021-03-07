@@ -34,7 +34,7 @@ function convertCSVToJSON(filePath) {
  * separates each actor and genre into a list while also clearing leading/trailing whitespace.
  * @param {String} filePath file path of JSON to go through
  */
-function createActorsArrayInJSON(filePath){
+function createArraysInJSON(filePath){
     if (typeof filePath !== 'string'){
         throw new Error("createActorsInJSON; filePath is not string");
     }else {
@@ -83,7 +83,7 @@ function createActorsArrayInJSON(filePath){
  */
 function main(){
     convertCSVToJSON('Data/IMDB-Movie-Data.csv');
-    createActorsArrayInJSON('Data/rawMovieData.json');
+    createArraysInJSON('Data/rawMovieData.json');
 }
 
 main();
