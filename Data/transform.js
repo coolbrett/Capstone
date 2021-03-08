@@ -79,11 +79,54 @@ function createArraysInJSON(filePath){
 }
 
 /**
+ * This function will link all movies to their actors
+ * @param {String} filePath file to generate nodes and links from
+ */
+function generateNodesAndLinks(filePath){
+    if (typeof filePath != 'string'){
+        throw new Error("generateNodesAndLinks; filePath is not a string");
+    }else{
+        //getting JSON into an object
+        let data = fs.readFileSync(filePath, "utf-8");
+        let movies = JSON.parse(data);
+
+        let nodes = [];
+        let links = [];
+        let container = [{nodes, links}];
+
+        for (let i = 0; i < movies.length; i++){
+            let temp = {};
+            temp['name'] = movies[i]['Title'];
+            temp['id'] = movies[i]['Rank'];
+            nodes.push(temp);
+            for (let j = 0; j < movies[i]['Actors'].length; j++){
+                let actor = {};
+                actor['name'] = movies[i]['Actors'][j]
+                nodes.push(actor);
+
+                let link = {};
+                link['source'] = movies[i]['Title'];
+                link['target'] = actor['name'];
+                links.push(link);
+            }
+        }
+        fs.writeFile('Data/nodes.json', JSON.stringify(container, null, 3), (error) => {
+            if (error) throw error;
+        });
+    }
+}
+
+/**
  * Main function to manipulate the JSON data file
  */
 function main(){
     convertCSVToJSON('Data/IMDB-Movie-Data.csv');
-    createArraysInJSON('Data/rawMovieData.json');
+    setTimeout(() => {
+        createArraysInJSON('Data/rawMovieData.json');
+    }, 500)
+    setTimeout(() => {
+        generateNodesAndLinks('Data/MovieData.json');
+    }, 1000);
 }
 
 main();
