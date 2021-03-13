@@ -120,6 +120,7 @@ function generateNodesAndLinks(filePath){
  * Main function to manipulate the JSON data file
  */
 function main(){
+    //the timeouts are needed to give time for JS to process the newly created files being made
     convertCSVToJSON('Data/IMDB-Movie-Data.csv');
     setTimeout(() => {
         createArraysInJSON('Data/rawMovieData.json');
