@@ -1,3 +1,9 @@
+/**
+ * This file is just an example graph that I was able to find online
+ *
+ * (3/15/2021)
+ */
+
 //create somewhere to put the force directed graph
 var svg = d3.select("svg"),
     width = +svg.attr("width"),

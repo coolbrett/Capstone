@@ -1,6 +1,7 @@
-let fs = requirejs.require('fs');
+let fs = require('fs');
 let temp = fs.readFileSync('Data/nodes.json');
 let data = JSON.parse(temp);
+let d3 = require('d3');
 
 //create somewhere to put the force directed graph
 let svg = d3.select("svg"),
