@@ -1,0 +1,17 @@
+:root {
+    --primary: #1888ff;
+}
+
+.radio-butt {
+    padding: 8px 40px;
+    font-size: 10px;
+    color: #000;
+    cursor: pointer;
+    background-color: var(--primary);
+}
+
+.radio{
+    color: #1ca7c3;
+}
+
+
