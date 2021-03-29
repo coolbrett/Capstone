@@ -19,7 +19,7 @@ function convertCSVToJSON(filePath) {
 
         // convert file to JSON array
         CSVToJSON().fromFile(filePath).then(movies => {
-            fs.writeFile('Data/checking.json', JSON.stringify(movies, null, 4), (err) => {
+            fs.writeFile('Data/rawMovieData.json', JSON.stringify(movies, null, 4), (err) => {
                 if (err) {
                     throw err;
                 }
@@ -72,7 +72,7 @@ function createArraysInJSON(filePath){
         }
 
         //write object into a JSON file
-        fs.writeFile('Data/data.json', JSON.stringify(obj, null, 4), (error) => {
+        fs.writeFile('Data/MovieData.json', JSON.stringify(obj, null, 4), (error) => {
             if (error) throw error;
         });
     }
@@ -110,7 +110,7 @@ function generateNodesAndLinks(filePath){
                 links.push(link);
             }
         }
-        fs.writeFile('Data/nodes2.json', JSON.stringify(container, null, 1), (error) => {
+        fs.writeFile('Data/nodes.json', JSON.stringify(container, null, 1), (error) => {
             if (error) throw error;
         });
     }
@@ -119,14 +119,14 @@ function generateNodesAndLinks(filePath){
 /**
  * Main function to manipulate the JSON data file
  */
-function main(filePath){
+function main(){
     //the timeouts are needed to give time for JS to process the newly created files being made
-    convertCSVToJSON(filePath);
+    convertCSVToJSON('Data/IMDB-Movie-Data.csv');
     setTimeout(() => {
-        createArraysInJSON('Data/checking.json');
+        createArraysInJSON('Data/rawMovieData.json');
     }, 500)
     setTimeout(() => {
-        generateNodesAndLinks('Data/data.json');
+        generateNodesAndLinks('Data/MovieData.json');
     }, 1000);
 }
 
