@@ -4,23 +4,15 @@ import "./Navbar.css"
 import Dropdown from "./Dropdown"
 import { Link } from 'react-router-dom'
 import {RadioButton} from "./RadioButton";
-import { main } from "../transforming.js";
-
 
 function Navbar(){
-    const [name, setName] = useState('../../../Data/IMBD-Movie-Data.csv');
     const [click, setClick] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const [radio, setRadio] = useState("apple");
 
 
-    const handleClick = () => setClick(!click);
+    const handleClick= () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
-
-    const loading = () => {
-        setName('../../../Data/IMBD-Movie-Data.csv');
-        //let vari = main(name);
-    }
 
     const onMouseEnter = () => {
         if(window.innerWidth < 960){
@@ -38,7 +30,6 @@ function Navbar(){
         }
     };
    return(
-
        <>
            <nav className={"navbar"}>
                 <Link to={'/'} className={"navbar-logo"}>
@@ -59,13 +50,8 @@ function Navbar(){
                            More Info
                        </Link>
                    </li>
-
-                   <li className={"nav-item"}>
-                       <Link to={"/"} className={'nav-links'}  name={"../../../Data/IMBD-Movie-Data.csv"} onClick={loading}>
-                           Load File
-                       </Link>
-                   </li>
                </ul>
+               <Button />
 
                <RadioButton />
            </nav>
