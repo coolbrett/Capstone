@@ -4,11 +4,17 @@ import { Link } from 'react-router-dom';
 import ReactFileReader from 'react-file-reader';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
+import { main } from '../transforming.js'
+import xtypejs from 'xtypejs'
+import {repository as xtype} from "d3/dist/package";
+
 
 export function Button() {
+    const [name, setName] = useState('');
 
     const [columns, setColumns] = useState([]);
     const [data, setData] = useState([]);
+
 
 
     //Process the CSV data
@@ -55,25 +61,27 @@ export function Button() {
         setColumns(columns);
     }
 
+    function csvJSON(csv) {
+        const lines = csv.split('\n')
+        const result = []
+        const headers = lines[0].split(',')
+
+        for (let i = 1; i < lines.length; i++) {
+            if (!lines[i]) continue
+                const obj = {}
+                const currentline = lines[i].split(',')
+
+            for (let j = 0; j < headers.length; j++) {
+                obj[headers[j]] = currentline[j]
+            }
+            result.push(obj)
+        }
+        return result
+    }
+
     //This handles the file uploading
     const handleFileUpload = e => {
-        const file = e.target.files[0];
-        const reader = new FileReader();//To read in file
-        reader.onload = (evt) => {
-            //Parse the data
-            const basicString = evt.target.result;
-            const wbook = XLSX.read(basicString, {type: 'binary'});
-            //Get the first worksheet
-            const wsheetName = wbook.SheetNames[0];
-            const worksheet = wbook.Sheets[wsheetName];
-            //Convert the array of arrays
-            const data = XLSX.utils.sheet_to_csv(worksheet, {header: 1});
-            //processData(data);
-            //<AsyncCSV /> //CHANGE ME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //TRYING TO SEND CSV INPUTTED FILE ELSEWHERE HERE OR SOMEWHERE NEARBY
-        };
-        reader.readAsBinaryString(file);
-
+        let vari = main(name);
     }
 
     return (
@@ -83,9 +91,10 @@ export function Button() {
             <input
                 type="file"
                 accept=".csv,.xlsx,.xls"
-                onChange={handleFileUpload}
+                name={"IMBD-Movie-Data.csv"}
+                onClick={handleFileUpload}
             />
         </div>
     );
 }
-export default Button;
+
