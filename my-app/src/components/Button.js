@@ -7,6 +7,9 @@ import DataTable from 'react-data-table-component';
 import xtypejs from 'xtypejs'
 
 
+console.log("hey");
+
+
 export function Button() {
     const [name, setName] = useState('');
 
