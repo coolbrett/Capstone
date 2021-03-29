@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import ReactFileReader from 'react-file-reader';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
-import { main } from '../transforming.js'
 import xtypejs from 'xtypejs'
-import {repository as xtype} from "d3/dist/package";
 
 
 export function Button() {
@@ -81,7 +79,7 @@ export function Button() {
 
     //This handles the file uploading
     const handleFileUpload = e => {
-        let vari = main(name);
+        console.log("hey");
     }
 
     return (

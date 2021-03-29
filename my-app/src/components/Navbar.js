@@ -4,7 +4,6 @@ import "./Navbar.css"
 import Dropdown from "./Dropdown"
 import { Link } from 'react-router-dom'
 import {RadioButton} from "./RadioButton";
-import { main } from "../transforming.js";
 
 
 function Navbar(){
@@ -61,7 +60,7 @@ function Navbar(){
                    </li>
 
                    <li className={"nav-item"}>
-                       <Link to={"/"} className={'nav-links'}  name={"../../../Data/IMBD-Movie-Data.csv"} onClick={loading}>
+                       <Link to={"/"} className={'nav-links'} name={"../../../Data/IMBD-Movie-Data.csv"} onClick={loading}>
                            Load File
                        </Link>
                    </li>
