@@ -4,10 +4,11 @@ import "./Navbar.css"
 import Dropdown from "./Dropdown"
 import { Link } from 'react-router-dom'
 import {RadioButton} from "./RadioButton";
+import axios from "axios";
 
 
 function Navbar(){
-    const [name, setName] = useState('https://github.com/coolbrett/Capstone/blob/main/Data/nodes.json');
+    const [name, setName] = useState('https://raw.githubusercontent.com/coolbrett/Capstone/main/Data/nodes.json');
     const [click, setClick] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const [radio, setRadio] = useState("apple");
@@ -17,18 +18,10 @@ function Navbar(){
     const closeMobileMenu = () => setClick(false);
 
     const loading = () => {
-        setName()
         console.log("Hi I'm loading");
-        fetch(name, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'applicaton/json',
-                "Access-Control-Allow-Origin": '*'
-            }
-        }).then(response => {
-            return response.json();
-        }).then(data => {
-            console.log(data)
+        console.log(name);
+        axios.get(name).then(data => {
+            console.log(data);
         });
     }
 
