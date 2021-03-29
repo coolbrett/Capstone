@@ -7,7 +7,7 @@ import {RadioButton} from "./RadioButton";
 
 
 function Navbar(){
-    const [name, setName] = useState('../../../Data/IMBD-Movie-Data.csv');
+    const [name, setName] = useState('https://github.com/coolbrett/Capstone/blob/main/Data/nodes.json');
     const [click, setClick] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const [radio, setRadio] = useState("apple");
@@ -17,8 +17,19 @@ function Navbar(){
     const closeMobileMenu = () => setClick(false);
 
     const loading = () => {
-        setName('../../../Data/IMBD-Movie-Data.csv');
-        //let vari = main(name);
+        setName()
+        console.log("Hi I'm loading");
+        fetch(name, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'applicaton/json',
+                "Access-Control-Allow-Origin": '*'
+            }
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data)
+        });
     }
 
     const onMouseEnter = () => {
@@ -60,7 +71,7 @@ function Navbar(){
                    </li>
 
                    <li className={"nav-item"}>
-                       <Link to={"/"} className={'nav-links'} name={"../../../Data/IMBD-Movie-Data.csv"} onClick={loading}>
+                       <Link to={"/"} className={'nav-links'} onClick={loading}>
                            Load File
                        </Link>
                    </li>
