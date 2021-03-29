@@ -130,3 +130,4 @@ function main(filePath){
     }, 1000);
 }
 
+main();
