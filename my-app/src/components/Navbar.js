@@ -4,10 +4,11 @@ import "./Navbar.css"
 import Dropdown from "./Dropdown"
 import { Link } from 'react-router-dom'
 import {RadioButton} from "./RadioButton";
+import axios from "axios";
 
 
 function Navbar(){
-    const [name, setName] = useState('../../../Data/IMBD-Movie-Data.csv');
+    const [name, setName] = useState('https://raw.githubusercontent.com/coolbrett/Capstone/main/Data/nodes.json');
     const [click, setClick] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const [radio, setRadio] = useState("apple");
@@ -17,8 +18,11 @@ function Navbar(){
     const closeMobileMenu = () => setClick(false);
 
     const loading = () => {
-        setName('../../../Data/IMBD-Movie-Data.csv');
-        //let vari = main(name);
+        console.log("Hi I'm loading");
+        console.log(name);
+        axios.get(name).then(data => {
+            console.log(data);
+        });
     }
 
     const onMouseEnter = () => {
@@ -60,7 +64,7 @@ function Navbar(){
                    </li>
 
                    <li className={"nav-item"}>
-                       <Link to={"/"} className={'nav-links'} name={"../../../Data/IMBD-Movie-Data.csv"} onClick={loading}>
+                       <Link to={"/"} className={'nav-links'} onClick={loading}>
                            Load File
                        </Link>
                    </li>
