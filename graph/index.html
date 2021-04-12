@@ -18,7 +18,7 @@
 <script>
     const nodes = new Request('../Data/nodes.json');
     fetch(nodes).then(response => response.json()).then(data => {
-        //loops below just display contents of our nodes.json file in the browser's console
+        //loops below just display contents of our nodesInfo.json file in the browser's console
         //it takes FOREVER to log these
         /**for (const obj of data['nodes']){
             console.log("Name: " + obj['name']);

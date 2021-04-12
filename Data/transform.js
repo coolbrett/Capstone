@@ -110,7 +110,7 @@ function generateNodesAndLinks(filePath){
                 links.push(link);
             }
         }
-        fs.writeFile('Data/nodes.json', JSON.stringify(container, null, 1), (error) => {
+        fs.writeFile('Data/nodesInfo.json', JSON.stringify(container, null, 1), (error) => {
             if (error) throw error;
         });
     }
