@@ -11,6 +11,7 @@ function App() {
         return (
             <Router>
                 <Navbar/>
+                <Graph />
             </Router>
         );
 }
