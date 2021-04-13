@@ -19,7 +19,7 @@ function Navbar(){
 
     const loading = () => {
         console.log("Hi I'm loading");
-        console.log(name);
+        console.log("Data URL: " + name);
         axios.get(name).then(data => {
             console.log(data);
         });
