@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from "./Button"
 import "./Graph.css"
 import * as d3 from 'd3';
-import {Component, useEffect, u seRef} from "react/cjs/react.production.min";
+import {Component, useEffect, useRef} from "react/cjs/react.production.min";
 
 class Graph extends Component {
     componentDidMount(){
