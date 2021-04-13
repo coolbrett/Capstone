@@ -36,17 +36,30 @@ function App() {
             //Create links data
             const links_data = data['links'];
 
+
+            let simulation = d3.forceSimulation()
+               .nodes(nodes_data);
+/**
+            console.log(links_data[0]);
+            console.log(links_data[0].id);
+            console.log(links_data[0].index);
+            console.log(links_data[0].name);
+            console.log(links_data[0].x);
+            console.log(links_data[0].y);
+
+            console.log("-------");*/
+
+
+
             let link_force = d3.forceLink(links_data)
                 .id(function (d) {
                     return d.name;
                 })
 
-            let simulation = d3.forceSimulation()
-                .nodes(nodes_data);
-
             simulation
                 .force("charge_force", d3.forceManyBody())
                 .force("center_force", d3.forceCenter(width / 2, height / 2));
+
 
 
             let link = svg.append("g")
@@ -54,18 +67,23 @@ function App() {
                 .selectAll("line")
                 .data(links_data)
                 .enter().append("line")
+                .attr("style", "stroke: #000000; stroke-opacity: 0.7;")
                 .attr("stroke-width", 2);
 
 
+        for(let i = 0; i < nodes_data.length; i++) {
             let text = svg.append("g")
-                .attr("class", "nodes")
+                .attr("class", "links")
                 .selectAll("text")
                 .data(nodes_data)
                 .enter()
                 .append("text")
-                .attr("x", function(d) { return d.x })
-                .attr("y", function(d) { return d.y })
-                .text(function(d) { return d.name });
+                .attr("dx", 100)
+                .attr("dy", 100)
+                .text(function (d) {
+                    return d.name
+                });
+        }
 
          //draw circles for the nodes
             let node = svg.append("g")
@@ -81,6 +99,8 @@ function App() {
             node.append("text")
                 node.text(function (d) { return d.name });
 
+
+
          //add tick instructions:
          simulation.on("tick", tickActions);
 
@@ -91,7 +111,9 @@ function App() {
          //Specify links  in d3.forceLink argument
 
 
+
          simulation.force("links", link_force)
+
 
          function tickActions() {
                     //update circle positions each tick of the simulation
