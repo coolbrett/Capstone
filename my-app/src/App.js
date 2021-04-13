@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from "./components/Navbar"
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom'
+//import Main from "./components/Main";
 
 
 class App extends React.Component {
@@ -27,7 +28,6 @@ class App extends React.Component {
 
 //possible error --> video used render() alone with no function declaration
     render() {
-        //const svgRef = useRef();
         console.log("inside Render");
         console.log("API state: " + this.state.apiResponse);
         return (
