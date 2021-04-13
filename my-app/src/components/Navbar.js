@@ -5,7 +5,6 @@ import Dropdown from "./Dropdown"
 import { Link } from 'react-router-dom'
 import {RadioButton} from "./RadioButton";
 import axios from "axios";
-import Graph from './Graph'
 
 
 function Navbar(){
@@ -23,11 +22,10 @@ function Navbar(){
         console.log("Hi I'm loading");
         console.log("Data URL: " + dataURL);
         axios.get(dataURL).then(data => {
-            //has to be called twice or it doesn't load on first press of load button
+            //load button has to be pressed twice..?
             setData(data)
-            setData(data)
-            console.log(data)
         });
+        console.log(data);
     }
 
     const onMouseEnter = () => {
