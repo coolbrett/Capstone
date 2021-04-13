@@ -10,8 +10,8 @@ import { csv } from 'd3';
 
 
 function App() {
-    const height = 9000;
-    const width = 9000;
+    const height = 500;
+    const width = 500;
     //const nodes = new Request('Data/nodesInfo.json');
     const nodes = new Request('Data/scratch.json');
 
@@ -27,6 +27,7 @@ function App() {
              .append("svg")
              .attr("preserveAspectRatio", "xMinYMin meet")
              .attr("viewBox", "0 0 300 300")
+             //.attr("viewBox", "0 0 9000 9000")
              .classed("svg-content", true);
 
 
@@ -123,21 +124,17 @@ function App() {
             });
          }, [nodes])
 
-
+        //.attr("viewBox", "0 0 300 300")
+    //.attr("viewBox", "0 0 9000 9000")
     return (
             <Router>
                 <Navbar/>
                 <React.Fragment>
                     <svg
-                        width="960" height="1000"
+                        width="100%" height="70%"
                         ref={svgRef}
-                        viewBox={`0 0 ${height} ${width}`}
-                        style={{
-                            height: "100%",
-                            width: "100%",
-                            marginRight: "0px",
-                            marginLeft: "0px",
-                        }}>
+                        viewBox={ "0 0 300 139"}
+                        >
                     </svg>
                 </React.Fragment>
             </Router>
