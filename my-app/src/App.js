@@ -25,10 +25,8 @@ class App extends React.Component {
         this.callAPI();
     }
 
-
-//possible error --> video used render() alone with no function declaration
     render() {
-        console.log("inside Render");
+        console.log("App.js: inside Render");
         console.log("API state: " + this.state.apiResponse);
         return (
             <Router>
