@@ -36,6 +36,8 @@ function App() {
             //Create links data
             const links_data = data['links'];
 
+            const nodetLayer = svg.append('g');
+            const textLayer= svg.append('g');
 
             let simulation = d3.forceSimulation()
                .nodes(nodes_data);
@@ -71,7 +73,7 @@ function App() {
                 .attr("stroke-width", 2);
 
 
-        for(let i = 0; i < nodes_data.length; i++) {
+        /**for(let i = 0; i < nodes_data.length; i++) {
             let text = svg.append("g")
                 .attr("class", "links")
                 .selectAll("text")
@@ -83,7 +85,15 @@ function App() {
                 .text(function (d) {
                     return d.name
                 });
-        }
+        }*/
+
+
+            const texts = textLayer.selectAll('text')
+                .data(nodes_data)
+                .enter()
+                .append('text')
+                .attr('font-size', `${8}px`);
+
 
          //draw circles for the nodes
             let node = svg.append("g")
@@ -96,8 +106,8 @@ function App() {
                 .attr("fill", "red");
 
 
-            node.append("text")
-                node.text(function (d) { return d.name });
+            //node.append("text")
+                //node.text(function (d) { return d.name });
 
 
 
