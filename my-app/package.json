@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "csvtojson": "^2.0.10",
     "d3": "^6.6.2",
+    "d3-selection": "^2.0.0",
     "papaparse": "^5.3.0",
     "react": "^17.0.1",
     "react-data-table-component": "^7.0.0-alpha-5",
@@ -16,6 +17,7 @@
     "react-request": "^3.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.2",
+    "react-scroll-wheel-handler": "^2.0.1",
     "styled-components": "^5.2.1",
     "web-vitals": "^1.0.1",
     "webpack": "^4.44.2",
@@ -49,6 +51,11 @@
   },
   "devDependencies": {
     "axios": "^0.21.1",
-    "react-d3-graph": "^2.6.0"
+    "d3-drag": "^2.0.0",
+    "d3-force": "^2.1.1",
+    "d3-zoom": "^2.0.0",
+    "react-d3-graph": "^2.6.0",
+    "react-router-scroll": "^0.4.4",
+    "react-use": "^17.2.4"
   }
 }

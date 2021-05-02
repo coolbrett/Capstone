@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "Guardians of the Galaxy"
+    },
+    {
+      "id": "Chris Pratt"
+    },
+    {
+      "id": "Vin Diesel"
+    },
+    {
+      "id": "Bradley Cooper"
+    },
+    {
+      "id": "Zoe Saldana"
+    }
+  ],
+  "links": [
+    {
+      "source": "Guardians of the Galaxy",
+      "target": "Chris Pratt"
+    },
+    {
+      "source": "Guardians of the Galaxy",
+      "target": "Vin Diesel"
+    },
+    {
+      "source": "Guardians of the Galaxy",
+      "target": "Bradley Cooper"
+    },
+    {
+      "source": "Guardians of the Galaxy",
+      "target": "Zoe Saldana"
+    }
+  ]
+}
