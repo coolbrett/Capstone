@@ -1,13 +1,27 @@
-import React, { useRef, Component } from 'react';
+import React, {useRef, Component, useContext, useState} from 'react';
 import { Graph } from 'react-d3-graph'
 import "./graph.const"
 import "./GraphView.css"
+import {NodeContext} from "./NodeContext.js";
+import {PrevContext} from "./PrevContext.js";
+
 import DEFAULT_CONFIG from "./graph.config"
-//import myData from '../Data/scratch.json'
-import myData from '../Data/nodesInfo2.json'
+import myData from '../Data/scratch.json'
+//import myData from '../Data/nodesInfo2.json'
 
 const GraphView = () => {
+        let data = myData;
+        let prevClicked = "";
+        let context = useContext(NodeContext);
+        //This is setting the previously clicked node to be stored elsewhere so Navbar can see it
+        let [nodeId, setClickedNode] = context;
+        //This is setting the previously clicked node to be stored elsewhere
+        let [prevId, setPrevId] = useContext(PrevContext);
 
+
+        const setData = function(dataHere){
+                data = dataHere;
+        }
 
         const myConfig = {
                 nodeHighlightBehavior: true,
@@ -23,42 +37,43 @@ const GraphView = () => {
                 }
         };
 
-        const reactRef = this;
-        //const check = this.state.prevId;
         let inside = "";
-        let clicked = "-";
-        const onClickNode = function(nodeId) {
-                let modData = {...reactRef.state.data};
+        const onClickNode = function(nodeID) {
+                console.log("------");
+                console.log(prevId);
+                let modData = {...data};
                 let selectNode = modData.nodes.filter(item => {
-                        return item.id === nodeId;
+                        return item.id === nodeID;
                 });
                 selectNode.forEach(item => {
-                        if (item.color && item.color === "blue") item.color = "red";
-                        else item.color = "blue";
-                        /**clicked = item.id;
-                        if(item.id !== check){
+                        //If clicked node isn't the previously clicked node
+                        if(item.id !== prevId){
                                 inside = item.id;
                                 //Setting the color of the node clicked to opposite color
-                                if (item.color && item.color === "blue") item.color = "red";
-                                else item.color = "blue";
+                                item.color = "blue";
 
-                                let selectPrev = modData.nodes.filter(item => {
-                                        return item.id === check;
+                                //Getting previous node id
+                                let selectPrev = modData.nodes.filter(items => {
+                                        return items.id === prevId;
                                 });
-                                //This sees if the node clicked is the previous node clicked
-                                //In order to change last node clicked back to red
+
+                                //This is where the previous node is switched back to red
                                 selectPrev.forEach(items => {
-                                        if(items.id === check){
-                                                if (items.color && items.color === "blue") items.color = "red";
-                                                else items.color = "blue";
-                                        }
+                                                items.color = "red";
                                 });
                         } else {
-                                if (item.color && item.color === "red") item.color = "blue";
-                                else item.color = "red";
-                                inside = "-";
-                        }*/
+                                if (item.color === "blue"){
+                                        console.log("here");
+                                        item.color = "red";
+                                } else {
+                                        console.log("here2");
+                                        item.color = "blue";
+                                }
+                        }
                 });
+                setClickedNode(nodeID);
+                setPrevId(nodeID);
+                setData(modData);
         };
 
         return (
@@ -67,6 +82,7 @@ const GraphView = () => {
                 id={'graph-id'} // id is mandatory, if no id is defined rd3g will throw an error
                 data={myData}
                 config={myConfig}
+                onClickNode={onClickNode}
             />
             </div>
         );
