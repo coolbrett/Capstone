@@ -19,14 +19,12 @@ class App extends Component {
     }
     render() {
         return (
-            <PrevProvider>
             <NodeProvider>
                 <Router>
                     <Navbar />
                     <GraphView />
                 </Router>
             </NodeProvider>
-            </PrevProvider>
         );
     }
 }

@@ -11,16 +11,22 @@ import myData from '../Data/scratch.json'
 
 const GraphView = () => {
         let data = myData;
-        let prevClicked = "";
         let context = useContext(NodeContext);
         //This is setting the previously clicked node to be stored elsewhere so Navbar can see it
         let [nodeId, setClickedNode] = context;
         //This is setting the previously clicked node to be stored elsewhere
-        let [prevId, setPrevId] = useContext(PrevContext);
+        let [prevId, setPrevId] = context;
 
 
         const setData = function(dataHere){
                 data = dataHere;
+        }
+
+        const getColor = function(clickedNode){
+                if(clickedNode.color === "blue"){
+                        return 0;
+                }
+                return 1;
         }
 
         const myConfig = {
@@ -37,21 +43,23 @@ const GraphView = () => {
                 }
         };
 
-        let inside = "";
         const onClickNode = function(nodeID) {
-                console.log("------");
-                console.log(prevId);
-                let modData = {...data};
+                let modData = {...myData};
                 let selectNode = modData.nodes.filter(item => {
                         return item.id === nodeID;
                 });
                 selectNode.forEach(item => {
+                        if(item.color === undefined){
+                                item.color = "red";
+                        }
                         //If clicked node isn't the previously clicked node
-                        if(item.id !== prevId){
-                                inside = item.id;
                                 //Setting the color of the node clicked to opposite color
+                        if(item.color === "red") {
                                 item.color = "blue";
-
+                        } else {
+                                item.color = "red";
+                        }
+                        if(item.id !== prevId) {
                                 //Getting previous node id
                                 let selectPrev = modData.nodes.filter(items => {
                                         return items.id === prevId;
@@ -59,20 +67,16 @@ const GraphView = () => {
 
                                 //This is where the previous node is switched back to red
                                 selectPrev.forEach(items => {
-                                                items.color = "red";
+                                        items.color = "red";
                                 });
+                                setPrevId(nodeID);
                         } else {
-                                if (item.color === "blue"){
-                                        console.log("here");
-                                        item.color = "red";
-                                } else {
-                                        console.log("here2");
-                                        item.color = "blue";
-                                }
+                                //Setting the previous node to be empty
+                                //For whatever reason it only works if I do this
+                                setPrevId("");
                         }
                 });
                 setClickedNode(nodeID);
-                setPrevId(nodeID);
                 setData(modData);
         };
 
