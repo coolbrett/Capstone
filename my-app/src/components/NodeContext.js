@@ -1,6 +1,6 @@
 import React, {useState, createContext} from 'react';
-import myData from '../Data/scratch.json'
-//import myData from '../Data/nodesInfo2.json'
+//import myData from '../Data/scratch.json'
+import myData from '../Data/nodesInfo2.json'
 
 function onClickNode(nodeId) {
     let clicked = "-";
