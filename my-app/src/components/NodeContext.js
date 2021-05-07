@@ -6,8 +6,6 @@ function onClickNode(nodeId) {
     let clicked = "-";
     let inside = "";
     let check = "";
-    console.log(nodeId);
-    console.log("here");
     let modData = {myData};
     let selectNode = modData.nodes.filter(item => {
         return item.id === nodeId;

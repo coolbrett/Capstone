@@ -2,14 +2,14 @@ import React, {useRef, Component, useContext, useState} from 'react';
 import { Graph } from 'react-d3-graph'
 import "./graph.const"
 import "./GraphView.css"
-import {NodeContext} from "./NodeContext.js";
-import {PrevContext} from "./PrevContext.js";
+import { NodeContext } from "./NodeContext.js";
 
 import DEFAULT_CONFIG from "./graph.config"
 import myData from '../Data/scratch.json'
 //import myData from '../Data/nodesInfo2.json'
+let id = "Chris Pratt"
 
-const GraphView = () => {
+const GraphView = (e) => {
         let data = myData;
         let context = useContext(NodeContext);
         //This is setting the previously clicked node to be stored elsewhere so Navbar can see it
@@ -42,6 +42,8 @@ const GraphView = () => {
                         highlightColor: "lightblue"
                 }
         };
+
+
 
         const onClickNode = function(nodeID) {
                 let modData = {...myData};

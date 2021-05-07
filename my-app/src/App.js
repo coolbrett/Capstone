@@ -1,11 +1,10 @@
-import React, { Component }  from "react";
+import React, { Component, useContext }  from "react";
 import Navbar from "./components/Navbar"
 import GraphView from "./components/GraphView";
 import './App.css';
 import {NodeProvider} from "./components/NodeContext";
 import { BrowserRouter as Router } from "react-router-dom"
 import myData from './Data/scratch.json'
-import {PrevProvider} from "./components/PrevContext";
 import { Graph } from "react-d3-graph";
 //import myData from './Data/nodesInfo2.json'
 
