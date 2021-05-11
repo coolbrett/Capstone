@@ -1,3 +1,10 @@
+/**
+ * Author: Dillon Gorlesky, Brett Dale
+ * Date: 5/10/2021
+ * These are just some graph configurations we were
+ * testing to see how the graph would look, and learn what what each thing
+ * was responsible for doing
+ */
 export default {
     COORDS_SEPARATOR: ",",
     FORCE_X: 0.06,

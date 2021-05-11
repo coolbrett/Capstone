@@ -6,8 +6,14 @@ import {RadioButton} from "./RadioButton";
 import { NodeContext }from "./NodeContext";
 import FindNode from "./FindNode";
 
-
+/**
+ * Author: Dillon Gorlesky, Brett Dale
+ * Date: 05/10/2021
+ * The purpose of this class is to create a Navbar with varying components that
+ * can be rendered in the App (main) class
+ */
 const Navbar = () => {
+    //These are all the predefined functions from NodeContext
     let [nodeId, setClickedNode] = useContext(NodeContext);
   //  const [name, setName] = useState('https://raw.githubusercontent.com/coolbrett/Capstone/main/Data/nodes.json');
     const [click, setClick] = useState(false);
@@ -37,6 +43,8 @@ const Navbar = () => {
         }
     };
 */
+
+    //This is where the information being rendered into App class is being created and formed
    return(
            <nav className={"navbar"}>
                 <h3 className={"navbar-logo"}>
