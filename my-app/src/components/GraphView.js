@@ -9,19 +9,35 @@ import DEFAULT_CONFIG from "./graph.config"
 import myData from '../Data/nodesInfo2.json'
 let id = "Chris Pratt"
 
+/**
+ * Author: Dillon Gorlesky, Brett Dale
+ * Date: 05/10/2021
+ * The purpose of this class is to handle the GraphView and have it in a separate class
+ * other than App like we had in the second to last progress report. This also allows
+ * use to implement searching and node interaction easier.
+ */
 const GraphView = (e) => {
+        //Setting the data to be modified
         let data = myData;
+        //Allows us to use the functions from NodeContext
         let context = useContext(NodeContext);
         //This is setting the previously clicked node to be stored elsewhere so Navbar can see it
         let [nodeId, setClickedNode] = context;
         //This is setting the previously clicked node to be stored elsewhere
         let [prevId, setPrevId] = context;
 
-
+        //Modifying the data
+        //Param dataHere: The new modified data we're setting
         const setData = function(dataHere){
                 data = dataHere;
         }
 
+        /**
+         * The purpose of this function was used to test setting the
+         * color of a node to blue or red
+         * @param clickedNode: Node object clicked
+         * @returns {number}: Number based on what color the node should be changed to
+         */
         const getColor = function(clickedNode){
                 if(clickedNode.color === "blue"){
                         return 0;
@@ -29,6 +45,9 @@ const GraphView = (e) => {
                 return 1;
         }
 
+        /**
+         * These are the configurations being set for the graph when loaded
+         */
         const myConfig = {
                 nodeHighlightBehavior: true,
                 height: 960,
@@ -44,13 +63,21 @@ const GraphView = (e) => {
         };
 
 
-
+        /**
+         * Author: Dillon Gorlesky, Brett Dale
+         * Date: 05/10/2021
+         * The purpose of this function is to allow the other classes to set nodes
+         * when clicked/searched
+         * @param nodeId: The name of the node clicked
+         */
         const onClickNode = function(nodeID) {
                 let modData = {...myData};
+                //Filtering through the data to find the node clicked
                 let selectNode = modData.nodes.filter(item => {
                         return item.id === nodeID;
                 });
                 selectNode.forEach(item => {
+                        //Setting color if node hasn't been clicked
                         if(item.color === undefined){
                                 item.color = "red";
                         }
@@ -82,6 +109,7 @@ const GraphView = (e) => {
                 setData(modData);
         };
 
+        //Defining the Graph being displayed in App (main) class
         return (
             <div className={"graphview"} >
             <Graph
