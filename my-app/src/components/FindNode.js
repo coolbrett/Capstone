@@ -1,19 +1,35 @@
 import React, {useState, useContext} from 'react';
 import { NodeContext } from "./NodeContext";
-import myData from "../Data/scratch.json";
+//import myData from "../Data/scratch.json";
+import myData from '../Data/nodesInfo2.json'
 
+/**
+ * This file handles finding nodes within our graph once the React app is launched
+ */
 const FindNode = () => {
     let data = myData;
     let context = useContext(NodeContext)
     let [nodeId, setClickedNode] = context;
     //This is setting the previously clicked node to be stored elsewhere
     let [prevId, setPrevId] = context;
+
+    /**
+     * State to hold and set ID data
+     */
     const [id, setId] = useState('');
 
+    /**
+     * Function to update ID once new node is clicked
+     * @param e node to set ID field to
+     */
     const update = (e) => {
         setId(e.target.value);
     }
 
+    /**
+     * Function to change what node is set to the clicked node
+     * @param e node to change to
+     */
     const changing = (e) => {
         e.preventDefault();
         setClickedNode(id);
@@ -21,10 +37,18 @@ const FindNode = () => {
         setId('');
     }
 
+    /**
+     * Function to set the data
+     * @param dataHere data to set
+     */
     const setData = function(dataHere){
         data = dataHere;
     }
 
+    /**
+     * This function sets the clicked node to blue, and the previous clicked node back to red
+     * @param nodeID node to set its color to blue
+     */
     const testing = function(nodeID) {
         let modData = {...myData};
         let selectNode = modData.nodes.filter(item => {
