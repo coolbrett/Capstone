@@ -91,7 +91,7 @@ export function Button() {
         <div>
             <input
                 type="file"
-                accept=".csv,.xlsx,.xls"
+                accept=".csv,.xls"
                 name={"IMBD-Movie-Data.csv"}
                 onClick={handleFileUpload}
             />
