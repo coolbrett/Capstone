@@ -82,7 +82,7 @@ export function Button() {
 
     //This handles the file uploading
     const handleFileUpload = e => {
-        console.log("hey");
+        console.log("he");
     }
 
     return (
