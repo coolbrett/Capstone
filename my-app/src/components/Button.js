@@ -7,18 +7,33 @@ import DataTable from 'react-data-table-component';
 import xtypejs from 'xtypejs'
 
 
-
-
-
+/**
+ * This file was used to show button functionality in a previous sprint.
+ *
+ * @author Dillon Gorlesky
+ * @author Brett Dale
+ */
 export function Button() {
+    /**
+     * State to set name of Button
+     */
     const [name, setName] = useState('');
 
+    /**
+     * State to set columns
+     */
     const [columns, setColumns] = useState([]);
+
+    /**
+     * State to set the data to parse
+     */
     const [data, setData] = useState([]);
 
 
-
-    //Process the CSV data
+    /**
+     * This function separates the dataString passed in and builds an object based on the data
+     * @param dataString string of data to put into a JSON object
+     */
     const processData = dataString => {
         const dataStringLines = dataString.split(/\r\n|\n/);
         //Regex used to properly get the headers of each column
@@ -62,6 +77,11 @@ export function Button() {
         setColumns(columns);
     }
 
+    /**
+     * Function to convert a CSV file to JSON object
+     * @param csv csv file
+     * @returns {Object} object containing data from passed in CSV
+     */
     function csvJSON(csv) {
         const lines = csv.split('\n')
         const result = []
