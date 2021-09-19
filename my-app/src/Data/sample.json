@@ -1,0 +1,25 @@
+[
+  {
+    "Rank": "1",
+    "Title": "Guardians of the Galaxy",
+    "Genre": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "Description": "A group of intergalactic criminals are forced to work together to stop a fanatical warrior from taking control of the universe.",
+    "Director": "James Gunn",
+    "Actors": [
+      "Chris Pratt",
+      "Vin Diesel",
+      "Bradley Cooper",
+      "Zoe Saldana"
+    ],
+    "Year": "2014",
+    "Runtime (Minutes)": "121",
+    "Rating": "8.1",
+    "Votes": "757074",
+    "Revenue (Millions)": "333.13",
+    "Metascore": "76"
+  }
+]
