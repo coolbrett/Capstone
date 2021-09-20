@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { NodeContext } from "./NodeContext";
-//import myData from "../Data/scratch.json";
-import myData from '../Data/nodesInfo2.json'
+import myData from "../Data/scratch.json";
+//import myData from '../Data/nodesInfo2.json'
 
 
 const FindNode = () => {

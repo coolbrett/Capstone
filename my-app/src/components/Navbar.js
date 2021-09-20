@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom'
 import {RadioButton} from "./RadioButton";
 import { NodeContext }from "./NodeContext";
 import FindNode from "./FindNode";
+import {QueryButton} from "./QueryButton";
+
 
 
 const Navbar = () => {
     let [nodeId, setClickedNode] = useContext(NodeContext);
-  //  const [name, setName] = useState('https://raw.githubusercontent.com/coolbrett/Capstone/main/Data/nodes.json');
+    //const [name, setName] = useState('https://raw.githubusercontent.com/coolbrett/Capstone/main/Data/nodes.json');
     const [click, setClick] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const [radio, setRadio] = useState("apple");
@@ -44,6 +46,7 @@ const Navbar = () => {
                 </h3>
                <ul className={click ?  'nav-menu active' : 'nav-menu'}>
                 <FindNode />
+                   <QueryButton></QueryButton>
                </ul>
                <p style={{color:"white"}}>Listed: </p>
                <p style={{color:"white"}}>{nodeId}</p>
