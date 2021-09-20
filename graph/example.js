@@ -8,8 +8,8 @@
     const driver = neo4j.driver(uri, neo4j.auth.basic(user, password))
     const session = driver.session()
 
-    const person1Name = 'Alice'
-    const person2Name = 'David'
+    const person1Name = 'David'
+    const person2Name = 'Alice'
 
     try {
         // To learn more about the Cypher syntax, see https://neo4j.com/docs/cypher-manual/current/
