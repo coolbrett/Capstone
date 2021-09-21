@@ -46,6 +46,14 @@ const GraphView = (e) => {
 
 
         const onClickNode = function(nodeID) {
+                /**
+                 * Send query
+                 * -> get info back
+                 * create the nodes
+                 * create links
+                 * populate view
+                 * @type {{nodes: {}, links: {}}}
+                 */
                 let modData = {...myData};
                 let selectNode = modData.nodes.filter(item => {
                         return item.id === nodeID;
