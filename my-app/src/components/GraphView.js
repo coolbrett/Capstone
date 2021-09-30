@@ -2,6 +2,7 @@ import React, {useRef, Component, useContext, useState} from 'react';
 import { Graph } from 'react-d3-graph'
 import "./graph.const"
 import "./GraphView.css"
+import QueryList from "./QueryList"
 import { NodeContext } from "./NodeContext.js";
 
 import DEFAULT_CONFIG from "./graph.config"
@@ -98,6 +99,7 @@ const GraphView = (e) => {
                 config={myConfig}
                 onClickNode={onClickNode}
             />
+            <QueryList />
             </div>
         );
 }

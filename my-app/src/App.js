@@ -24,11 +24,12 @@ class App extends Component {
                 <Router>
                     <Navbar />
                     <GraphView />
-                    <QueryList />
                 </Router>
             </NodeProvider>
         );
     }
 }
+
+//Got rid of <Querylist /> underneath graph view
 export default App;
 

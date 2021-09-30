@@ -7,16 +7,16 @@ const Query = () => {
     }
 
     return(
-            <view>
+            <view className={"query"}>
                 <form >
                 <view style={{flexDirection:"column"}}>
                     <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
+                        <view style={{flex:1}}>
+                            <input type={"text"} placeholder={"0..."} name={"id"}  onChange={update} />
                         </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
+                        <text> &lt; Ranking &lt; </text>
+                        <view style={{flex:1}}>
+                            <input type={"text"} placeholder={"1000..."} name={"id"}  onChange={update} />
                         </view>
                     </view>
                 </view>
@@ -24,25 +24,12 @@ const Query = () => {
                 <form >
                     <view style={{flexDirection:"column"}}>
                         <view style={{flexDirection:"row"}}>
-                            <view style={{flex:3}}>
-                                <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
+                            <view style={{flex:1}}>
+                                <input type={"text"} placeholder={"0..."} name={"id"}  onChange={update} />
                             </view>
-                            <text> &lt; Testing &lt; </text>
-                            <view style={{flex:3}}>
-                                <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                            </view>
-                        </view>
-                    </view>
-                </form>
-                <form >
-                    <view style={{flexDirection:"column"}}>
-                        <view style={{flexDirection:"row"}}>
-                            <view style={{flex:3}}>
-                                <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                            </view>
-                            <text> &lt; Testing &lt; </text>
-                            <view style={{flex:3}}>
-                                <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
+                            <text> &lt; Metascore &lt; </text>
+                            <view style={{flex:1}}>
+                                <input type={"text"} placeholder={"100..."} name={"id"}  onChange={update} />
                             </view>
                         </view>
                     </view>
@@ -50,11 +37,18 @@ const Query = () => {
                 <form >
                     <view style={{flexDirection:"column"}}>
                         <view style={{flexDirection:"row"}}>
-                            <view style={{flex:3}}>
-                                <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
+                            <text> Genre </text>
+                            <view style={{flex:1}}>
+                                <input type={"text"} placeholder={"Genre..."} name={"id"}  onChange={update} />
                             </view>
+                        </view>
+                    </view>
+                </form>
+                <form >
+                    <view style={{flexDirection:"column"}}>
+                        <view style={{flexDirection:"row"}}>
                             <text> &lt; Testing &lt; </text>
-                            <view style={{flex:3}}>
+                            <view style={{flex:1}}>
                                 <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
                             </view>
                         </view>
@@ -63,124 +57,17 @@ const Query = () => {
                 <form >
                     <view style={{flexDirection:"column"}}>
                         <view style={{flexDirection:"row"}}>
-                            <view style={{flex:3}}>
+                            <view style={{flex:1}}>
                                 <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
                             </view>
                             <text> &lt; Testing &lt; </text>
-                            <view style={{flex:3}}>
+                            <view style={{flex:1}}>
                                 <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
                             </view>
                         </view>
                     </view>
-                </form><form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-            </form><form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-            </form><form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-            </form><form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-            </form><form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-            </form><form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-            </form><form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-            </form><form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Testing &lt; </text>
-                        <view style={{flex:3}}>
-                            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-            </form>
+                </form>
             </view>
-
-
-        /**<nav className={"query"}>
-            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-            <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-        </nav>*/
     );
 };
 
