@@ -7,6 +7,7 @@ import {NodeProvider} from "./components/NodeContext";
 import { BrowserRouter as Router } from "react-router-dom"
 import myData from './Data/scratch.json'
 import { Graph } from "react-d3-graph";
+import QueryList from "./components/QueryList";
 //import myData from './Data/nodesInfo2.json'
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
                 <Router>
                     <Navbar />
                     <GraphView />
+                    <QueryList />
                 </Router>
             </NodeProvider>
         );
