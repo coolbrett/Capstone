@@ -30,6 +30,5 @@ class App extends Component {
     }
 }
 
-//Got rid of <Querylist /> underneath graph view
 export default App;
 

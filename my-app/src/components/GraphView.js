@@ -32,8 +32,10 @@ const GraphView = (e) => {
 
         const myConfig = {
                 nodeHighlightBehavior: true,
-                height: 960,
-                width: 1850,
+                height: 800,
+                width: 1400,
+                //height: 500,
+                //width: 1000,
                 node: {
                         color: "red",
                         size: 120,
@@ -92,14 +94,14 @@ const GraphView = (e) => {
         };
 
         return (
-            <div className={"graphview"} >
-            <Graph
-                id={'graph-id'} // id is mandatory, if no id is defined rd3g will throw an error
-                data={myData}
-                config={myConfig}
-                onClickNode={onClickNode}
-            />
-            <QueryList />
+            <div className={"graphview"}>
+                <Graph
+                        id={'graph-id'} // id is mandatory, if no id is defined rd3g will throw an error
+                        data={myData}
+                        config={myConfig}
+                        onClickNode={onClickNode}
+                />
+                <QueryList />
             </div>
         );
 }

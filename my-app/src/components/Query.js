@@ -1,74 +1,47 @@
 import React, { useState, useContext } from 'react';
-
-const Query = () => {
+import "./Query.css";
+const Query = ({name2, min, max}) => {
 
     const update = () => {
         console.log("here");
     }
 
     return(
-            <view className={"query"}>
-                <form >
-                <view style={{flexDirection:"column"}}>
-                    <view style={{flexDirection:"row"}}>
-                        <view style={{flex:1}}>
-                            <input type={"text"} placeholder={"0..."} name={"id"}  onChange={update} />
-                        </view>
-                        <text> &lt; Ranking &lt; </text>
-                        <view style={{flex:1}}>
-                            <input type={"text"} placeholder={"1000..."} name={"id"}  onChange={update} />
-                        </view>
-                    </view>
-                </view>
-                </form>
-                <form >
-                    <view style={{flexDirection:"column"}}>
-                        <view style={{flexDirection:"row"}}>
-                            <view style={{flex:1}}>
-                                <input type={"text"} placeholder={"0..."} name={"id"}  onChange={update} />
-                            </view>
-                            <text> &lt; Metascore &lt; </text>
-                            <view style={{flex:1}}>
-                                <input type={"text"} placeholder={"100..."} name={"id"}  onChange={update} />
-                            </view>
-                        </view>
-                    </view>
-                </form>
-                <form >
-                    <view style={{flexDirection:"column"}}>
-                        <view style={{flexDirection:"row"}}>
-                            <text> Genre </text>
-                            <view style={{flex:1}}>
-                                <input type={"text"} placeholder={"Genre..."} name={"id"}  onChange={update} />
-                            </view>
-                        </view>
-                    </view>
-                </form>
-                <form >
-                    <view style={{flexDirection:"column"}}>
-                        <view style={{flexDirection:"row"}}>
-                            <text> &lt; Testing &lt; </text>
-                            <view style={{flex:1}}>
-                                <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                            </view>
-                        </view>
-                    </view>
-                </form>
-                <form >
-                    <view style={{flexDirection:"column"}}>
-                        <view style={{flexDirection:"row"}}>
-                            <view style={{flex:1}}>
-                                <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                            </view>
-                            <text> &lt; Testing &lt; </text>
-                            <view style={{flex:1}}>
-                                <input type={"text"} placeholder={"Search.."} name={"id"}  onChange={update} />
-                            </view>
-                        </view>
-                    </view>
-                </form>
-            </view>
+        <div className='container'>
+            <div className='col'>
+                <input type='text' placeholder={min} onChange={update} />
+            </div>
+            <div className="col">&lt;{name2}&lt;</div>
+            <div className="col">
+                <input type='text' placeholder={max} onChange={update} />
+            </div>
+        </div>
     );
 };
 
+/**
+ * <form >
+ <view style={{flexDirection:"column"}}>
+ <view style={{flexDirection:"row"}}>
+ <view >
+ <input className={"query2"} type={"text"} required={true} placeholder={"0..."} name={"id"}  onChange={update} />
+ </view>
+ <text className={"query2"}> &lt; Metascore &lt; </text>
+ <view >
+ <input className={"query2"} type={"text"} required={true} placeholder={"100..."} name={"id"}  onChange={update} />
+ </view>
+ </view>
+ </view>
+ </form>
+ *
+ * <form >
+ <view style={{flexDirection:"column"}}>
+ <view style={{flexDirection:"row"}}>
+ <view >
+ <input type={"text"} placeholder={"Genre..."} name={"id"}  onChange={update} />
+ </view>
+ </view>
+ </view>
+ </form>
+ */
 export default Query;
