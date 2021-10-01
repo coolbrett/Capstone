@@ -1,19 +1,29 @@
 import React, { useState, useContext } from 'react';
 import "./Query.css";
-const Query = ({name2, min, max}) => {
+const Query = (props) => {
+    const[name2, setName2] = useState(props.name2);
 
-    const update = () => {
-        console.log("here");
+    const update = (event, setValue) => {
+        if(isNumeric(event.target.value)){//Value entered is not numeric
+            console.log(event.target.value); //Gets value put into text box
+            setValue(event.target.value);//Sets value of textbox
+        }
+    }
+
+    function isNumeric(str) {
+        if (typeof str != "string") return false // we only process strings!
+        return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+            !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
     }
 
     return(
         <div className='container'>
             <div className='col'>
-                <input type='text' placeholder={min} onChange={update} />
+                <input type='text' value={props.min} onChange={(event) => update(event, props.setMin)} />
             </div>
             <div className="col">&lt;{name2}&lt;</div>
             <div className="col">
-                <input type='text' placeholder={max} onChange={update} />
+                <input type='text' value={props.max} onChange={(event) => update(event, props.setMax)} />
             </div>
         </div>
     );

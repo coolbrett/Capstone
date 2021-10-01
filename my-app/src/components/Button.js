@@ -10,16 +10,13 @@ export function Button() {
 
     //This needs to be changed to get all the information from all the queries to create
     //One main query
-    const handleFileUpload = e => {
+    const handleClick = e => {
         console.log("hey");
     }
 
     return (
         <div>
-            <button
-                type={"submit"}
-                onClick={handleFileUpload}> Submit
-            </button>
+
         </div>
     );
 }
