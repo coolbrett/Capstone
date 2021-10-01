@@ -46,7 +46,6 @@ const Navbar = () => {
                 </h3>
                <ul className={click ?  'nav-menu active' : 'nav-menu'}>
                 <FindNode />
-                   <QueryButton />
                </ul>
                <p style={{color:"white"}}>Listed: </p>
                <p style={{color:"white"}}>{nodeId}</p>
