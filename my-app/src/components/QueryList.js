@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import  Query  from './Query';
+import { Button } from "./Button";
 
 const QueryList = () => {
 
@@ -12,6 +13,8 @@ const QueryList = () => {
             <Query name2={"Metascore"} min={"0..."} max={"...100"}/>
             <Query name2={" Rating "} min={"0..."} max={"...10"}/>
 
+            <br/>
+            <Button >Submit </Button>
         </nav>
     );
 };
