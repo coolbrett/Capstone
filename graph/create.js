@@ -61,6 +61,7 @@
         for (let i = 0; i < obj.length; i++) {
             //Movie properties set below
             let movie = obj[i]['Title'];
+            let director = obj[i]['Director'];
             let rank = obj[i]['Rank'];
             let genres = obj[i]["Genre"];
             let description = obj[i]["Description"];
@@ -76,14 +77,14 @@
             for (let j = 0; j < obj[i]['Actors'].length; j++) {
                 //I wrote the next three lines
                 let actor = obj[i]['Actors'][j];
-                const writeQuery = 'MERGE (p1:Actor { name: $actor }) MERGE (p2:Movie { name: $movie, rank: $rank, genres: $genres, description: $description, year: $year, runtime: $runtime, rating: $rating, votes: $votes, revenue: $revenue, metascore: $metascore }) MERGE (p1)-[:STARS]->(p2) RETURN p1, p2';
+                const writeQuery = 'MERGE (p1:Actor { name: $actor }) MERGE (p2:Movie { name: $movie, director: $director, rank: $rank, genres: $genres, description: $description, year: $year, runtime: $runtime, rating: $rating, votes: $votes, revenue: $revenue, metascore: $metascore }) MERGE (p1)-[:STARS]->(p2) RETURN p1, p2';
                 console.log(writeQuery)
 
                 //BELOW CODE IS NEO4J STUFF, I only touched variable names
 
                 // Write transactions allow the driver to handle retries and transient errors
                 const writeResult = await session.writeTransaction(tx =>
-                    tx.run(writeQuery, {actor, movie, rank, genres, description, year, runtime, rating, votes, revenue, metascore})
+                    tx.run(writeQuery, {actor, director, movie, rank, genres, description, year, runtime, rating, votes, revenue, metascore})
                 )
                 writeResult.records.forEach(record => {
                     const person1Node = record.get('p1')
@@ -106,7 +107,6 @@
             }
 
             //director query here
-            let director = obj[i]['Director'];
             const writeQuery = 'MERGE (p1:Director { name: $director }) MERGE (p2:Movie { name: $movie }) MERGE (p1)-[:DIRECTED]->(p2) RETURN p1, p2';
             console.log("\n" + writeQuery);
 
