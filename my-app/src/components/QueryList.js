@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import  Query  from './Query';
+import {PerformQuery} from "./PerformQuery";
 
 const QueryList = () => {
-    const clear = `MATCH n RETURN n`;
+    const clear = `MATCH (n) RETURN (n) LIMIT 25`;
     const[minRank, setMinRank] = useState("0");//Used for lower bound of rank query
     const[maxRank, setMaxRank] = useState("1000");//Used for upperbound of rank query
 
@@ -30,12 +31,11 @@ const QueryList = () => {
         setMinRate("0");
         setMaxRate("10");
 
-        //Can add more setting here
+        //Can add more setting here easily
+
         //Next is to call a function to run a query
-        //Will look something like
-        //function performQuery(clear){ //Clear is already defined at the top
-        //  #Handle information
-        //  #Call populate Graph function with data
+        let doing;
+        doing = PerformQuery(clear);
     }
 
     return(
@@ -54,9 +54,5 @@ const QueryList = () => {
         </nav>
     );
 };
-/**
- * <Query name2={"Metascore"} min={minval} max={maxval}/>
- <Query name2={" Rating "} min={minval} max={maxval}/>
- */
 
 export default QueryList;
