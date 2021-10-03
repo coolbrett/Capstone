@@ -62,15 +62,16 @@
             //Movie properties set below
             let movie = obj[i]['Title'];
             let director = obj[i]['Director'];
-            let rank = obj[i]['Rank'];
+            let rank = parseInt(obj[i]['Rank']);
+            console.log("Rank is " + rank);
             let genres = obj[i]["Genre"];
             let description = obj[i]["Description"];
-            let year = obj[i]["Year"];
-            let runtime = obj[i]["Runtime (Minutes)"];
-            let rating = obj[i]["Rating"];
-            let votes = obj[i]["Votes"];
-            let revenue = obj[i]["Revenue (Millions)"];
-            let metascore = obj[i]["Metascore"];
+            let year = parseInt(obj[i]["Year"]);
+            let runtime = parseInt(obj[i]["Runtime (Minutes)"]);
+            let rating = parseFloat(obj[i]["Rating"]);
+            let votes = parseInt(obj[i]["Votes"]);
+            let revenue = parseFloat(obj[i]["Revenue (Millions)"]);
+            let metascore = parseInt(obj[i]["Metascore"]);
 
 
             //This loop iterates through each actor and assigns the actors to their movie
