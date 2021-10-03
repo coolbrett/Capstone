@@ -15,8 +15,17 @@ const QueryList = () => {
 
     //This is to meant to eventually get all values user entered
     //And send them to perform a query
-    const handleClick = e => {
+    const handleClick = () => {
+        let query = `MATCH (n: Movie)
+            WHERE` + minRank + ` <= n.rank <=` + maxRank;
 
+        let end = `RETURN (n)`;
+
+
+
+
+        query = query + end;
+        let doing = PerformQuery(query);
     }
 
     //This is to clear all fields of user input and send a query for
@@ -34,8 +43,7 @@ const QueryList = () => {
         //Can add more setting here easily
 
         //Next is to call a function to run a query
-        let doing;
-        doing = PerformQuery(clear);
+        let doing = PerformQuery(clear);
     }
 
     return(
