@@ -6,7 +6,8 @@ import QueryList from "./QueryList"
 import { NodeContext } from "./NodeContext.js";
 
 import DEFAULT_CONFIG from "./graph.config"
-import myData from '../Data/scratch.json'
+//import myData from '../Data/scratch.json'
+import myData from '../Data/test.json'
 //import myData from '../Data/nodesInfo2.json'
 let id = "Chris Pratt"
 

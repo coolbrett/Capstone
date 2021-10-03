@@ -30,11 +30,29 @@ export async function PerformQuery(query) {
     )
 
     readResult.records.forEach(record => {
-        console.log(`Found movie: ${record.get('n')}`)
+        //console.log(`Found movie: ${record.get('n')}`)
     })
 
     await driver.close();
 
+    console.log("-------------------");
+
+    console.log(readResult.records.list);
+
     //Now it needs to put the records into a readable state, and then can either be stored in a new
     //JSON file or a new graph to be displayed to the user.
 }
+/**
+ * This function allows for a json to be formatted that can be downloaded by the user. Not
+ * sure how it helps, if at all, but it's here
+ *
+ const handleSaveToPC = jsonData => {
+  const fileData = JSON.stringify(jsonData);
+  const blob = new Blob([fileData], {type: "text/plain"});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.download = 'filename.json';
+  link.href = url;
+  link.click();
+}
+ */
