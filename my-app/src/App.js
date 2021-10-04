@@ -8,7 +8,6 @@ import { BrowserRouter as Router } from "react-router-dom"
 //import myData from './Data/scratch.json'
 //import myData from './Data/nodesInfo2.json'
 import myData from './Data/scratch.json'
-import Testing from "./components/Testing";
 //import myData from './Data/test.json'
 
 
