@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import "./Query.css";
+
 const Query = (props) => {
     const[name2, setName2] = useState(props.name2);
 

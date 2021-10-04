@@ -2,11 +2,11 @@ import React, {useState, createContext} from 'react';
 import myData from '../Data/scratch.json'
 //import myData from '../Data/nodesInfo2.json'
 
-function onClickNode(nodeId) {
+function onClickNode(nodeId, theData) {
     let clicked = "-";
     let inside = "";
     let check = "";
-    let modData = {myData};
+    let modData = {theData};
     let selectNode = modData.nodes.filter(item => {
         return item.id === nodeId;
     });
@@ -58,12 +58,21 @@ export const NodeProvider = (props) => {
         "red"
     ]);
 
+    let [theData, setTheData] = useState([
+
+    ]);
+
+    let [timing, setTiming] = useState([
+        "1"
+    ]);
 
     return(
         <NodeContext.Provider value={[
             prevId, setPrevId,
             nodeId, setClickedNode,
             color, setColor,
+            theData, setTheData,
+            timing, setTiming,
         ]}>
             {props.children}
         </NodeContext.Provider>

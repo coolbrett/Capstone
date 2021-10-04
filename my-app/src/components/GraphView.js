@@ -7,28 +7,26 @@ import { NodeContext } from "./NodeContext.js";
 
 import DEFAULT_CONFIG from "./graph.config"
 //import myData from '../Data/scratch.json'
-import myData from '../Data/test.json'
+//import myData from '../Data/test.json'
 //import myData from '../Data/nodesInfo2.json'
-let id = "Chris Pratt"
 
-const GraphView = (e) => {
-        let data = myData;
+const GraphView = (props) => {
+        let time = props.time;
         let context = useContext(NodeContext);
         //This is setting the previously clicked node to be stored elsewhere so Navbar can see it
         let [nodeId, setClickedNode] = context;
         //This is setting the previously clicked node to be stored elsewhere
         let [prevId, setPrevId] = context;
-
-
-        const setData = function(dataHere){
-                data = dataHere;
+        let [theData, setTheData] = context;
+        let [timing, setTiming] = context;
+        if(props.time.equals("1")){
+                setTheData(props.data);
+                setTiming(0);
+        } else {
+                setTheData(theData);
         }
-
-        const getColor = function(clickedNode){
-                if(clickedNode.color === "blue"){
-                        return 0;
-                }
-                return 1;
+        const setData = function(dataHere){
+                setTheData(dataHere);
         }
 
         const myConfig = {
@@ -46,19 +44,16 @@ const GraphView = (e) => {
                         highlightColor: "lightblue"
                 }
         };
-
-
-
-        const onClickNode = function(nodeID) {
+        let modData = {...theData};
+        const onClickNode = function(nodeID, theData) {
                 /**
                  * Send query
                  * -> get info back
                  * create the nodes
                  * create links
                  * populate view
-                 * @type {{nodes: {}, links: {}}}
+                 * @type {{[p: string]: *}}
                  */
-                let modData = {...myData};
                 let selectNode = modData.nodes.filter(item => {
                         return item.id === nodeID;
                 });
@@ -98,9 +93,10 @@ const GraphView = (e) => {
             <div className={"graphview"}>
                 <Graph
                         id={'graph-id'} // id is mandatory, if no id is defined rd3g will throw an error
-                        data={myData}
+                        data={theData}
                         config={myConfig}
-                        onClickNode={onClickNode}
+                        time={time}
+                        onClickNode={() => NodeContext(onClickNode)}
                 />
                 <QueryList />
             </div>

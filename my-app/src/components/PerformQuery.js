@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import {NodeContext} from "./NodeContext";
 
 /**
  * These values are the constants that allow us to connect to the database and never change.
@@ -22,6 +23,7 @@ const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
  * @param query: The query passed that will be read in and executed.
  * @constructor
  */
+
 export async function PerformQuery(query) {
     const session = driver.session()
 
@@ -33,15 +35,17 @@ export async function PerformQuery(query) {
         //console.log(`Found movie: ${record.get('n')}`)
     })
 
-    await driver.close();
-
+    //let doing = GraphTest('../Data/scratch.json');
     console.log("-------------------");
+    console.log("Nodes array: " + readResult.records);
+    console.log("Node name: " + readResult.records[0]._fields[0].properties.name);
 
-    console.log(readResult.records.list);
+    await driver.close();
 
     //Now it needs to put the records into a readable state, and then can either be stored in a new
     //JSON file or a new graph to be displayed to the user.
 }
+
 /**
  * This function allows for a json to be formatted that can be downloaded by the user. Not
  * sure how it helps, if at all, but it's here

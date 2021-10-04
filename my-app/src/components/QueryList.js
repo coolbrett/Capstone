@@ -1,8 +1,19 @@
 import React, { useState, useContext } from 'react';
 import  Query  from './Query';
 import {PerformQuery} from "./PerformQuery";
+import {NodeContext} from "./NodeContext";
+import someData from '../Data/test.json'
+
+const neo4j = require('neo4j-driver')
+const uri = 'neo4j+s://4f877cd8.databases.neo4j.io';
+const user = 'neo4j';
+const password = '1TIT1myoa1kmE-TkrEmeZab6GvLzax8DTif-SW4HFK8';
+const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 
 const QueryList = () => {
+    let context = useContext(NodeContext);
+    let [theData, setTheData] = context;
+
     const clear = `MATCH (n) RETURN (n) LIMIT 25`;
     const[minRank, setMinRank] = useState("0");//Used for lower bound of rank query
     const[maxRank, setMaxRank] = useState("1000");//Used for upperbound of rank query
@@ -25,12 +36,12 @@ const QueryList = () => {
 
 
         query = query + end;
-        let doing = PerformQuery(query);
+        //let doing = PerformQuery(query, props.data);
     }
 
     //This is to clear all fields of user input and send a query for
     //The fresh main graph of all nodes and links query
-    const handleClick2 = () => {
+    const handleClick2 = async () => {
         setMinRank("0");
         setMaxRank("1000");
 
@@ -43,7 +54,22 @@ const QueryList = () => {
         //Can add more setting here easily
 
         //Next is to call a function to run a query
-        let doing = PerformQuery(clear);
+
+        /*const session = driver.session()
+
+        const readResult = await session.readTransaction(tx =>
+            tx.run(clear, {})
+        )
+
+        readResult.records.forEach(record => {
+            //console.log(`Found movie: ${record.get('n')}`)
+        })
+        console.log("-------------------");
+        console.log("Nodes array: " + readResult.records);
+        console.log("Node name: " + readResult.records[0]._fields[0].properties.name);*/
+        setTheData(someData);
+
+            await driver.close();
     }
 
     return(
