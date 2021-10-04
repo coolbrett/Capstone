@@ -96,12 +96,10 @@ const GraphView = (props) => {
                 //setClickedNode(selectNode);
 
                 setData(modData);
-                console.log("here")
-
         };
 
         return (
-            <div className={"graphview"}>
+            <div className={"graphview"} >
                     <Graph
                         id={'graph-id'} // id is mandatory, if no id is defined rd3g will throw an error
                         data={theData}
@@ -113,7 +111,7 @@ const GraphView = (props) => {
         );
 }
 
-function getLast(){
-        return last;
+function getLast(setPrevId){
+        setPrevId(last)
 }
 export default GraphView;

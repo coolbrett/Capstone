@@ -3,8 +3,8 @@ import "./Navbar.css"
 import { NodeContext }from "./NodeContext";
 import FindNode from "./FindNode";
 
-const Navbar = () => {
-    let [nodeId, setClickedNode] = useContext(NodeContext);
+const Navbar = (props) => {
+    //let [nodeId, setClickedNode] = useContext(NodeContext);
     let [click, setClick] = useState(false);
 
     //console.log("Node ID: " + nodeId);
@@ -38,8 +38,10 @@ const Navbar = () => {
                 <FindNode />
                </ul>
                <p style={{color:"white"}}>Listed: </p>
+               <p style={{color:"white"}}>{props.nodeClicked}</p>
+
            </nav>
    );
 };
-//               <p style={{color:"white"}}>{nodeId}</p>
+//               <p style={{color:"white"}}>{props.nodeId}</p>
 export default Navbar;

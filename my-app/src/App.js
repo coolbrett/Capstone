@@ -16,6 +16,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            nodeClicked: "val",
             svgRef: React.forwardRef
         };
     }
@@ -24,7 +25,7 @@ class App extends Component {
         return (
             <NodeProvider>
                 <Router>
-                    <Navbar />
+                    <Navbar nodeClicked={"hello"}/>
                     <GraphView data={myData}/>
                 </Router>
             </NodeProvider>
