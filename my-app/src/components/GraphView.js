@@ -14,17 +14,7 @@ import myData from '../Data/scratch.json'
 let last = "";
 const GraphView = (props) => {
         let context = useContext(NodeContext);
-        //This is setting the previously clicked node to be stored elsewhere so Navbar can see it
-        let [nodeId, setClickedNode] = context;
-        //This is setting the previously clicked node to be stored elsewhere
-        let [prevId, setPrevId] = context;
         let [theData, setTheData] = context;
-
-        console.log("-----------------")
-        console.log("Node Id: " + nodeId)
-        console.log("Node Id: " + nodeId.id)
-        console.log("PREV Node Id: " + prevId)
-        console.log("PREV Node Id: " + prevId.id)
 
         if(theData.length === 1){
                 setTheData(myData);
