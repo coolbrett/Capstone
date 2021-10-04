@@ -4,6 +4,8 @@ import {PerformQuery} from "./PerformQuery";
 import {NodeContext} from "./NodeContext";
 import someData from '../Data/test.json'
 import someData2 from '../Data/scratch.json'
+import myData from '../Data/nodesInfo2.json'
+
 
 
 const neo4j = require('neo4j-driver')
@@ -64,6 +66,8 @@ const QueryList = () => {
             console.log("scratch")
             setTheData(someData2);
         }
+
+        //setTheData(myData)
         //Next is to call a function to run a query
 
         /*const session = driver.session()

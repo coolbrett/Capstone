@@ -11,29 +11,24 @@ import myData from '../Data/scratch.json'
 //import myData from '../Data/test.json'
 //import myData from '../Data/nodesInfo2.json'
 
-const GraphView = () => {
-        let sureData = myData
+let last = "";
+const GraphView = (props) => {
         let context = useContext(NodeContext);
         //This is setting the previously clicked node to be stored elsewhere so Navbar can see it
-        let [nodeHere, setClickedNode] = context;
+        let [nodeId, setClickedNode] = context;
         //This is setting the previously clicked node to be stored elsewhere
         let [prevId, setPrevId] = context;
         let [theData, setTheData] = context;
-        /**if(theData === undefined){
-                data = sureData
-                console.log("Undefined data: " + theData);
-                console.log("Undefined data2: " + data);
-        } else {
-                if(theData.length === 1){
-                        setTheData(myData)
-                }
-                console.log("here")
-        }*/
-        console.log("BEGINNING IS HERE----------------------")
-        console.log("MyData: " + myData)
-        //setTheData(myData)
-        console.log("TheData: " + theData)
 
+        console.log("-----------------")
+        console.log("Node Id: " + nodeId)
+        console.log("Node Id: " + nodeId.id)
+        console.log("PREV Node Id: " + prevId)
+        console.log("PREV Node Id: " + prevId.id)
+
+        if(theData.length === 1){
+                setTheData(myData);
+        }
 
         const setData = function(dataHere){
                 setTheData(dataHere);
@@ -41,7 +36,7 @@ const GraphView = () => {
 
         const myConfig = {
                 nodeHighlightBehavior: true,
-               // height: 800,
+                //height: 800,
                 //width: 1400,
                 height: 500,
                 width: 800,
@@ -55,67 +50,70 @@ const GraphView = () => {
                 }
         };
         const onClickNode = function(nodeID) {
-                setTheData(myData)
-                console.log("-------------------------------------------------")
-                //console.log("My Data Clicked Node: " + data.nodes)
                 let modData = {...theData};
+                /**
+                 * Send query
+                 * -> get info back
+                 * create the nodes
+                 * create links
+                 * populate view
+                 * @type {{[p: string]: *}}
+                 */
                 let selectNode = modData.nodes.filter(item => {
-                        if(item.id === nodeID) {
-                                return item.id;
-                        }
+                        return item.id === nodeID;
                 });
+                selectNode.id = nodeID + "";
                 selectNode.forEach(item => {
-                        if(item.color === 'undefined'){
+                        if(item.color === undefined){
                                 item.color = "red";
                         }
                         //If clicked node isn't the previously clicked node
-                                //Setting the color of the node clicked to opposite color
+                        //Setting the color of the node clicked to opposite color
                         if(item.color === "red") {
                                 item.color = "blue";
                         } else {
                                 item.color = "red";
                         }
-
-                        // console.log("here!!!!!!!!!!!!!!!!!!")
-                        if(item.id !== prevId) {
+                        if(item.id !== last) {
                                 //Getting previous node id
-                          //      console.log("SET PREV NODE 1")
-
                                 let selectPrev = modData.nodes.filter(items => {
-                                        return items.id === prevId;
+                                        return items.id === last;
                                 });
 
                                 //This is where the previous node is switched back to red
                                 selectPrev.forEach(items => {
                                         items.color = "red";
                                 });
-
-                                console.log("Checking id: " +nodeID)
-
-                                setPrevId(nodeID);
-                                console.log("test")
+                                last = item.id;
+                                //setPrevId(item.id);
                         } else {
                                 //Setting the previous node to be empty
                                 //For whatever reason it only works if I do this
-                                setPrevId("");
+                                item.color = "red"
+                                last = "";
                         }
                 });
+                //setClickedNode(selectNode);
 
-                //console.log("Selected ID: " + nodeID);
-                setClickedNode(nodeID, theData);
-                setData(theData);
+                setData(modData);
+                console.log("here")
+
         };
 
         return (
             <div className={"graphview"}>
-                <Graph
+                    <Graph
                         id={'graph-id'} // id is mandatory, if no id is defined rd3g will throw an error
-                        data={myData}
+                        data={theData}
                         config={myConfig}
                         onClickNode={onClickNode}
-                />
-                <QueryList />
+                    />
+                    <QueryList />
             </div>
         );
+}
+
+function getLast(){
+        return last;
 }
 export default GraphView;

@@ -25,8 +25,7 @@ class App extends Component {
             <NodeProvider>
                 <Router>
                     <Navbar />
-                    <Testing data={myData} />
-                    <GraphView />
+                    <GraphView data={myData}/>
                 </Router>
             </NodeProvider>
         );

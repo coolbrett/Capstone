@@ -43,7 +43,7 @@ function onClickNode(nodeId, theData) {
 export const NodeContext = createContext(onClickNode);
 
 export const NodeProvider = (props) => {
-    const [nodeHere, setClickedNode] = useState([
+    const [nodeId, setClickedNode] = useState([
        "_____"
     ]);
 
@@ -58,7 +58,7 @@ export const NodeProvider = (props) => {
     return(
         <NodeContext.Provider value={[
             prevId, setPrevId,
-            nodeHere, setClickedNode,
+            nodeId, setClickedNode,
             theData, setTheData,
         ]}>
             {props.children}
