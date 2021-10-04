@@ -61,31 +61,73 @@
         for (let i = 0; i < obj.length; i++) {
             //Movie properties set below
             let movie = obj[i]['Title'];
-            let director = obj[i]['Director'];
-            let rank = parseInt(obj[i]['Rank']);
-            console.log("Rank is " + rank);
-            let genres = obj[i]["Genre"];
-            let description = obj[i]["Description"];
-            let year = parseInt(obj[i]["Year"]);
-            let runtime = parseInt(obj[i]["Runtime (Minutes)"]);
-            let rating = parseFloat(obj[i]["Rating"]);
-            let votes = parseInt(obj[i]["Votes"]);
-            let revenue = parseFloat(obj[i]["Revenue (Millions)"]);
-            let metascore = parseInt(obj[i]["Metascore"]);
+            if (movie.length === 0 || Number.isNaN(movie)){
+                movie = -1;
+            }
 
+            let director = obj[i]['Director'];
+            if (director.length === 0 || Number.isNaN(director)){
+                director = -1;
+            }
+
+            let rank = parseInt(obj[i]['Rank']);
+            if (rank.length === 0 || Number.isNaN(rank)){
+                rank = -1;
+            }
+
+            let genres = obj[i]["Genre"];
+
+            let description = obj[i]["Description"];
+            if (description.length === 0 || Number.isNaN(description)){
+                description = -1;
+            }
+
+            let year = parseInt(obj[i]["Year"]);
+            if (year.length === 0 || Number.isNaN(year)){
+                year = -1;
+            }
+
+            let runtime = parseInt(obj[i]["Runtime (Minutes)"]);
+            if (runtime.length === 0 || Number.isNaN(runtime)){
+                runtime = -1;
+            }
+
+            let rating = parseFloat(obj[i]["Rating"]);
+            if (rating.length === 0 || Number.isNaN(rating)){
+                rating = -1;
+            }
+
+            let votes = parseInt(obj[i]["Votes"]);
+            if (votes.length === 0 || Number.isNaN(votes)){
+                votes = -1;
+            }
+
+            let revenue = parseFloat(obj[i]["Revenue (Millions)"]);
+            if (revenue.length === 0 || Number.isNaN(revenue)){
+                console.log("Movie changed: " + movie);
+                revenue = -1;
+            }
+
+            let metascore = parseInt(obj[i]["Metascore"]);
+            if (metascore.length === 0 || Number.isNaN(metascore)){
+                console.log("Movie changed: " + movie);
+                metascore = -1;
+            }
+
+            let actorList = obj[i]['Actors'];
 
             //This loop iterates through each actor and assigns the actors to their movie
             for (let j = 0; j < obj[i]['Actors'].length; j++) {
                 //I wrote the next three lines
                 let actor = obj[i]['Actors'][j];
-                const writeQuery = 'MERGE (p1:Actor { name: $actor }) MERGE (p2:Movie { name: $movie, director: $director, rank: $rank, genres: $genres, description: $description, year: $year, runtime: $runtime, rating: $rating, votes: $votes, revenue: $revenue, metascore: $metascore }) MERGE (p1)-[:STARS]->(p2) RETURN p1, p2';
+                const writeQuery = 'MERGE (p1:Actor { name: $actor }) MERGE (p2:Movie { name: $movie, actors: $actorList, director: $director, rank: $rank, genres: $genres, description: $description, year: $year, runtime: $runtime, rating: $rating, votes: $votes, revenue: $revenue, metascore: $metascore }) MERGE (p1)-[:STARS]->(p2) RETURN p1, p2';
                 console.log(writeQuery)
 
                 //BELOW CODE IS NEO4J STUFF, I only touched variable names
 
                 // Write transactions allow the driver to handle retries and transient errors
                 const writeResult = await session.writeTransaction(tx =>
-                    tx.run(writeQuery, {actor, director, movie, rank, genres, description, year, runtime, rating, votes, revenue, metascore})
+                    tx.run(writeQuery, {actor, actorList, director, movie, rank, genres, description, year, runtime, rating, votes, revenue, metascore})
                 )
                 writeResult.records.forEach(record => {
                     const person1Node = record.get('p1')
