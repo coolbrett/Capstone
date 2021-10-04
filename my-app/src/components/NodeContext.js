@@ -4,7 +4,6 @@ import myData from '../Data/scratch.json'
 
 function onClickNode(nodeId, theData) {
     let clicked = "-";
-    console.log("NODE CONTEXT HERE")
     let inside = "";
     let check = "";
     let modData = {...theData};

@@ -33,7 +33,7 @@ const QueryList = () => {
     //And send them to perform a query
     const handleClick = () => {
         let query = `MATCH (n: Movie)
-            WHERE` + minRank + ` <= n.rank <=` + maxRank;
+            WHERE ` + minRank + ` <= n.rank <= ` + maxRank;
 
         let end = `RETURN (n)`;
 
@@ -68,22 +68,6 @@ const QueryList = () => {
         }
 
         //setTheData(myData)
-        //Next is to call a function to run a query
-
-        /*const session = driver.session()
-
-        const readResult = await session.readTransaction(tx =>
-            tx.run(clear, {})
-        )
-
-        readResult.records.forEach(record => {
-            //console.log(`Found movie: ${record.get('n')}`)
-        })
-        console.log("-------------------");
-        console.log("Nodes array: " + readResult.records);
-        console.log("Node name: " + readResult.records[0]._fields[0].properties.name);*/
-
-        await driver.close();
     }
 
     return(
