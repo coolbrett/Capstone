@@ -24,7 +24,8 @@ class App extends Component {
         return (
             <NodeProvider>
                 <Router>
-                    <GraphView data={myData} />
+
+                    <GraphView />
                 </Router>
             </NodeProvider>
         );

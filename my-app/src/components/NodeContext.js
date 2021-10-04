@@ -50,14 +50,6 @@ export const NodeProvider = (props) => {
        ""
     ]);
 
-    const [data, setData] = useState([
-
-    ]);
-
-    const [color, setColor] = useState([
-        "red"
-    ]);
-
     let [theData, setTheData] = useState([
         myData
     ]);
@@ -66,7 +58,6 @@ export const NodeProvider = (props) => {
         <NodeContext.Provider value={[
             prevId, setPrevId,
             nodeId, setClickedNode,
-            color, setColor,
             theData, setTheData,
         ]}>
             {props.children}

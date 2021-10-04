@@ -42,9 +42,8 @@ const GraphView = (props) => {
                         highlightColor: "lightblue"
                 }
         };
-        const onClickNode = function(nodeID) {
+        const onClickNode = function(nodeID, theData) {
                 let modData = {...theData};
-
                 /**
                  * Send query
                  * -> get info back
