@@ -6,16 +6,17 @@ import someData from '../Data/test.json'
 import someData2 from '../Data/scratch.json'
 import myData from '../Data/nodesInfo2.json'
 
+import { Neo4jProvider, createDriver } from 'use-neo4j'
+// Create driver instance
+const driver = createDriver('neo4j', 'localhost', 7687, 'dmgorlesky', '977238')
 
-
-const neo4j = require('neo4j-driver')
+/**const neo4j = require('neo4j-driver')
 const uri = 'neo4j+s://4f877cd8.databases.neo4j.io';
 const user = 'neo4j';
-const password = '1TIT1myoa1kmE-TkrEmeZab6GvLzax8DTif-SW4HFK8';
-const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
+const password = '1TIT1myoa1kmE-TkrEmeZab6GvLzax8DTif-SW4HFK8';*/
+//const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 
 const QueryList = () => {
-    const scratch = '{nodes:[{id:Guardians of the Galaxy},{id:Chris Pratt},{id:Vin Diesel},{id:Bradley Cooper},{id:Zoe Saldana}],links:[{source:Guardians of the Galaxy,target: Chris Pratt},{source:Guardians of the Galaxy,target:Vin Diesel},{source:Guardians of the Galaxy,target:Bradley Cooper},{source:Guardians of the Galaxy,target:Zoe Saldana}]}'
     let context = useContext(NodeContext);
     let [theData, setTheData] = context;
 
@@ -31,17 +32,44 @@ const QueryList = () => {
 
     //This is to meant to eventually get all values user entered
     //And send them to perform a query
-    const handleClick = () => {
-        let query = `MATCH (n: Movie)
+    const handleClick = async () => {
+        /**let query = `MATCH (n: Movie)
             WHERE ` + minRank + ` <= n.rank <= ` + maxRank;
 
-        let end = `RETURN (n)`;
+        let end = `RETURN (n)`;*/
+        /**`CALL apoc.export.json.query(
+            "MATCH (n) RETURN COLLECT(n) as list",
+            "limit.json",
+            {params:{}}
+        )`*/
+        let query = `CALL apoc.export.json.query("Match (n) RETURN n LIMIT 25",
+                    "/C:/Users/dillo/Desktop/Capstone2/Capstone/Data/limit.json"
+,{}) 
+            YIELD file, nodes, relationships, properties, data
+            RETURN file, nodes, relationships, properties, data`
+            //`CALL apoc.export.json.query("MATCH (n) RETURN n LIMIT 25", "./limit.json", {})`
+        //query = query + end;
 
+        const session = driver.session()
 
+        const readResult = await session.readTransaction(tx =>
+            tx.run(query, {})
+        )
 
+        //setTheData("./limit.json");
 
-        query = query + end;
-        //let doing = PerformQuery(query, props.data);
+        readResult.records.forEach(record => {
+            //console.log(`Found movie: ${record.get('n')}`)
+        })
+
+        //let doing = GraphTest('../Data/scratch.json');
+        console.log("-------------------");
+        console.log("Read results: " + readResult);
+
+        console.log("Nodes array: " + readResult.records);
+       // console.log("Node name: " + readResult.records[0]._fields[0].properties.name);
+
+        await driver.close();
     }
 
     //This is to clear all fields of user input and send a query for
