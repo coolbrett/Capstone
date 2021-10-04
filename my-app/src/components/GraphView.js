@@ -6,25 +6,23 @@ import QueryList from "./QueryList"
 import { NodeContext } from "./NodeContext.js";
 
 import DEFAULT_CONFIG from "./graph.config"
-//import myData from '../Data/scratch.json'
+import {useEffect} from "react/cjs/react.production.min";
+import myData from '../Data/scratch.json'
 //import myData from '../Data/test.json'
 //import myData from '../Data/nodesInfo2.json'
 
 const GraphView = (props) => {
-        let time = props.time;
         let context = useContext(NodeContext);
         //This is setting the previously clicked node to be stored elsewhere so Navbar can see it
         let [nodeId, setClickedNode] = context;
         //This is setting the previously clicked node to be stored elsewhere
         let [prevId, setPrevId] = context;
         let [theData, setTheData] = context;
-        let [timing, setTiming] = context;
-        if(props.time.equals("1")){
-                setTheData(props.data);
-                setTiming(0);
-        } else {
-                setTheData(theData);
+
+        if(theData.length === 1){
+                setTheData(myData);
         }
+
         const setData = function(dataHere){
                 setTheData(dataHere);
         }
@@ -44,8 +42,9 @@ const GraphView = (props) => {
                         highlightColor: "lightblue"
                 }
         };
-        let modData = {...theData};
-        const onClickNode = function(nodeID, theData) {
+        const onClickNode = function(nodeID) {
+                let modData = {...theData};
+
                 /**
                  * Send query
                  * -> get info back
@@ -95,8 +94,7 @@ const GraphView = (props) => {
                         id={'graph-id'} // id is mandatory, if no id is defined rd3g will throw an error
                         data={theData}
                         config={myConfig}
-                        time={time}
-                        onClickNode={() => NodeContext(onClickNode)}
+                        onClickNode={onClickNode}
                 />
                 <QueryList />
             </div>

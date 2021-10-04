@@ -3,6 +3,8 @@ import  Query  from './Query';
 import {PerformQuery} from "./PerformQuery";
 import {NodeContext} from "./NodeContext";
 import someData from '../Data/test.json'
+import someData2 from '../Data/scratch.json'
+
 
 const neo4j = require('neo4j-driver')
 const uri = 'neo4j+s://4f877cd8.databases.neo4j.io';
@@ -11,6 +13,7 @@ const password = '1TIT1myoa1kmE-TkrEmeZab6GvLzax8DTif-SW4HFK8';
 const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 
 const QueryList = () => {
+    const scratch = '{nodes:[{id:Guardians of the Galaxy},{id:Chris Pratt},{id:Vin Diesel},{id:Bradley Cooper},{id:Zoe Saldana}],links:[{source:Guardians of the Galaxy,target: Chris Pratt},{source:Guardians of the Galaxy,target:Vin Diesel},{source:Guardians of the Galaxy,target:Bradley Cooper},{source:Guardians of the Galaxy,target:Zoe Saldana}]}'
     let context = useContext(NodeContext);
     let [theData, setTheData] = context;
 
@@ -51,8 +54,16 @@ const QueryList = () => {
         setMinRate("0");
         setMaxRate("10");
 
+        let val = Math.floor(Math.random() * 100);
         //Can add more setting here easily
 
+        if(val < 50){
+            console.log("test")
+            setTheData(someData);
+        } else {
+            console.log("scratch")
+            setTheData(someData2);
+        }
         //Next is to call a function to run a query
 
         /*const session = driver.session()
@@ -67,7 +78,6 @@ const QueryList = () => {
         console.log("-------------------");
         console.log("Nodes array: " + readResult.records);
         console.log("Node name: " + readResult.records[0]._fields[0].properties.name);*/
-        setTheData(someData);
 
             await driver.close();
     }

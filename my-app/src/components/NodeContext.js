@@ -59,11 +59,7 @@ export const NodeProvider = (props) => {
     ]);
 
     let [theData, setTheData] = useState([
-
-    ]);
-
-    let [timing, setTiming] = useState([
-        "1"
+        myData
     ]);
 
     return(
@@ -72,7 +68,6 @@ export const NodeProvider = (props) => {
             nodeId, setClickedNode,
             color, setColor,
             theData, setTheData,
-            timing, setTiming,
         ]}>
             {props.children}
         </NodeContext.Provider>
