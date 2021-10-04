@@ -24,7 +24,7 @@ class App extends Component {
         return (
             <NodeProvider>
                 <Router>
-
+                    <Navbar />
                     <GraphView />
                 </Router>
             </NodeProvider>

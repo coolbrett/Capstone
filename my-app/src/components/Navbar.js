@@ -1,23 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { Button } from "./Button"
 import "./Navbar.css"
-import { Link } from 'react-router-dom'
-import {RadioButton} from "./RadioButton";
 import { NodeContext }from "./NodeContext";
 import FindNode from "./FindNode";
-import {QueryButton} from "./QueryButton";
-
-
 
 const Navbar = () => {
     let [nodeId, setClickedNode] = useContext(NodeContext);
-    //const [name, setName] = useState('https://raw.githubusercontent.com/coolbrett/Capstone/main/Data/nodes.json');
     const [click, setClick] = useState(false);
-    const [dropdown, setDropdown] = useState(false);
-    const [radio, setRadio] = useState("apple");
 
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
+    console.log("Node ID: " + nodeId);
 
     const update = (e) => {
         setClickedNode(e.target.value);
@@ -48,10 +38,10 @@ const Navbar = () => {
                 <FindNode />
                </ul>
                <p style={{color:"white"}}>Listed: </p>
-               <p style={{color:"white"}}>{nodeId}</p>
+
 
            </nav>
    );
 };
-
+//               <p style={{color:"white"}}>{nodeId}</p>
 export default Navbar;

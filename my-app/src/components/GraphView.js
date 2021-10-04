@@ -42,19 +42,15 @@ const GraphView = (props) => {
                         highlightColor: "lightblue"
                 }
         };
-        const onClickNode = function(nodeID, theData) {
+        const onClickNode = function(nodeID) {
+                console.log("Selected ID: " + nodeID);
+
                 let modData = {...theData};
-                /**
-                 * Send query
-                 * -> get info back
-                 * create the nodes
-                 * create links
-                 * populate view
-                 * @type {{[p: string]: *}}
-                 */
                 let selectNode = modData.nodes.filter(item => {
                         return item.id === nodeID;
                 });
+                console.log("Noding: " + modData.nodes)
+                console.log("Select Node: " + selectNode.id)
                 selectNode.forEach(item => {
                         if(item.color === undefined){
                                 item.color = "red";
@@ -83,6 +79,7 @@ const GraphView = (props) => {
                                 setPrevId("");
                         }
                 });
+                console.log("Selected ID: " + nodeID);
                 setClickedNode(nodeID);
                 setData(modData);
         };
