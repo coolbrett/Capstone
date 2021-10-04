@@ -4,9 +4,10 @@ import myData from '../Data/scratch.json'
 
 function onClickNode(nodeId, theData) {
     let clicked = "-";
+    console.log("NODE CONTEXT HERE")
     let inside = "";
     let check = "";
-    let modData = {theData};
+    let modData = {...theData};
     let selectNode = modData.nodes.filter(item => {
         return item.id === nodeId;
     });
@@ -42,12 +43,12 @@ function onClickNode(nodeId, theData) {
 export const NodeContext = createContext(onClickNode);
 
 export const NodeProvider = (props) => {
-    const [nodeId, setClickedNode] = useState([
+    const [nodeHere, setClickedNode] = useState([
        "_____"
     ]);
 
     const [prevId, setPrevId] = useState([
-       ""
+
     ]);
 
     let [theData, setTheData] = useState([
@@ -57,7 +58,7 @@ export const NodeProvider = (props) => {
     return(
         <NodeContext.Provider value={[
             prevId, setPrevId,
-            nodeId, setClickedNode,
+            nodeHere, setClickedNode,
             theData, setTheData,
         ]}>
             {props.children}

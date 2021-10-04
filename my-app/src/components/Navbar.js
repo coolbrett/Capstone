@@ -5,14 +5,14 @@ import FindNode from "./FindNode";
 
 const Navbar = () => {
     let [nodeId, setClickedNode] = useContext(NodeContext);
-    const [click, setClick] = useState(false);
+    let [click, setClick] = useState(false);
 
-    console.log("Node ID: " + nodeId);
+    //console.log("Node ID: " + nodeId);
 
-    const update = (e) => {
+    /*const update = (e) => {
         setClickedNode(e.target.value);
     }
-/*
+
     const onMouseEnter = () => {
         if(window.innerWidth < 960){
             setDropdown(false);
@@ -38,8 +38,6 @@ const Navbar = () => {
                 <FindNode />
                </ul>
                <p style={{color:"white"}}>Listed: </p>
-
-
            </nav>
    );
 };

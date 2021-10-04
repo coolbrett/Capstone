@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom"
 //import myData from './Data/scratch.json'
 //import myData from './Data/nodesInfo2.json'
 import myData from './Data/scratch.json'
+import Testing from "./components/Testing";
 //import myData from './Data/test.json'
 
 
@@ -15,7 +16,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            first: true,
             svgRef: React.forwardRef
         };
     }
@@ -25,6 +25,7 @@ class App extends Component {
             <NodeProvider>
                 <Router>
                     <Navbar />
+                    <Testing data={myData} />
                     <GraphView />
                 </Router>
             </NodeProvider>

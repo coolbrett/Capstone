@@ -79,7 +79,7 @@ const QueryList = () => {
         console.log("Nodes array: " + readResult.records);
         console.log("Node name: " + readResult.records[0]._fields[0].properties.name);*/
 
-            await driver.close();
+        await driver.close();
     }
 
     return(
