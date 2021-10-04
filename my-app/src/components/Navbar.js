@@ -38,7 +38,7 @@ const Navbar = (props) => {
                 <FindNode />
                </ul>
                <p style={{color:"white"}}>Listed: </p>
-               <p style={{color:"white"}}>{props.nodeClicked}</p>
+               <p style={{color:"white"}}>{props.valueFromParent}</p>
 
            </nav>
    );

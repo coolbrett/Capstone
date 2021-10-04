@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom"
 //import myData from './Data/scratch.json'
 //import myData from './Data/nodesInfo2.json'
 import myData from './Data/scratch.json'
+import Parent from "./components/Parent";
 //import myData from './Data/test.json'
 
 
@@ -22,12 +23,7 @@ class App extends Component {
 
     render() {
         return (
-            <NodeProvider>
-                <Router>
-                    <Navbar nodeClicked={"hello"}/>
-                    <GraphView data={myData}/>
-                </Router>
-            </NodeProvider>
+            <Parent />
         );
     }
 }

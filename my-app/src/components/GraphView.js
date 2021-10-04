@@ -94,9 +94,14 @@ const GraphView = (props) => {
                         }
                 });
                 //setClickedNode(selectNode);
-
+                props.functionCallFromParent(last);
                 setData(modData);
         };
+
+        const childFunction = (e) =>{
+                e.preventDefault();
+                this.props.functionCallFromParent(last);
+        }
 
         return (
             <div className={"graphview"} >
@@ -104,7 +109,8 @@ const GraphView = (props) => {
                         id={'graph-id'} // id is mandatory, if no id is defined rd3g will throw an error
                         data={theData}
                         config={myConfig}
-                        onClickNode={onClickNode}
+                        onClickNode={onClickNode.bind(this)}
+                        onClick={childFunction.bind(this)}
                     />
                     <QueryList />
             </div>
