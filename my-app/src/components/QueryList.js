@@ -37,7 +37,11 @@ const QueryList = () => {
             WHERE ` + minRank + ` <= n.rank <= ` + maxRank;
 
         let end = `RETURN (n)`;*/
-
+        /**`CALL apoc.export.json.query(
+            "MATCH (n) RETURN COLLECT(n) as list",
+            "limit.json",
+            {params:{}}
+        )`*/
         let query = `CALL apoc.export.json.query("Match (n) RETURN n LIMIT 25",
                     "/C:/Users/dillo/Desktop/Capstone2/Capstone/Data/limit.json"
 ,{}) 
