@@ -29,7 +29,7 @@ const GraphView = (props) => {
                 //height: 800,
                 //width: 1400,
                 height: 500,
-                width: 800,
+                width: 700,
                 node: {
                         color: "red",
                         size: 120,

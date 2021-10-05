@@ -5,10 +5,10 @@ import {NodeContext} from "./NodeContext";
 import someData from '../Data/test.json'
 import someData2 from '../Data/scratch.json'
 import myData from '../Data/nodesInfo2.json'
-
+import limit from "../Data/limit.json"
 import { Neo4jProvider, createDriver } from 'use-neo4j'
 // Create driver instance
-const driver = createDriver('neo4j', 'localhost', 7687, 'dmgorlesky', '977238')
+const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
 
 /**const neo4j = require('neo4j-driver')
 const uri = 'neo4j+s://4f877cd8.databases.neo4j.io';
@@ -33,30 +33,29 @@ const QueryList = () => {
     //This is to meant to eventually get all values user entered
     //And send them to perform a query
     const handleClick = async () => {
-        /**let query = `MATCH (n: Movie)
-            WHERE ` + minRank + ` <= n.rank <= ` + maxRank;
+        let query = `MATCH (n) RETURN n LIMIT 25`
+           // WHERE ` + minRank + ` <= n.rank <= ` + maxRank;
 
-        let end = `RETURN (n)`;*/
+        //let end = `RETURN (n)`;
         /**`CALL apoc.export.json.query(
-            "MATCH (n) RETURN COLLECT(n) as list",
+            query,
             "limit.json",
             {params:{}}
         )`*/
-        let query = `CALL apoc.export.json.query("Match (n) RETURN n LIMIT 25",
-                    "/C:/Users/dillo/Desktop/Capstone2/Capstone/Data/limit.json"
-,{}) 
-            YIELD file, nodes, relationships, properties, data
-            RETURN file, nodes, relationships, properties, data`
+        /**let query = `CALL apoc.export.json.query("Match (n) RETURN n LIMIT 25",
+                    "/C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/Data/limit.json"
+,{writeNodeProperties:true, stream:true}) 
+          `
             //`CALL apoc.export.json.query("MATCH (n) RETURN n LIMIT 25", "./limit.json", {})`
-        //query = query + end;
+        //query = query + end;*/
 
-        const session = driver.session()
+        let session = driver.session()
 
-        const readResult = await session.readTransaction(tx =>
+        let readResult = await session.readTransaction(tx =>
             tx.run(query, {})
         )
 
-        //setTheData("./limit.json");
+        setTheData(limit);
 
         readResult.records.forEach(record => {
             //console.log(`Found movie: ${record.get('n')}`)
@@ -69,7 +68,7 @@ const QueryList = () => {
         console.log("Nodes array: " + readResult.records);
        // console.log("Node name: " + readResult.records[0]._fields[0].properties.name);
 
-        await driver.close();
+       //await driver.close();
     }
 
     //This is to clear all fields of user input and send a query for
