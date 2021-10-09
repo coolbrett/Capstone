@@ -20,11 +20,11 @@ const Query = (props) => {
     return(
         <div className='container'>
             <div className='col'>
-                <input type='text' value={props.min} onChange={(event) => update(event, props.setMin)} />
+                <input type='text' style = {{width: 50}} value={props.min} onChange={(event) => update(event, props.setMin)} />
             </div>
             <div className="col">&lt;{name2}&lt;</div>
             <div className="col">
-                <input type='text' value={props.max} onChange={(event) => update(event, props.setMax)} />
+                <input type='text' style = {{width: 50}} value={props.max} onChange={(event) => update(event, props.setMax)} />
             </div>
         </div>
     );

@@ -25,8 +25,8 @@ class Parent extends Component{
         return (
             <NodeProvider>
                 <Router>
-                    <Navbar valueFromParent={this.state.value_key}/>
-                    <GraphView data={myData} functionCallFromParent={this.parentFunction.bind(this)}/>
+                    <Navbar valueFromParent={this.state.value_key} functionCallFromParent={this.parentFunction.bind(this)}/>
+                    <GraphView data={myData} functionCallFromParent={this.parentFunction.bind(this)} valueFromParent={this.state.value_key}/>
                 </Router>
             </NodeProvider>
         );

@@ -3,10 +3,11 @@ import { NodeContext } from "./NodeContext";
 import myData from "../Data/scratch.json";
 //import myData from '../Data/nodesInfo2.json'
 
-
-const FindNode = () => {
-    let data = myData;
+let last = "";
+const FindNode = (props) => {
     let context = useContext(NodeContext)
+    let [theData, setTheData] = context;
+
     let [nodeId, setClickedNode] = context;
     //This is setting the previously clicked node to be stored elsewhere
     let [prevId, setPrevId] = context;
@@ -16,19 +17,17 @@ const FindNode = () => {
         setId(e.target.value);
     }
 
-    const changing = (e) => {
-        e.preventDefault();
-        setClickedNode(id);
-        testing(id);
-        setId('');
+    if(theData.length === 1){
+        setTheData(myData);
     }
 
     const setData = function(dataHere){
-        data = dataHere;
+        setTheData(dataHere);
     }
 
+
     const testing = function(nodeID) {
-        let modData = {...myData};
+        let modData = {...theData};
         let selectNode = modData.nodes.filter(item => {
             return item.id === nodeID;
         });
@@ -53,22 +52,30 @@ const FindNode = () => {
                 selectPrev.forEach(items => {
                     items.color = "red";
                 });
-                setPrevId(nodeID);
+                last = item.id;
             } else {
                 //Setting the previous node to be empty
                 //For whatever reason it only works if I do this
-                setPrevId("");
+                item.color = "red"
+                last = "";
             }
         });
-        setClickedNode(nodeID);
+        props.functionCallFromParent(last);
+        //setClickedNode(nodeID);
         setData(modData);
     };
+
+    const childFunction = (e) =>{
+        console.log("here")
+        e.preventDefault();
+        props.functionCallFromParent(last);
+    }
 
 
     return(
         <form action={"./"}>
             <input type={"text"} placeholder={"Search.."} name={"id"} value={id} onChange={update} />
-            <button type={"submit"} onClick={changing}>Submit</button>
+            <button type={"submit"} onClick={childFunction.bind(this)} >Submit</button>
         </form>
     );
 

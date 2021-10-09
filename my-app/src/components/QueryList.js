@@ -5,7 +5,7 @@ import {NodeContext} from "./NodeContext";
 import someData from '../Data/test.json'
 import someData2 from '../Data/scratch.json'
 import myData from '../Data/nodesInfo2.json'
-import limit from "../Data/limit.json"
+//import limit from "../Data/limit.json"
 import { Neo4jProvider, createDriver } from 'use-neo4j'
 // Create driver instance
 const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
@@ -13,7 +13,7 @@ const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
 /**const neo4j = require('neo4j-driver')
 const uri = 'neo4j+s://4f877cd8.databases.neo4j.io';
 const user = 'neo4j';
-const password = '1TIT1myoa1kmE-TkrEmeZab6GvLzax8DTif-SW4HFK8';*/
+const password = '1TIT1myoa1kmE-TkrEmeZabGvLzax8DTif-SW4HFK8';*/
 //const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 
 const QueryList = () => {
@@ -42,10 +42,8 @@ const QueryList = () => {
             "limit.json",
             {params:{}}
         )`*/
-        /**let query = `CALL apoc.export.json.query("Match (n) RETURN n LIMIT 25",
-                    "/C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/Data/limit.json"
-,{writeNodeProperties:true, stream:true}) 
-          `
+        //let query =
+          //
             //`CALL apoc.export.json.query("MATCH (n) RETURN n LIMIT 25", "./limit.json", {})`
         //query = query + end;*/
 
@@ -55,7 +53,7 @@ const QueryList = () => {
             tx.run(query, {})
         )
 
-        setTheData(limit);
+       // setTheData(limit);
 
         readResult.records.forEach(record => {
             //console.log(`Found movie: ${record.get('n')}`)

@@ -13,6 +13,8 @@ import myData from '../Data/scratch.json'
 
 let last = "";
 const GraphView = (props) => {
+        let last2 = props.valueFromParent
+        console.log(last2 + " last 2")
         let context = useContext(NodeContext);
         let [theData, setTheData] = context;
 

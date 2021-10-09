@@ -29,6 +29,11 @@ const Navbar = (props) => {
         }
     };
 */
+    const childFunction = (e) =>{
+        console.log("here nav " + e)
+        props.functionCallFromParent(e);
+    }
+
    return(
            <nav className={"navbar"}>
                 <h3 className={"navbar-logo"}>
