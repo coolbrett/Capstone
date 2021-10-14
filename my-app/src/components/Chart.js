@@ -1,6 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import * as d3 from 'd3';
 import "./ResponsiveBar.css"
+import {NodeContext} from "./NodeContext";
+import someData2 from '../Data/scratch.json'
+
 
 const sample = [
     {category:'A', quantity: 40},
@@ -11,6 +14,9 @@ const sample = [
 
 
 const Chart = () => {
+    let context = useContext(NodeContext);
+    let [theData, setTheData] = context;
+
     const d3Chart = useRef()
     // Ref for updating dimention
     const [dimensions, setDimensions] = useState({
@@ -34,7 +40,16 @@ const Chart = () => {
                 d3.selectAll('g').remove()
             } else {update.current = true}
         })
+        let values = ['category', 'quantities']
+        let data = [];
+        let test = JSON.parse(someData2);
+        for(let i = 0; i < 6; i++){
+            let obj = {};
+            obj[values[i]] = test[i].nodes.id
+            data.push(obj);
+        }
 
+        console.log(data)
         // Draw chart using the data and updated dimensions
         DrawChart(sample,dimensions)
 
@@ -77,7 +92,7 @@ const Chart = () => {
 
         // Draw bars
         svg.append('g')
-            .attr('fill','#65f0eb')
+            .attr('fill','#592C8B')
             .selectAll('rect')
             .data(data)
             .join('rect')
@@ -89,7 +104,7 @@ const Chart = () => {
 
     return (
         <div id='d3demo'>
-            <svg ref={d3Chart}></svg>
+            <svg ref={d3Chart}/>
         </div>
     )
 }

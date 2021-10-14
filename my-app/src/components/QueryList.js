@@ -33,7 +33,7 @@ const QueryList = () => {
     //This is to meant to eventually get all values user entered
     //And send them to perform a query
     const handleClick = async () => {
-        let query = `MATCH (n) RETURN n LIMIT 25`
+        //let query = `MATCH (n) RETURN n LIMIT 25`
            // WHERE ` + minRank + ` <= n.rank <= ` + maxRank;
 
         //let end = `RETURN (n)`;
@@ -42,9 +42,8 @@ const QueryList = () => {
             "limit.json",
             {params:{}}
         )`*/
-        //let query =
-          //
-            //`CALL apoc.export.json.query("MATCH (n) RETURN n LIMIT 25", "./limit.json", {})`
+        //"file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json"
+        let query = `CALL apoc.export.json.query("MATCH (n) RETURN n LIMIT 25", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
         //query = query + end;*/
 
         let session = driver.session()

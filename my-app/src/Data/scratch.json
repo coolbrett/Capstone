@@ -1,7 +1,13 @@
 {
   "nodes": [
     {
-      "id": "Guardians of the Galaxy"
+      "id": "Guardians of the Galaxy",
+      "revenue": 333.13,
+      "year": 2014,
+      "genre": ["Action","Adventure","Sci-Fi"],
+      "director": "James Gunn",
+      "rating": 8.1,
+      "runtime": 121
     },
     {
       "id": "Chris Pratt"
