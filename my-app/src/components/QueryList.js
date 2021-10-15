@@ -43,8 +43,17 @@ const QueryList = () => {
             {params:{}}
         )`*/
         //"file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json"
-        let query = `CALL apoc.export.json.query("MATCH (n) RETURN n LIMIT 25", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
+        //let query = `CALL apoc.export.json.query("MATCH (n) RETURN n LIMIT 25", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
         //query = query + end;*/
+
+
+        let query = `CALL apoc.export.json.query("MATCH (n)
+RETURN {id:coalesce(n.name, n.title), year: n.year} as nodes limit 6
+UNION
+MATCH (n)-->(m: Movie)
+
+RETURN {source: coalesce(n.name, n.title), target: coalesce(m.name, m.title)} as nodes limit 5", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
+
 
         let session = driver.session()
 

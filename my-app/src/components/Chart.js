@@ -40,16 +40,16 @@ const Chart = () => {
                 d3.selectAll('g').remove()
             } else {update.current = true}
         })
-        let values = ['category', 'quantities']
+        /**let values = ['category', 'quantities']
         let data = [];
         let test = JSON.parse(someData2);
         for(let i = 0; i < 6; i++){
             let obj = {};
             obj[values[i]] = test[i].nodes.id
             data.push(obj);
-        }
+        }*/
 
-        console.log(data)
+       // console.log(data)
         // Draw chart using the data and updated dimensions
         DrawChart(sample,dimensions)
 
