@@ -5,7 +5,7 @@ import {NodeContext} from "./NodeContext";
 import someData from '../Data/test.json'
 import someData2 from '../Data/scratch.json'
 import myData from '../Data/nodesInfo2.json'
-//import limit from "../Data/limit.json"
+import limit from "../components/limit.json"
 import { Neo4jProvider, createDriver } from 'use-neo4j'
 // Create driver instance
 const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
@@ -47,13 +47,21 @@ const QueryList = () => {
         //query = query + end;*/
 
 
-        let query = `CALL apoc.export.json.query("MATCH (n)
+        /**let query = `CALL apoc.export.json.query("MATCH (n)
             RETURN {id:coalesce(n.name, n.title), label:labels(n)} as nodes limit 6
             UNION
             MATCH (n)-->(m: Movie)
-
             RETURN {source: coalesce(n.name, n.title), target: coalesce(m.name, m.title)} as nodes limit 5", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
 
+*/
+        let query = `CALL apoc.export.json.query("MATCH (m:Movie)
+WHERE m.name = 'Guardians of the Galaxy'
+CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
+WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
+     [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
+WITH {nodes:nodes, links:rels} as nodes
+RETURN nodes"
+        , "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
 
         let session = driver.session()
 
@@ -61,20 +69,22 @@ const QueryList = () => {
             tx.run(query, {})
         )
 
+
+
         //let something = JSON.parse(limit);
 
 
-       // setTheData(limit);
+        //setTheData(limit);
 
-        readResult.records.forEach(record => {
+        //readResult.records.forEach(record => {
             //console.log(`Found movie: ${record.get('n')}`)
-        })
+       // })
 
         //let doing = GraphTest('../Data/scratch.json');
         console.log("-------------------");
-        console.log("Read results: " + readResult);
+        //console.log(readResult);
 
-        console.log("Nodes array: " + readResult.records);
+        //console.log(readResult.records);
        // console.log("Node name: " + readResult.records[0]._fields[0].properties.name);
 
        //await driver.close();

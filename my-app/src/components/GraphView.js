@@ -52,6 +52,8 @@ const GraphView = (props) => {
                  * populate view
                  * @type {{[p: string]: *}}
                  */
+
+                console.log(modData)
                 let selectNode = modData.nodes.filter(item => {
                         return item.id === nodeID;
                 });
