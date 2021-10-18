@@ -48,11 +48,11 @@ const QueryList = () => {
 
 
         let query = `CALL apoc.export.json.query("MATCH (n)
-RETURN {id:coalesce(n.name, n.title), year: n.year} as nodes limit 6
-UNION
-MATCH (n)-->(m: Movie)
+            RETURN {id:coalesce(n.name, n.title), label:labels(n)} as nodes limit 6
+            UNION
+            MATCH (n)-->(m: Movie)
 
-RETURN {source: coalesce(n.name, n.title), target: coalesce(m.name, m.title)} as nodes limit 5", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
+            RETURN {source: coalesce(n.name, n.title), target: coalesce(m.name, m.title)} as nodes limit 5", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
 
 
         let session = driver.session()
@@ -60,6 +60,9 @@ RETURN {source: coalesce(n.name, n.title), target: coalesce(m.name, m.title)} as
         let readResult = await session.readTransaction(tx =>
             tx.run(query, {})
         )
+
+        //let something = JSON.parse(limit);
+
 
        // setTheData(limit);
 

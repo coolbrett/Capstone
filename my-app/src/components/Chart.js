@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useContext } from 'react';
 import * as d3 from 'd3';
 import "./ResponsiveBar.css"
 import {NodeContext} from "./NodeContext";
-import someData2 from '../Data/limit.json'
+//import someData2 from '../Data/limit.json'
 
 
 const sample = [
