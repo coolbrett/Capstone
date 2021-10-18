@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useContext } from 'react';
 import * as d3 from 'd3';
 import "./ResponsiveBar.css"
 import {NodeContext} from "./NodeContext";
-import someData2 from '../Data/scratch.json'
+import someData2 from '../Data/limit.json'
 
 
 const sample = [
@@ -49,7 +49,6 @@ const Chart = () => {
             data.push(obj);
         }*/
 
-       // console.log(data)
         // Draw chart using the data and updated dimensions
         DrawChart(sample,dimensions)
 
@@ -69,6 +68,25 @@ const Chart = () => {
             .attr('width', chartwidth + margin.left + margin.right)
             .attr('height', chartheight + margin.top + margin.bottom)
 
+        //X axis
+        svg.append("text")
+            .attr("class", "x label")
+            .attr("text-anchor", "start")
+            .attr("x", chartwidth /2)
+            .attr("y", chartheight + 50)
+            .text("Movie Titles");
+
+        //Y-axis
+        svg.append("text")
+            .attr("class", "y label")
+            .attr("text-anchor", "middle")
+            .attr("y", 6)
+            .attr("x", -200)
+            //.attr("x", -100)
+            .attr("dy", ".75em")
+            .attr("transform", "rotate(-90)")
+            .text("Revenue (Millions)");
+
         // x scale
         const x = d3.scaleBand()
             .domain(d3.range(data.length))
@@ -85,6 +103,7 @@ const Chart = () => {
         const y = d3.scaleLinear()
             .domain([0, max])
             .range([chartheight, margin.top])
+            .range([chartheight, margin.top])
 
         svg.append('g')
             .attr('transform', 'translate(' + margin.left + ',0)')
@@ -100,6 +119,7 @@ const Chart = () => {
             .attr('y', d => y(d.quantity))
             .attr('height', d=>y(0)-y(d.quantity))
             .attr('width', x.bandwidth())
+
     }
 
     return (

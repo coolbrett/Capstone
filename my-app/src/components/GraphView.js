@@ -8,6 +8,7 @@ import { NodeContext } from "./NodeContext.js";
 import DEFAULT_CONFIG from "./graph.config"
 import {useEffect} from "react/cjs/react.production.min";
 import myData from '../Data/scratch.json'
+import * as url from "url";
 //import myData from '../Data/test.json'
 //import myData from '../Data/nodesInfo2.json'
 
@@ -93,6 +94,9 @@ const GraphView = (props) => {
         const childFunction = (e) =>{
                 e.preventDefault();
                 this.props.functionCallFromParent(last);
+                //http://localhost:3000/www.test.com
+                //Creates a duplicate window at link above
+                window.open(url,'www.test.com').focus();
         }
 
         return (
