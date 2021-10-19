@@ -33,34 +33,14 @@ const QueryList = () => {
     //This is to meant to eventually get all values user entered
     //And send them to perform a query
     const handleClick = async () => {
-        //let query = `MATCH (n) RETURN n LIMIT 25`
-           // WHERE ` + minRank + ` <= n.rank <= ` + maxRank;
-
-        //let end = `RETURN (n)`;
-        /**`CALL apoc.export.json.query(
-            query,
-            "limit.json",
-            {params:{}}
-        )`*/
         //"file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json"
-        //let query = `CALL apoc.export.json.query("MATCH (n) RETURN n LIMIT 25", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
-        //query = query + end;*/
 
-
-        /**let query = `CALL apoc.export.json.query("MATCH (n)
-            RETURN {id:coalesce(n.name, n.title), label:labels(n)} as nodes limit 6
-            UNION
-            MATCH (n)-->(m: Movie)
-            RETURN {source: coalesce(n.name, n.title), target: coalesce(m.name, m.title)} as nodes limit 5", "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
-
-*/
         let query = `CALL apoc.export.json.query("MATCH (m:Movie)
 WHERE m.name = 'Guardians of the Galaxy'
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
-WITH {nodes:nodes, links:rels} as nodes
-RETURN nodes"
+RETURN nodes, rels as links"
         , "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
 
         let session = driver.session()
@@ -70,22 +50,9 @@ RETURN nodes"
         )
 
 
+        setTheData(limit);
 
-        //let something = JSON.parse(limit);
-
-
-        //setTheData(limit);
-
-        //readResult.records.forEach(record => {
-            //console.log(`Found movie: ${record.get('n')}`)
-       // })
-
-        //let doing = GraphTest('../Data/scratch.json');
         console.log("-------------------");
-        //console.log(readResult);
-
-        //console.log(readResult.records);
-       // console.log("Node name: " + readResult.records[0]._fields[0].properties.name);
 
        //await driver.close();
     }
