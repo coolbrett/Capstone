@@ -36,7 +36,7 @@ const QueryList = () => {
         //"file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json"
 
         let query = `CALL apoc.export.json.query("MATCH (m:Movie)
-WHERE m.name = 'Guardians of the Galaxy'
+WHERE m.name = 'Split'
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels

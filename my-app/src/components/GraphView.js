@@ -29,10 +29,10 @@ const GraphView = (props) => {
 
         const myConfig = {
                 nodeHighlightBehavior: true,
-                //height: 800,
-                //width: 1400,
-                height: 500,
-                width: 700,
+                height: 800,
+                width: 1400,
+                //height: 500,
+               // width: 700,
                 node: {
                         color: "red",
                         size: 120,
