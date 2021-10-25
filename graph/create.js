@@ -6,6 +6,8 @@
     const uri = 'bolt://localhost:7687';
     const user = 'dmgorlesky';
     const password = '977238';
+    //const user = 'brett';
+    //const password = 'brett123';
 
     const driver = neo4j.driver(uri, neo4j.auth.basic(user, password))
     const session = driver.session()
