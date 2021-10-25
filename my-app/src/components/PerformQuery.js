@@ -32,7 +32,7 @@ export async function PerformQuery(query) {
     )
 
     readResult.records.forEach(record => {
-        //console.log(`Found movie: ${record.get('n')}`)
+        console.log(`Found movie: ${record.get('n')}`)
     })
 
     //let doing = GraphTest('../Data/scratch.json');

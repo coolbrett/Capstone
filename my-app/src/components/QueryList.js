@@ -48,17 +48,17 @@ RETURN nodes, rels as links"
          */
 
         let query = `CALL apoc.export.json.query("MATCH (m:Movie)
-WHERE m.name = 'Guardians of the Galaxy'
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
-RETURN nodes, rels as links"
+RETURN nodes, rels as links LIMIT 5"
         , "file:///C:/Users/brett/WebstormProjects/Capstone_1/Capstone/Data/limit.json", {})`
         let session = driver.session()
 
         let readResult = await session.readTransaction(tx =>
             tx.run(query, {})
         )
+
 
 
         setTheData(limit);

@@ -117,29 +117,53 @@ function generateNodesAndLinks(filePath){
     }
 }
 
-function putArrayOfObjectsInObject(filePath) {
-    if (typeof filePath != 'string') {
-        throw new Error("putArrayOfObjectsInObject; filePath is not a string");
-    } else {
-        //getting JSON into an object
-        console.log("starting");
-        let temp = fs.readFileSync(filePath, "utf-8");
-        let data = JSON.parse(temp);
-        let obj = {data};
-        console.log("here: " + obj);
+/**
+ * Fixes Neo4j issue where it didn't format JSON correctly
+ * @param filePath
+ */
+function fixJSON(filePath){
+    if (typeof filePath != 'string'){
+        throw new Error("fixJSON; filePath is not string");
+    }else {
+        console.log('starting fixJSON');
+        fs.readFile('Data/limit.json', function(err, result) {
 
-        fs.writeFile('Data/queryObject.json', JSON.stringify(obj, null, 1), (error) => {
-            if (error) throw error;
+             // handle errors
+            const lines = result.toString().split('\n');
+            console.log(lines[0].substring(0, 3));
+            if (lines[0].substring(0, 3) === "{\"n") {
+                for (let i = 0; i < lines.length; i++) {
+                    //console.log("i is: " + i);
+                    //console.log(lines.length);
+                    //console.log(lines[i]);
+                    if (i === 0) {
+                        lines[i] = '{\n\"movies\": [' + lines[i];
+                    } else if (i === (lines.length - 1)) {
+                        lines[i] = lines[i] + ']}';
+                    }
+                    //console.log("Line " + i + ": " + lines[i]);
+                }
+                if (err) {
+                    throw new Error("fixJSON; couldn't split lines")
+                }
+
+                fs.writeFile('Data/limit.json', lines.toString(), 'utf8', function (err) {
+                    if (err) // handle errors
+                        console.log('The file has been saved!');
+                });
+            }
         });
     }
 }
+
+
 
 /**
  * Main function to manipulate the JSON data file
  */
 function main(){
     //the timeouts are needed to give time for JS to process the newly created files being made
-    putArrayOfObjectsInObject('Data/limit.json');
+    fixJSON('Data/limit.json')
 }
 
-main();
+main()
