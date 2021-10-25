@@ -9,6 +9,7 @@ import DEFAULT_CONFIG from "./graph.config"
 import {useEffect} from "react/cjs/react.production.min";
 import myData from '../Data/scratch.json'
 import * as url from "url";
+import axios from "axios";
 //import myData from '../Data/test.json'
 //import myData from '../Data/nodesInfo2.json'
 
@@ -42,6 +43,15 @@ const GraphView = (props) => {
                         highlightColor: "lightblue"
                 }
         };
+
+        const getData=()=>{
+
+                axios.get('http://localhost:8000/nodes').then(function (response){
+                        console.log(response);
+                });
+        }
+
+
         const onClickNode = function(nodeID) {
                 let modData = {...theData};
                 /**
@@ -53,8 +63,12 @@ const GraphView = (props) => {
                  * @type {{[p: string]: *}}
                  */
 
-                console.log(modData)
+                getData();
+
+                //console.log(modData)
+                //if JSON was a collection, we could nest the code below, may fix our app breaking when we have more than one movie
                 let selectNode = modData.nodes.filter(item => {
+                        //console.log(item);
                         return item.id === nodeID;
                 });
                 selectNode.id = nodeID + "";
@@ -90,6 +104,7 @@ const GraphView = (props) => {
                 });
                 //setClickedNode(selectNode);
                 props.functionCallFromParent(last);
+                //console.log(modData)
                 setData(modData);
         };
 

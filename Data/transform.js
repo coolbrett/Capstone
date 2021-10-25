@@ -7,6 +7,7 @@
 
 const CSVToJSON = require('csvtojson');
 const fs = require("fs");
+const {error} = require("neo4j-driver");
 
 /**
  * Converts CSV file to a JSON file
@@ -116,18 +117,29 @@ function generateNodesAndLinks(filePath){
     }
 }
 
+function putArrayOfObjectsInObject(filePath) {
+    if (typeof filePath != 'string') {
+        throw new Error("putArrayOfObjectsInObject; filePath is not a string");
+    } else {
+        //getting JSON into an object
+        console.log("starting");
+        let temp = fs.readFileSync(filePath, "utf-8");
+        let data = JSON.parse(temp);
+        let obj = {data};
+        console.log("here: " + obj);
+
+        fs.writeFile('Data/queryObject.json', JSON.stringify(obj, null, 1), (error) => {
+            if (error) throw error;
+        });
+    }
+}
+
 /**
  * Main function to manipulate the JSON data file
  */
 function main(){
     //the timeouts are needed to give time for JS to process the newly created files being made
-    convertCSVToJSON('Data/IMDB-Movie-Data.csv');
-    setTimeout(() => {
-        createArraysInJSON('Data/rawMovieData.json');
-    }, 500)
-    setTimeout(() => {
-        generateNodesAndLinks('Data/MovieData.json');
-    }, 1000);
+    putArrayOfObjectsInObject('Data/limit.json');
 }
 
 main();

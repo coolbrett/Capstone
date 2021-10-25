@@ -1,0 +1,78 @@
+{
+ "data": {
+  "nodes": [
+   {
+    "year": 2014,
+    "director": "James Gunn",
+    "rating": 8.1,
+    "description": "A group of intergalactic criminals are forced to work together to stop a fanatical warrior from taking control of the universe.",
+    "runtime": 121,
+    "label": "Movie",
+    "actors": [
+     "Chris Pratt",
+     "Vin Diesel",
+     "Bradley Cooper",
+     "Zoe Saldana"
+    ],
+    "revenue": 333.13,
+    "genres": [
+     "Action",
+     "Adventure",
+     "Sci-Fi"
+    ],
+    "name": "Guardians of the Galaxy",
+    "rank": 1,
+    "votes": 757074,
+    "id": "Guardians of the Galaxy",
+    "metascore": 76
+   },
+   {
+    "name": "James Gunn",
+    "id": "James Gunn",
+    "label": "Director"
+   },
+   {
+    "name": "Zoe Saldana",
+    "id": "Zoe Saldana",
+    "label": "Actor"
+   },
+   {
+    "name": "Bradley Cooper",
+    "id": "Bradley Cooper",
+    "label": "Actor"
+   },
+   {
+    "name": "Vin Diesel",
+    "id": "Vin Diesel",
+    "label": "Actor"
+   },
+   {
+    "name": "Chris Pratt",
+    "id": "Chris Pratt",
+    "label": "Actor"
+   }
+  ],
+  "links": [
+   {
+    "source": "James Gunn",
+    "target": "Guardians of the Galaxy"
+   },
+   {
+    "source": "Zoe Saldana",
+    "target": "Guardians of the Galaxy"
+   },
+   {
+    "source": "Bradley Cooper",
+    "target": "Guardians of the Galaxy"
+   },
+   {
+    "source": "Vin Diesel",
+    "target": "Guardians of the Galaxy"
+   },
+   {
+    "source": "Chris Pratt",
+    "target": "Guardians of the Galaxy"
+   }
+  ]
+ }
+}
