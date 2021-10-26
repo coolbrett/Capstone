@@ -7,6 +7,7 @@ import someData2 from '../Data/scratch.json'
 import myData from '../Data/nodesInfo2.json'
 import limit from "../components/limit.json"
 import { Neo4jProvider, createDriver } from 'use-neo4j'
+import axios from "axios";
 // Create driver instance
 //const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
 const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
@@ -54,6 +55,7 @@ WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes,
 RETURN nodes, rels as links LIMIT 5"
         , "file:///C:/Users/brett/WebstormProjects/Capstone_1/Capstone/Data/limit.json", {})`
         let session = driver.session()
+
 
         let readResult = await session.readTransaction(tx =>
             tx.run(query, {})
