@@ -27,12 +27,64 @@ const GraphView = (props) => {
                 setTheData(dataHere);
         }
 
+        const onClickGraph = function(event) {
+                console.log('Clicked the graph background');
+        };
+
+
+        const onDoubleClickNode = function(nodeId, node) {
+                console.log('Double clicked node ${nodeId} in position (${node.x}, ${node.y})');
+        };
+
+        const onRightClickNode = function(event, nodeId, node) {
+                console.log('Right clicked node ${nodeId} in position (${node.x}, ${node.y})');
+        };
+
+        const onMouseOverNode = function(nodeId, node) {
+                console.log(`Mouse over node ${nodeId} in position (${node.x}, ${node.y})`);
+        };
+
+        const onMouseOutNode = function(nodeId, node) {
+                console.log(`Mouse out node ${nodeId} in position (${node.x}, ${node.y})`);
+        };
+
+        const onClickLink = function(source, target) {
+                console.log(`Clicked link between ${source} and ${target}`);
+        };
+
+        const onRightClickLink = function(event, source, target) {
+                console.log('Right clicked link between ${source} and ${target}');
+        };
+
+        const onMouseOverLink = function(source, target) {
+                console.log(`Mouse over in link between ${source} and ${target}`);
+        };
+
+        const onMouseOutLink = function(source, target) {
+                console.log(`Mouse out link between ${source} and ${target}`);
+        };
+
+        const onNodePositionChange = function(nodeId, x, y) {
+                console.log(`Node ${nodeId} moved to new position x= ${x} y= ${y}`);
+        };
+
+// Callback that's called whenever the graph is zoomed in/out
+// @param {number} previousZoom the previous graph zoom
+// @param {number} newZoom the new graph zoom
+        const onZoomChange = function(previousZoom, newZoom) {
+                console.log(`Graph is now zoomed at ${newZoom} from ${previousZoom}`);
+        };
+
         const myConfig = {
                 nodeHighlightBehavior: true,
-                height: 800,
-                width: 1400,
+                //height: 800,
+                //width: 1400,
                 //height: 500,
-               // width: 700,
+                //width: 900,
+                initialZoom: null,
+                maxZoom:8,
+                minZoom:.1,
+                panAndZoom:false,
                 node: {
                         color: "red",
                         size: 120,
@@ -109,13 +161,21 @@ const GraphView = (props) => {
                         config={myConfig}
                         onClickNode={onClickNode.bind(this)}
                         onClick={childFunction.bind(this)}
+                        onDoubleClickNode={onDoubleClickNode}
+                        onRightClickNode={onRightClickNode}
+                        onClickLink={onClickLink}
+                        onRightClickLink={onRightClickLink}
+                        onMouseOverNode={onMouseOverNode}
+                        onMouseOutNode={onMouseOutNode}
+                        onMouseOverLink={onMouseOverLink}
+                        onMouseOutLink={onMouseOutLink}
+                        onNodePositionChange={onNodePositionChange}
+                        onZoomChange={onZoomChange}
+                        onClickGraph={onClickGraph}
                     />
                     <QueryList />
             </div>
         );
 }
 
-function getLast(setPrevId){
-        setPrevId(last)
-}
 export default GraphView;

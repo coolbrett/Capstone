@@ -9927,6 +9927,14 @@
   "resolved" "https://registry.npmjs.org/react-scroll-wheel-handler/-/react-scroll-wheel-handler-2.0.1.tgz"
   "version" "2.0.1"
 
+"react-svg-pan-zoom@^3.10.0":
+  "integrity" "sha512-sJt/ekGlC/VNypwcLeg5+EXNuwj8ag0geRT2D7MTFpDXVN7Oot/6oxyrYyJ8R1WsgV4A4s4BaowZ2LNF7tSjGQ=="
+  "resolved" "https://registry.npmjs.org/react-svg-pan-zoom/-/react-svg-pan-zoom-3.10.0.tgz"
+  "version" "3.10.0"
+  dependencies:
+    "prop-types" "^15.7.2"
+    "transformation-matrix" "^2.6.0"
+
 "react-testing-library@^8.0.1":
   "integrity" "sha512-Gq4JC9r3prA4hYwo7afcbHHMFckO29+5Nrh2KblAEPuK/DWaU0bJE1vtpAgLhzhY9bBirmcgjjIHljHEwGAXKw=="
   "resolved" "https://registry.npmjs.org/react-testing-library/-/react-testing-library-8.0.1.tgz"
@@ -9957,7 +9965,7 @@
     "ts-easing" "^0.2.0"
     "tslib" "^2.1.0"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.9 || >=15.3.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.4.1", "react@^16.8.0  || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.1", "react@>= 16", "react@>= 16.8.0", "react@>=15", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.9 || >=15.3.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.4.1", "react@^16.8.0  || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.1", "react@>= 16", "react@>= 16.8.0", "react@>=15", "react@>=17.0.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -11779,6 +11787,11 @@
   "version" "2.0.2"
   dependencies:
     "punycode" "^2.1.1"
+
+"transformation-matrix@^2.6.0":
+  "integrity" "sha512-ZXXLQAovh+MKkgVk5SCNLgK1n4il3N2JRYXyuJT8xPWH1HeCFu8dgStbtXaqOV9CX49Tte2KzUjabGaayUoAmg=="
+  "resolved" "https://registry.npmjs.org/transformation-matrix/-/transformation-matrix-2.9.0.tgz"
+  "version" "2.9.0"
 
 "tryer@^1.0.1":
   "integrity" "sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA=="
