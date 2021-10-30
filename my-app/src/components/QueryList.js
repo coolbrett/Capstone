@@ -4,8 +4,8 @@ import {PerformQuery} from "./PerformQuery";
 import {NodeContext} from "./NodeContext";
 import someData from '../Data/test.json'
 import someData2 from '../Data/scratch.json'
-import myData from '../Data/nodesInfo2.json'
 import limit from "../components/limit.json"
+import myData from '../Data/nodesInfo2.json'
 import { Neo4jProvider, createDriver } from 'use-neo4j'
 // Create driver instance
 //const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
@@ -46,27 +46,56 @@ RETURN nodes, rels as links"
         , "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
 
          */
-
         let query = `CALL apoc.export.json.query("MATCH (m:Movie)
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
-RETURN nodes, rels as links LIMIT 5"
+RETURN nodes, rels as links LIMIT 10"
         , "file:///C:/Users/brett/WebstormProjects/Capstone_1/Capstone/my-app/src/components/limit.json", {jsonFormat: 'ARRAY_JSON'})`
         let session = driver.session()
 
         let readResult = await session.readTransaction(tx =>
             tx.run(query, {})
         )
-
         console.log("Wait a second for query results to write");
+
         setTimeout(() => {
-            console.log("Query results below")
-            console.log(limit);
+            //console.log("QueryList: Query results below")
+            //console.log(limit);
+            //onsole.log("QueryList: theData below");
+            //console.log(theData);
+
+            let combined = function (obj){
+                console.log("Movie object being added below")
+                console.log(obj);
+
+                let data = {'nodes': [], 'links': []};
+
+                console.log("length of obj: " + Object.keys(obj).length);
+                for (let i = 0; i < Object.keys(obj).length; i++) {
+
+                    //nodes
+                    for (let j = 0; j < obj[i].nodes.length; j++){
+                        data.nodes.push(obj[i].nodes[j]);
+                    }
+
+                    //links
+                    for (let j = 0; j < obj[i].links.length; j++){
+                        data.links.push(obj[i].links[j]);
+                    }
+                }
+                console.log("combined JSON below");
+                console.log(data)
+                return data;
+            }
+
+            //console.log(combined(temp));
+            let allMovies = combined(limit);
+            setTheData(allMovies);
+            theData = allMovies;
+
         }, 1000);
 
-
-        setTheData(limit);
 
         console.log("-------------------");
 

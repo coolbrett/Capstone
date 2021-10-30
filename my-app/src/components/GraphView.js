@@ -44,13 +44,6 @@ const GraphView = (props) => {
                 }
         };
 
-        const getData=()=>{
-
-                axios.get('http://localhost:8000/nodes').then(function (response){
-                        console.log(response);
-                });
-        }
-
 
         const onClickNode = function(nodeID) {
                 let modData = {...theData};
@@ -63,9 +56,8 @@ const GraphView = (props) => {
                  * @type {{[p: string]: *}}
                  */
 
-                getData();
-
-                //console.log(modData)
+                console.log("IN GraphView");
+                console.log(modData)
                 //if JSON was a collection, we could nest the code below, may fix our app breaking when we have more than one movie
                 let selectNode = modData.nodes.filter(item => {
                         //console.log(item);
