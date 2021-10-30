@@ -126,7 +126,7 @@ function fixJSON(filePath){
         throw new Error("fixJSON; filePath is not string");
     }else {
         console.log('starting fixJSON');
-        fs.readFile('Data/limit.json', function(err, result) {
+        fs.readFile('my-app/src/components/limit.json', function(err, result) {
 
              // handle errors
             const lines = result.toString().split('\n');
@@ -147,7 +147,7 @@ function fixJSON(filePath){
                     throw new Error("fixJSON; couldn't split lines")
                 }
 
-                fs.writeFile('Data/limit.json', lines.toString(), 'utf8', function (err) {
+                fs.writeFile('my-app/src/components/limit.json', lines.toString(), 'utf8', function (err) {
                     if (err) // handle errors
                         console.log('The file has been saved!');
                 });

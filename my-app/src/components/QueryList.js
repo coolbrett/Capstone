@@ -7,7 +7,6 @@ import someData2 from '../Data/scratch.json'
 import myData from '../Data/nodesInfo2.json'
 import limit from "../components/limit.json"
 import { Neo4jProvider, createDriver } from 'use-neo4j'
-import axios from "axios";
 // Create driver instance
 //const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
 const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
@@ -53,14 +52,18 @@ CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
 RETURN nodes, rels as links LIMIT 5"
-        , "file:///C:/Users/brett/WebstormProjects/Capstone_1/Capstone/Data/limit.json", {})`
+        , "file:///C:/Users/brett/WebstormProjects/Capstone_1/Capstone/my-app/src/components/limit.json", {jsonFormat: 'ARRAY_JSON'})`
         let session = driver.session()
-
 
         let readResult = await session.readTransaction(tx =>
             tx.run(query, {})
         )
 
+        console.log("Wait a second for query results to write");
+        setTimeout(() => {
+            console.log("Query results below")
+            console.log(limit);
+        }, 1000);
 
 
         setTheData(limit);
