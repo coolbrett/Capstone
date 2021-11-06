@@ -1,16 +1,18 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "main": "./build/index.js",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "csvtojson": "^2.0.10",
-    "d3": "^6.6.2",
+    "d3": "^5.5.0",
     "d3-selection": "^2.0.0",
+    "html-webpack-root-plugin": "^0.10.0",
     "papaparse": "^5.3.0",
-    "react": "^17.0.1",
+    "react": "^16.4.1",
     "react-data-table-component": "^7.0.0-alpha-5",
     "react-dom": "^17.0.1",
     "react-file-reader": "^1.1.4",
@@ -52,12 +54,25 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
+    "@babel/plugin-syntax-jsx": "^7.16.0",
+    "@babel/plugin-transform-react-jsx": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
     "axios": "^0.21.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "d3-drag": "^2.0.0",
     "d3-force": "^2.1.1",
     "d3-zoom": "^2.0.0",
-    "react-d3-graph": "^2.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "react-d3-graph": "github:coolbrett/react-d3-graph",
+    "react-modal": "^3.14.3",
     "react-router-scroll": "^0.4.4",
-    "react-use": "^17.2.4"
+    "react-use": "^17.2.4",
+    "webpack-visualizer-plugin": "^0.1.11"
   }
 }

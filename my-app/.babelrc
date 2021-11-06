@@ -1,0 +1,15 @@
+{
+  "test": "/\\.(js|jsx)$/",
+  "loader": ["babel"],
+  "exclude": "/node_modules/",
+  "query": {
+    "presets": ["@babel/preset-react","@babel/preset-env"],
+    "plugins": [
+      "@babel/plugin-transform-arrow-functions",
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-proposal-optional-chaining",
+      "@babel/plugin-syntax-jsx"
+    ]
+  }
+}

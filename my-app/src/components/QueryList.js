@@ -7,6 +7,7 @@ import someData2 from '../Data/scratch.json'
 import limit from "../components/limit.json"
 import myData from '../Data/nodesInfo2.json'
 import { Neo4jProvider, createDriver } from 'use-neo4j'
+import Slider from "./Slider";
 // Create driver instance
 //const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
 const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
@@ -18,7 +19,7 @@ const user = 'neo4j';
 const password = '1TIT1myoa1kmE-TkrEmeZabGvLzax8DTif-SW4HFK8';*/
 //const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 
-const QueryList = () => {
+const QueryList = (props) => {
     let context = useContext(NodeContext);
     let [theData, setTheData] = context;
 
@@ -31,6 +32,10 @@ const QueryList = () => {
 
     const[minRate, setMinRate] = useState("0");//Used for lower bound of rate query
     const[maxRate, setMaxRate] = useState("10");//Used for upperbound of rate query
+
+    const[minVal, setMinVal] = useState("0");//Used for lower bound of rate query
+    const[maxVal, setMaxVal] = useState("2");//Used for upperbound of rate query
+
 
     //This is to meant to eventually get all values user entered
     //And send them to perform a query
@@ -136,6 +141,8 @@ RETURN nodes, rels as links LIMIT 10"
             <Query name2={" Ranking "} min={minRank} max={maxRank} setMin={setMinRank} setMax={setMaxRank}/>
             <Query name2={"Metascore"} min={minMeta} max={maxMeta} setMin={setMinMeta} setMax={setMaxMeta}/>
             <Query name2={" Rating "} min={minRate} max={maxRate} setMin={setMinRate} setMax={setMaxRate}/>
+
+            <Slider val={props.val} setVal={props.setVal} min={minVal} max={maxVal}/>
 
             <br/>
             <button className={"button"} onClick={handleClick}> Submit </button>

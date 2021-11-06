@@ -1,5 +1,5 @@
 import React, {useRef, Component, useContext, useState} from 'react';
-import { Graph } from 'react-d3-graph'
+//import { Graph } from 'react-d3-graph'
 import "./graph.const"
 import "./GraphView.css"
 import QueryList from "./QueryList"
@@ -10,11 +10,16 @@ import {useEffect} from "react/cjs/react.production.min";
 import myData from '../Data/scratch.json'
 import * as url from "url";
 import axios from "axios";
+import Graph from "react-d3-graph/src/components/graph/Graph";
 //import myData from '../Data/test.json'
 //import myData from '../Data/nodesInfo2.json'
 
 let last = "";
 const GraphView = (props) => {
+
+        const[val, setVal] = useState(0);
+
+
         let last2 = props.valueFromParent
         console.log(last2 + " last 2")
         let context = useContext(NodeContext);
@@ -30,8 +35,9 @@ const GraphView = (props) => {
 
         const myConfig = {
                 nodeHighlightBehavior: true,
-                height: 800,
-                width: 1400,
+                //height: 800,
+                //width: 1400,
+                highlightDegree: val,
                 //height: 500,
                // width: 700,
                 node: {
@@ -117,7 +123,7 @@ const GraphView = (props) => {
                         onClickNode={onClickNode.bind(this)}
                         onClick={childFunction.bind(this)}
                     />
-                    <QueryList />
+                    <QueryList val={val} setVal={setVal}/>
             </div>
         );
 }

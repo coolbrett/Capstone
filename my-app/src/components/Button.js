@@ -1,9 +1,6 @@
 import React, { Component, useState } from 'react';
 import './Button.css';
-import { Link } from 'react-router-dom';
-import ReactFileReader from 'react-file-reader';
 import * as XLSX from 'xlsx';
-import DataTable from 'react-data-table-component';
 import xtypejs from 'xtypejs'
 
 export function Button() {
