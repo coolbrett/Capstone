@@ -1,5 +1,5 @@
 import React, {useRef, Component, useContext, useState} from 'react';
-import { Graph } from 'react-d3-graph'
+import Graph from '../react-d3-graph/src/components/graph/Graph'
 import "./graph.const"
 import "./GraphView.css"
 import QueryList from "./QueryList"
