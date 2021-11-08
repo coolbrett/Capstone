@@ -100,6 +100,45 @@ const GraphView = (props) => {
                 setData(modData);
         };
 
+        const onClickGraph = function(event) {
+                console.log('Clicked the graph background');
+        };
+
+
+        const onDoubleClickNode = function(nodeId, node) {
+                console.log('Double clicked node ${nodeId} in position (${node.x}, ${node.y})');
+        };
+
+        const onRightClickNode = function(event, nodeId, node) {
+              console.log('Right clicked node ${nodeId} in position (${node.x}, ${node.y})');
+        };
+
+        const onMouseOverNode = function(nodeId, node) {
+              console.log(`Mouse over node ${nodeId} in position (${node.x}, ${node.y})`);
+        };
+
+        const onMouseOutNode = function(nodeId, node) {
+                console.log(`Mouse out node ${nodeId} in position (${node.x}, ${node.y})`);
+        };
+
+        const onClickLink = function(source, target) {
+              console.log(`Clicked link between ${source} and ${target}`);
+        };
+
+        const onRightClickLink = function(event, source, target) {
+              console.log('Right clicked link between ${source} and ${target}');
+         };
+        const onMouseOverLink = function(source, target) {
+              console.log(`Mouse over in link between ${source} and ${target}`);
+         };
+
+        const onMouseOutLink = function(source, target) {
+              console.log(`Mouse out link between ${source} and ${target}`);
+         };
+
+
+
+
         const childFunction = (e) =>{
                 e.preventDefault();
                 this.props.functionCallFromParent(last);
@@ -116,13 +155,19 @@ const GraphView = (props) => {
                         config={myConfig}
                         onClickNode={onClickNode.bind(this)}
                         onClick={childFunction.bind(this)}
+                        onDoubleClickNode={onDoubleClickNode}
+                        onRightClickNode={onRightClickNode}
+                        onMouseOverNode={onMouseOverNode}
+                        onMouseOut={onMouseOutNode}
+                        onClickLink{onClickLink}
+                        onRightClickLink={onRightClickLink}
+                        onMouseOverLink{onMouseOverLink}
+                        onMouseOutLink={onMouseOutLink}
+                        onClickGraph={onClickGraph}
                     />
                     <QueryList />
             </div>
         );
 }
 
-function getLast(setPrevId){
-        setPrevId(last)
-}
 export default GraphView;
