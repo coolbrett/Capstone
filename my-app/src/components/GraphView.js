@@ -159,9 +159,9 @@ const GraphView = (props) => {
                         onRightClickNode={onRightClickNode}
                         onMouseOverNode={onMouseOverNode}
                         onMouseOut={onMouseOutNode}
-                        onClickLink{onClickLink}
+                        onClickLink={onClickLink}
                         onRightClickLink={onRightClickLink}
-                        onMouseOverLink{onMouseOverLink}
+                        onMouseOverLink={onMouseOverLink}
                         onMouseOutLink={onMouseOutLink}
                         onClickGraph={onClickGraph}
                     />
