@@ -2,7 +2,7 @@ import React from "react";
 
 import { drag as d3Drag } from "d3-drag";
 import { forceLink as d3ForceLink } from "d3-force";
-import { select as d3Select, selectAll as d3SelectAll } from "d3-selection";
+import { select as d3Select, selectAll as d3SelectAll, event as d3Event } from "d3-selection";
 import { zoom as d3Zoom } from "d3-zoom";
 
 import CONST from "./graph.const";
@@ -135,7 +135,7 @@ export default class Graph extends React.Component {
    * transition duration to zero and clear transformation styles.
    * @returns {Object} - Focus and zoom animation properties.
    */
-  _generateFocusAnimationProps() {
+  _generateFocusAnimationProps = () => {
     // In case an older animation was still not complete, clear previous timeout to ensure the new one is not cancelled
     if (this.state.enableFocusAnimation) {
       if (this.focusAnimationTimeout) {
@@ -143,8 +143,8 @@ export default class Graph extends React.Component {
       }
 
       this.focusAnimationTimeout = setTimeout(
-        () => this.setState({ enableFocusAnimation: false }),
-        this.state.config.focusAnimationDuration * 1000
+          () => this.setState({ enableFocusAnimation: false }),
+          this.state.config.focusAnimationDuration * 1000
       );
     }
 
@@ -163,9 +163,9 @@ export default class Graph extends React.Component {
    */
   _graphLinkForceConfig() {
     const forceLink = d3ForceLink(this.state.d3Links)
-      .id(l => l.id)
-      .distance(this.state.config.d3.linkLength)
-      .strength(this.state.config.d3.linkStrength);
+        .id(l => l.id)
+        .distance(this.state.config.d3.linkLength)
+        .strength(this.state.config.d3.linkStrength);
 
     this.state.simulation.force(CONST.LINK_CLASS_NAME, forceLink);
   }
@@ -177,13 +177,13 @@ export default class Graph extends React.Component {
    */
   _graphNodeDragConfig() {
     const customNodeDrag = d3Drag()
-      .on("start", this._onDragStart)
-      .on("drag", this._onDragMove)
-      .on("end", this._onDragEnd);
+        .on("start", this._onDragStart)
+        .on("drag", this._onDragMove)
+        .on("end", this._onDragEnd);
 
     d3Select(`#${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`)
-      .selectAll(".node")
-      .call(customNodeDrag);
+        .selectAll(".node")
+        .call(customNodeDrag);
   }
 
   /**
@@ -212,7 +212,7 @@ export default class Graph extends React.Component {
    * Handles d3 drag 'end' event.
    * @returns {undefined}
    */
-  _onDragEnd () {
+  _onDragEnd = () => {
     this.isDraggingNode = false;
 
     if (this.state.draggedNode) {
@@ -221,8 +221,8 @@ export default class Graph extends React.Component {
     }
 
     !this.state.config.staticGraph &&
-      this.state.config.automaticRearrangeAfterDropNode &&
-      this.state.simulation.alphaTarget(this.state.config.d3.alphaTarget).restart();
+    this.state.config.automaticRearrangeAfterDropNode &&
+    this.state.simulation.alphaTarget(this.state.config.d3.alphaTarget).restart();
   };
 
   /**
@@ -234,7 +234,7 @@ export default class Graph extends React.Component {
    * node contains all information that was previously fed by rd3g.
    * @returns {undefined}
    */
-  _onDragMove(ev, index, nodeList) {
+  _onDragMove = (ev, index, nodeList) => {
     const id = nodeList[index].id;
 
     if (!this.state.config.staticGraph) {
@@ -244,8 +244,8 @@ export default class Graph extends React.Component {
       draggedNode.oldX = draggedNode.x;
       draggedNode.oldY = draggedNode.y;
 
-      const newX = draggedNode.x + 0;//d3Event.dx;
-      const newY = draggedNode.y + 0;//d3Event.dy;
+      const newX = draggedNode.x + d3Event.dx;
+      const newY = draggedNode.y + d3Event.dy;
       const shouldUpdateNode = !this.state.config.bounded || isPositionInBounds({ x: newX, y: newY }, this.state);
 
       if (shouldUpdateNode) {
@@ -265,7 +265,7 @@ export default class Graph extends React.Component {
    * Handles d3 drag 'start' event.
    * @returns {undefined}
    */
-  _onDragStart() {
+  _onDragStart = () => {
     this.isDraggingNode = true;
     this.pauseSimulation();
 
@@ -280,9 +280,9 @@ export default class Graph extends React.Component {
    * @param  {boolean} [value=false] - the highlight value to be set (true or false).
    * @returns {undefined}
    */
-  _setNodeHighlightedValue (id, value = false) {
-    this._tick(updateNodeHighlightedValue(this.state.nodes, this.state.links, this.state.config, id, value));
-  }
+  _setNodeHighlightedValue = (id, value = false) =>
+      this._tick(updateNodeHighlightedValue(this.state.nodes, this.state.links, this.state.config, id, value));
+
   /**
    * The tick function simply calls React set state in order to update component and render nodes
    * along time as d3 calculates new node positioning.
@@ -290,7 +290,7 @@ export default class Graph extends React.Component {
    * @param {Function} [cb] - optional callback to fed in to {@link setState()|https://reactjs.org/docs/react-component.html#setstate}.
    * @returns {undefined}
    */
-  _tick(state = {}, cb){ (cb ? this.setState(state, cb) : this.setState(state));}
+  _tick = (state = {}, cb) => (cb ? this.setState(state, cb) : this.setState(state));
 
   /**
    * Configures zoom upon graph with default or user provided values.<br/>
@@ -300,7 +300,7 @@ export default class Graph extends React.Component {
    * {@link https://github.com/d3/d3-zoom#zoom}
    * @returns {undefined}
    */
-  _zoomConfig() {
+  _zoomConfig = () => {
     const selector = d3Select(`#${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`);
 
     const zoomObject = d3Zoom().scaleExtent([this.state.config.minZoom, this.state.config.maxZoom]);
@@ -322,8 +322,8 @@ export default class Graph extends React.Component {
    * Handler for 'zoom' event within zoom config.
    * @returns {Object} returns the transformed elements within the svg graph area.
    */
-  _zoomed() {
-    const transform = 0;//d3Event.transform;
+  _zoomed = () => {
+    const transform = d3Event.transform;
 
     d3SelectAll(`#${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`).attr("transform", transform);
 
@@ -341,7 +341,7 @@ export default class Graph extends React.Component {
    * @param  {Object} e - The event of onClick handler.
    * @returns {undefined}
    */
-  onClickGraph(e) {
+  onClickGraph = e => {
     if (this.state.enableFocusAnimation) {
       this.setState({ enableFocusAnimation: false });
     }
@@ -350,7 +350,7 @@ export default class Graph extends React.Component {
     // toUpperCase() is added as a precaution, as the documentation says tagName should always
     // return in UPPERCASE, but chrome returns lowercase
     const tagName = e.target && e.target.tagName;
-    const name = e.target.attributes.name.value;
+    const name = e?.target?.attributes?.name?.value;
     const svgContainerName = `svg-container-${this.state.id}`;
 
     if (tagName.toUpperCase() === "SVG" && name === svgContainerName) {
@@ -363,7 +363,7 @@ export default class Graph extends React.Component {
    * @param  {string} clickedNodeId - The id of the node where the click was performed.
    * @returns {undefined}
    */
-  onClickNode(clickedNodeId) {
+  onClickNode = clickedNodeId => {
     const clickedNode = this.state.nodes[clickedNodeId];
     if (!this.nodeClickTimer) {
       // Note: onDoubleClickNode is not defined we don't need a long wait
@@ -376,7 +376,7 @@ export default class Graph extends React.Component {
           const leafConnections = getTargetLeafConnections(clickedNodeId, this.state.links, this.state.config);
           const links = toggleLinksMatrixConnections(this.state.links, leafConnections, this.state.config);
           const d3Links = toggleLinksConnections(this.state.d3Links, links);
-          const firstLeaf = leafConnections["0"];
+          const firstLeaf = leafConnections?.["0"];
 
           let isExpanding = false;
 
@@ -387,17 +387,17 @@ export default class Graph extends React.Component {
           }
 
           this._tick(
-            {
-              links,
-              d3Links,
-            },
-            () => {
-              this.props.onClickNode && this.props.onClickNode(clickedNodeId, clickedNode);
+              {
+                links,
+                d3Links,
+              },
+              () => {
+                this.props.onClickNode && this.props.onClickNode(clickedNodeId, clickedNode);
 
-              if (isExpanding) {
-                this._graphNodeDragConfig();
+                if (isExpanding) {
+                  this._graphNodeDragConfig();
+                }
               }
-            }
           );
         } else {
           this.props.onClickNode && this.props.onClickNode(clickedNodeId, clickedNode);
@@ -416,7 +416,7 @@ export default class Graph extends React.Component {
    * @param  {string} id - id of the node that participates in the event.
    * @returns {undefined}
    */
-  onRightClickNode (event, id) {
+  onRightClickNode = (event, id) => {
     const clickedNode = this.state.nodes[id];
     this.props.onRightClickNode && this.props.onRightClickNode(event, id, clickedNode);
   };
@@ -426,7 +426,7 @@ export default class Graph extends React.Component {
    * @param  {string} id - id of the node that participates in the event.
    * @returns {undefined}
    */
-  onMouseOverNode(id) {
+  onMouseOverNode = id => {
     if (this.isDraggingNode) {
       return;
     }
@@ -442,7 +442,7 @@ export default class Graph extends React.Component {
    * @param  {string} id - id of the node that participates in the event.
    * @returns {undefined}
    */
-  onMouseOutNode(id){
+  onMouseOutNode = id => {
     if (this.isDraggingNode) {
       return;
     }
@@ -459,7 +459,7 @@ export default class Graph extends React.Component {
    * @param  {string} target - id of the target node that participates in the event.
    * @returns {undefined}
    */
-  onMouseOverLink(source, target) {
+  onMouseOverLink = (source, target) => {
     this.props.onMouseOverLink && this.props.onMouseOverLink(source, target);
 
     if (this.state.config.linkHighlightBehavior) {
@@ -475,7 +475,7 @@ export default class Graph extends React.Component {
    * @param  {string} target - id of the target node that participates in the event.
    * @returns {undefined}
    */
-  onMouseOutLink(source, target){
+  onMouseOutLink = (source, target) => {
     this.props.onMouseOutLink && this.props.onMouseOutLink(source, target);
 
     if (this.state.config.linkHighlightBehavior) {
@@ -490,7 +490,7 @@ export default class Graph extends React.Component {
    * @param {Object} node - an object holding information about the dragged node.
    * @returns {undefined}
    */
-  onNodePositionChange(node) {
+  onNodePositionChange = node => {
     if (!this.props.onNodePositionChange) {
       return;
     }
@@ -505,7 +505,7 @@ export default class Graph extends React.Component {
    * {@link https://github.com/d3/d3-force#simulation_stop}
    * @returns {undefined}
    */
-  pauseSimulation(){ this.state.simulation.stop();}
+  pauseSimulation = () => this.state.simulation.stop();
 
   /**
    * This method resets all nodes fixed positions by deleting the properties fx (fixed x)
@@ -513,7 +513,7 @@ export default class Graph extends React.Component {
    * to their original positions (or at least new positions according to the d3 force parameters).
    * @returns {undefined}
    */
-  resetNodesPositions() {
+  resetNodesPositions = () => {
     if (!this.state.config.staticGraph) {
       let initialNodesState = initializeNodes(this.props.data.nodes);
       for (let nodeId in this.state.nodes) {
@@ -542,7 +542,7 @@ export default class Graph extends React.Component {
    * {@link https://github.com/d3/d3-force#simulation_restart}
    * @returns {undefined}
    */
-  restartSimulation(){!this.state.config.staticGraph && this.state.simulation.restart();}
+  restartSimulation = () => !this.state.config.staticGraph && this.state.simulation.restart();
 
   constructor(props) {
     super(props);
@@ -580,12 +580,12 @@ export default class Graph extends React.Component {
     newGraphElements && this.pauseSimulation();
 
     const transform =
-      newConfig.panAndZoom !== this.state.config.panAndZoom ? { x: 0, y: 0, k: 1 } : this.state.transform;
+        newConfig.panAndZoom !== this.state.config.panAndZoom ? { x: 0, y: 0, k: 1 } : this.state.transform;
     const focusedNodeId = nextProps.data.focusedNodeId;
     const d3FocusedNode = this.state.d3Nodes.find(node => `${node.id}` === `${focusedNodeId}`);
     const containerElId = `${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`;
     const focusTransformation =
-      getCenterAndZoomTransformation(d3FocusedNode, this.state.config, containerElId) || this.state.focusTransformation;
+        getCenterAndZoomTransformation(d3FocusedNode, this.state.config, containerElId) || this.state.focusTransformation;
     const enableFocusAnimation = this.props.data.focusedNodeId !== nextProps.data.focusedNodeId;
 
     // if we're given a function to call when the zoom changes, we create a debounced version of it
@@ -658,26 +658,26 @@ export default class Graph extends React.Component {
 
   render() {
     const { nodes, links, defs } = renderGraph(
-      this.state.nodes,
-      {
-        onClickNode: this.onClickNode,
-        onDoubleClickNode: this.onDoubleClickNode,
-        onRightClickNode: this.onRightClickNode,
-        onMouseOverNode: this.onMouseOverNode,
-        onMouseOut: this.onMouseOutNode,
-      },
-      this.state.d3Links,
-      this.state.links,
-      {
-        onClickLink: this.props.onClickLink,
-        onRightClickLink: this.props.onRightClickLink,
-        onMouseOverLink: this.onMouseOverLink,
-        onMouseOutLink: this.onMouseOutLink,
-      },
-      this.state.config,
-      this.state.highlightedNode,
-      this.state.highlightedLink,
-      this.state.transform.k
+        this.state.nodes,
+        {
+          onClickNode: this.onClickNode,
+          onDoubleClickNode: this.onDoubleClickNode,
+          onRightClickNode: this.onRightClickNode,
+          onMouseOverNode: this.onMouseOverNode,
+          onMouseOut: this.onMouseOutNode,
+        },
+        this.state.d3Links,
+        this.state.links,
+        {
+          onClickLink: this.props.onClickLink,
+          onRightClickLink: this.props.onRightClickLink,
+          onMouseOverLink: this.onMouseOverLink,
+          onMouseOutLink: this.onMouseOutLink,
+        },
+        this.state.config,
+        this.state.highlightedNode,
+        this.state.highlightedLink,
+        this.state.transform.k
     );
 
     const svgStyle = {
@@ -688,15 +688,15 @@ export default class Graph extends React.Component {
     const containerProps = this._generateFocusAnimationProps();
 
     return (
-      <div id={`${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`}>
-        <svg name={`svg-container-${this.state.id}`} style={svgStyle} onClick={this.onClickGraph}>
-          {defs}
-          <g id={`${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`} {...containerProps}>
-            {links}
-            {nodes}
-          </g>
-        </svg>
-      </div>
+        <div id={`${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`}>
+          <svg name={`svg-container-${this.state.id}`} style={svgStyle} onClick={this.onClickGraph}>
+            {defs}
+            <g id={`${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`} {...containerProps}>
+              {links}
+              {nodes}
+            </g>
+          </svg>
+        </div>
     );
   }
 }
