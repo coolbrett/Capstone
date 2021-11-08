@@ -2,7 +2,7 @@ import React from "react";
 
 import { drag as d3Drag } from "d3-drag";
 import { forceLink as d3ForceLink } from "d3-force";
-import { select as d3Select, selectAll as d3SelectAll, event as d3Event } from "d3-selection";
+import { select as d3Select, selectAll as d3SelectAll } from "d3-selection";
 import { zoom as d3Zoom } from "d3-zoom";
 
 import CONST from "./graph.const";
@@ -244,8 +244,8 @@ export default class Graph extends React.Component {
       draggedNode.oldX = draggedNode.x;
       draggedNode.oldY = draggedNode.y;
 
-      const newX = draggedNode.x + d3Event.dx;
-      const newY = draggedNode.y + d3Event.dy;
+      const newX = draggedNode.x + 0;//d3Event.dx;
+      const newY = draggedNode.y + 0;//d3Event.dy;
       const shouldUpdateNode = !this.state.config.bounded || isPositionInBounds({ x: newX, y: newY }, this.state);
 
       if (shouldUpdateNode) {
@@ -323,7 +323,7 @@ export default class Graph extends React.Component {
    * @returns {Object} returns the transformed elements within the svg graph area.
    */
   _zoomed = () => {
-    const transform = d3Event.transform;
+    const transform = 0;//d3Event.transform;
 
     d3SelectAll(`#${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`).attr("transform", transform);
 
