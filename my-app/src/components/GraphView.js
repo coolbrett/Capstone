@@ -15,6 +15,10 @@ import axios from "axios";
 
 let last = "";
 const GraphView = (props) => {
+
+        const[val, setVal] = useState(0);
+
+
         let last2 = props.valueFromParent
         console.log(last2 + " last 2")
         let context = useContext(NodeContext);
@@ -30,10 +34,11 @@ const GraphView = (props) => {
 
         const myConfig = {
                 nodeHighlightBehavior: true,
-                height: 800,
-                width: 1400,
-                //height: 500,
-               // width: 700,
+                //height: 800,
+                //width: 1400,
+                height: 500,
+                 width: 700,
+                highlightDegree: val,
                 node: {
                         color: "red",
                         size: 120,
@@ -165,7 +170,7 @@ const GraphView = (props) => {
                         onMouseOutLink={onMouseOutLink}
                         onClickGraph={onClickGraph}
                     />
-                    <QueryList />
+                    <QueryList val={val} setVal={setVal}/>
             </div>
         );
 }

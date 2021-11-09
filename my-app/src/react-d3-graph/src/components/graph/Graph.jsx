@@ -4,7 +4,6 @@ import { drag as d3Drag } from "d3-drag";
 import { forceLink as d3ForceLink } from "d3-force";
 import { select as d3Select, selectAll as d3SelectAll } from "d3-selection";
 import { zoom as d3Zoom } from "d3-zoom";
-
 import CONST from "./graph.const";
 import DEFAULT_CONFIG from "./graph.config";
 import ERRORS from "../../err";
@@ -323,7 +322,7 @@ export default class Graph extends React.Component {
    * @returns {Object} returns the transformed elements within the svg graph area.
    */
   _zoomed = () => {
-    const transform = 0;//d3Event.transform;
+    const transform = 0;//transform;
 
     d3SelectAll(`#${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`).attr("transform", transform);
 

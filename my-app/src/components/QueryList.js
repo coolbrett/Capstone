@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import  Query  from './Query';
-import PopUp from "./Popup";
 import {PerformQuery} from "./PerformQuery";
 import {NodeContext} from "./NodeContext";
 import someData from '../Data/test.json'
@@ -8,8 +7,6 @@ import someData2 from '../Data/scratch.json'
 import limit from "../components/limit.json"
 import myData from '../Data/nodesInfo2.json'
 import { Neo4jProvider, createDriver } from 'use-neo4j'
-import Popup from "./Popup";
-import Chart from "./Chart";
 // Create driver instance
 //const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
 const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
@@ -43,7 +40,7 @@ const QueryList = () => {
         /*let query = `CALL apoc.export.json.query("MATCH (m:Movie)
 WHERE m.name = 'Split'
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
-WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes,
+WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
 RETURN nodes, rels as links"
         , "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
@@ -131,12 +128,6 @@ RETURN nodes, rels as links LIMIT 10"
         //setTheData(myData)
     }
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
-    }
-
     return(
         <nav className={"query-list"}>
             <h3 className={"query-list-logo"} >
@@ -150,22 +141,6 @@ RETURN nodes, rels as links LIMIT 10"
             <button className={"button"} onClick={handleClick}> Submit </button>
             <a> &nbsp; </a>
             <button className={"button"} onClick={handleClick2}> Reset </button>
-            <a> &nbsp; </a>
-
-            <div>
-                <input
-                    type="button"
-                    value="Click to Open Popup"
-                    onClick={togglePopup}
-                />
-                <p>text</p>
-                {isOpen && <Popup
-                    content={<>
-                        <b>Chart</b>
-                        </>}
-                    handleClose={togglePopup}
-                />}
-            </div>
         </nav>
     );
 };
