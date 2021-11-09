@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import "./ResponsiveBar.css"
 import {NodeContext} from "./NodeContext";
 //import someData2 from '../Data/limit.json'
+import limit from "./limit.json"
 
 
 const sample = [
@@ -12,10 +13,52 @@ const sample = [
     {category:'D', quantity: 124}
 ]
 
-
-const Chart = () => {
+const Chart = (props) => {
     let context = useContext(NodeContext);
     let [theData, setTheData] = context;
+    let [chartData, setChartData] = context;
+
+    //console.log(limit)
+    let movies = [];
+    for (let i = 0; i < limit.length; i++){
+        movies.push(limit[i].nodes[0]);
+    }
+    console.log("Movies from query")
+    console.log(movies)
+
+    let revenue = movies.sort(function (a, b){
+        return a.revenue - b.revenue;
+    });
+    console.log("Movies sorted by revenue")
+    console.log(revenue);
+
+    let metascore = movies.sort(function (a, b){
+        return a.metascore - b.metascore;
+    });
+    console.log("Movies sorted by metascore")
+    console.log(metascore);
+
+    let rating = movies.sort(function (a, b){
+        return a.rating - b.rating;
+    });
+    console.log("Movies sorted by rating")
+    console.log(rating);
+
+    const dataToChart = (obj) => {
+        let arr = []
+        for (let i = 0; i < obj.length; i++){
+            let temp = {category: obj[i].name, quantity: obj[i].revenue};
+            arr.push(temp);
+        }
+        arr.sort(function (a, b){
+            return a.quantity - b.quantity;
+        });
+        return arr;
+    }
+
+    let temp = dataToChart(revenue);
+    console.log(temp);
+
 
     const d3Chart = useRef()
     // Ref for updating dimention
@@ -50,11 +93,14 @@ const Chart = () => {
         }*/
 
         // Draw chart using the data and updated dimensions
-        DrawChart(sample,dimensions)
+
+        console.log("here " + chartData);
+        DrawChart(temp, dimensions)
 
     },[dimensions])
 
     const margin = {top: 50, right:30, bottom: 30, left:60}
+
 
     function DrawChart(data, dimensions){
 

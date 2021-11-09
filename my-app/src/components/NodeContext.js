@@ -54,11 +54,17 @@ export const NodeProvider = (props) => {
         myData
     ]);
 
+    let [chartData, setChartData] = useState([
+        ""
+    ]);
+
+
     return(
         <NodeContext.Provider value={[
             prevId, setPrevId,
             nodeId, setClickedNode,
             theData, setTheData,
+            chartData, setChartData,
         ]}>
             {props.children}
         </NodeContext.Provider>
