@@ -7,12 +7,12 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "csvtojson": "^2.0.10",
-    "d3": "^6.6.2",
+    "d3": "^5.5.0",
     "d3-selection": "^2.0.0",
     "papaparse": "^5.3.0",
-    "react": "^17.0.1",
+    "react": "^16.4.1",
     "react-data-table-component": "^7.0.0-alpha-5",
-    "react-dom": "^17.0.1",
+    "react-dom": "^16.4.1",
     "react-file-reader": "^1.1.4",
     "react-request": "^3.2.0",
     "react-router-dom": "^5.2.0",
@@ -51,13 +51,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "axios": "^0.21.1",
-    "d3-drag": "^2.0.0",
-    "d3-force": "^2.1.1",
-    "d3-zoom": "^2.0.0",
-    "react-d3-graph": "^2.6.0",
-    "react-router-scroll": "^0.4.4",
-    "react-use": "^17.2.4"
-  }
+  "devDependencies": {}
 }

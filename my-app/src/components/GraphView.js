@@ -9,7 +9,7 @@ import DEFAULT_CONFIG from "./graph.config"
 import {useEffect} from "react/cjs/react.production.min";
 import myData from '../Data/scratch.json'
 import * as url from "url";
-import axios from "axios";
+//import axios from "axios";
 //import myData from '../Data/test.json'
 //import myData from '../Data/nodesInfo2.json'
 
@@ -37,11 +37,13 @@ const GraphView = (props) => {
                 //height: 800,
                 //width: 1400,
                 height: 500,
-                 width: 700,
+                width: 700,
                 highlightDegree: val,
                 node: {
                         color: "red",
                         size: 120,
+                        strokeWidth: 1.5,
+                        fontSize: 8,
                         highlightStrokeColor: "blue"
                 },
                 link: {
@@ -103,6 +105,10 @@ const GraphView = (props) => {
                 props.functionCallFromParent(last);
                 //console.log(modData)
                 setData(modData);
+        };
+
+        const onZoomChange = (prevZoom, newZoom) => {
+                this.setState({ currentZoom: newZoom });
         };
 
         const onClickGraph = function(event) {
@@ -169,6 +175,7 @@ const GraphView = (props) => {
                         onMouseOverLink={onMouseOverLink}
                         onMouseOutLink={onMouseOutLink}
                         onClickGraph={onClickGraph}
+                        onZoomChange={onZoomChange}
                     />
                     <QueryList val={val} setVal={setVal}/>
             </div>

@@ -10,6 +10,7 @@ import GraphView from "./GraphView";
 //import myData from '../Data/nodesInfo2.json'
 
 import Chart from "./Chart"
+
 class Parent extends Component{
     constructor(props){
         super(props);

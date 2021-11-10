@@ -2,12 +2,13 @@ import React from "react";
 
 import { drag as d3Drag } from "d3-drag";
 import { forceLink as d3ForceLink } from "d3-force";
-import { select as d3Select, selectAll as d3SelectAll } from "d3-selection";
-import { zoom as d3Zoom } from "d3-zoom";
+import {select as d3Select, selectAll as d3SelectAll } from "d3-selection";
+import {zoom, zoom as d3Zoom} from "d3-zoom";
+import * as d3 from "d3";
+import * as d3Sel from "d3-selection"
 import CONST from "./graph.const";
 import DEFAULT_CONFIG from "./graph.config";
 import ERRORS from "../../err";
-
 import { getTargetLeafConnections, toggleLinksMatrixConnections, toggleLinksConnections } from "./collapse.helper";
 import {
   updateNodeHighlightedValue,
@@ -20,6 +21,10 @@ import {
 } from "./graph.helper";
 import { renderGraph } from "./graph.renderer";
 import { merge, debounce, throwErr } from "../../utils";
+
+function zooming({transform}) {
+  d3SelectAll.attr("transform", d => `translate(${transform.apply(d)})`);
+}
 
 /**
  * Graph component is the main component for react-d3-graph components, its interface allows its user
@@ -322,18 +327,18 @@ export default class Graph extends React.Component {
    * @returns {Object} returns the transformed elements within the svg graph area.
    */
   _zoomed = () => {
-    const transform = 0;//transform;
+    const transform = event.transform;
 
     d3SelectAll(`#${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`).attr("transform", transform);
 
     this.setState({ transform });
 
     // only send zoom change events if the zoom has changed (_zoomed() also gets called when panning)
-    if (this.debouncedOnZoomChange && this.state.previousZoom !== transform.k && !this.state.config.panAndZoom) {
-      this.debouncedOnZoomChange(this.state.previousZoom, transform.k);
-      this.setState({ previousZoom: transform.k });
-    }
-  };
+    //if (this.debouncedOnZoomChange && this.state.previousZoom !== transform.k && !this.state.config.panAndZoom) {
+   //   this.debouncedOnZoomChange(this.state.previousZoom, transform.k);
+    //  this.setState({ previousZoom: transform.k });
+
+  }
 
   /**
    * Calls the callback passed to the component.
