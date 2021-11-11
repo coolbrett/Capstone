@@ -125,7 +125,7 @@ RETURN nodes, rels as links LIMIT 10"
             setTheData(someData2);
         }
 
-        //setTheData(myData)
+        setTheData(myData)
     }
 
     return(

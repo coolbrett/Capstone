@@ -2,13 +2,13 @@ import React from "react";
 
 import { drag as d3Drag } from "d3-drag";
 import { forceLink as d3ForceLink } from "d3-force";
-import {select as d3Select, selectAll as d3SelectAll } from "d3-selection";
-import {zoom, zoom as d3Zoom} from "d3-zoom";
-import * as d3 from "d3";
-import * as d3Sel from "d3-selection"
+import { select as d3Select, selectAll as d3SelectAll, event as d3Event } from "d3-selection";
+import { zoom as d3Zoom } from "d3-zoom";
+
 import CONST from "./graph.const";
 import DEFAULT_CONFIG from "./graph.config";
 import ERRORS from "../../err";
+
 import { getTargetLeafConnections, toggleLinksMatrixConnections, toggleLinksConnections } from "./collapse.helper";
 import {
   updateNodeHighlightedValue,
@@ -21,10 +21,6 @@ import {
 } from "./graph.helper";
 import { renderGraph } from "./graph.renderer";
 import { merge, debounce, throwErr } from "../../utils";
-
-function zooming({transform}) {
-  d3SelectAll.attr("transform", d => `translate(${transform.apply(d)})`);
-}
 
 /**
  * Graph component is the main component for react-d3-graph components, its interface allows its user
@@ -248,8 +244,8 @@ export default class Graph extends React.Component {
       draggedNode.oldX = draggedNode.x;
       draggedNode.oldY = draggedNode.y;
 
-      const newX = draggedNode.x + 0;//d3Event.dx;
-      const newY = draggedNode.y + 0;//d3Event.dy;
+      const newX = draggedNode.x + d3Event.dx;
+      const newY = draggedNode.y + d3Event.dy;
       const shouldUpdateNode = !this.state.config.bounded || isPositionInBounds({ x: newX, y: newY }, this.state);
 
       if (shouldUpdateNode) {
@@ -307,7 +303,7 @@ export default class Graph extends React.Component {
   _zoomConfig = () => {
     const selector = d3Select(`#${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`);
 
-    const zoomObject = d3Zoom().scaleExtent([this.state.config.minZoom, this.state.config.maxZoom]);
+    const zoomObject = d3Zoom().scaleExtent([this.state.config.minZoom, Infinity]);
 
     if (!this.state.config.freezeAllDragEvents) {
       zoomObject.on("zoom", this._zoomed);
@@ -327,18 +323,18 @@ export default class Graph extends React.Component {
    * @returns {Object} returns the transformed elements within the svg graph area.
    */
   _zoomed = () => {
-    const transform = event.transform;
+    const transform = d3Event.transform;
 
     d3SelectAll(`#${this.state.id}-${CONST.GRAPH_CONTAINER_ID}`).attr("transform", transform);
 
     this.setState({ transform });
 
     // only send zoom change events if the zoom has changed (_zoomed() also gets called when panning)
-    //if (this.debouncedOnZoomChange && this.state.previousZoom !== transform.k && !this.state.config.panAndZoom) {
-   //   this.debouncedOnZoomChange(this.state.previousZoom, transform.k);
-    //  this.setState({ previousZoom: transform.k });
-
-  }
+    if (this.debouncedOnZoomChange && this.state.previousZoom !== transform.k && !this.state.config.panAndZoom) {
+      this.debouncedOnZoomChange(this.state.previousZoom, transform.k);
+      this.setState({ previousZoom: transform.k });
+    }
+  };
 
   /**
    * Calls the callback passed to the component.

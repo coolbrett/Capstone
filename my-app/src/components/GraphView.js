@@ -34,10 +34,12 @@ const GraphView = (props) => {
 
         const myConfig = {
                 nodeHighlightBehavior: true,
-                //height: 800,
-                //width: 1400,
-                height: 500,
-                width: 700,
+                height: 800,
+                width: 1400,
+                //height: 500,
+                //width: 700,
+                maxZoom: 9000,
+                minZoom: .1,
                 highlightDegree: val,
                 node: {
                         color: "red",
@@ -107,9 +109,18 @@ const GraphView = (props) => {
                 setData(modData);
         };
 
-        const onZoomChange = (prevZoom, newZoom) => {
-                this.setState({ currentZoom: newZoom });
-        };
+
+        /**
+         * Called when the graph's zoom changes
+         * @param {number} prevZoom Previous zoom level
+         * @param {number} newZoom New zoom level
+         */
+            // Callback that's called whenever the graph is zoomed in/out
+// @param {number} previousZoom the previous graph zoom
+// @param {number} newZoom the new graph zoom
+        const onZoomChange = function(previousZoom, newZoom) {
+                    console.log(`Graph is now zoomed at ${newZoom} from ${previousZoom}`);
+            };
 
         const onClickGraph = function(event) {
                 console.log('Clicked the graph background');
