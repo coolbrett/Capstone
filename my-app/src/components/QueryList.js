@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import  Query  from './Query';
+import ShowInfo from './ShowInfo';
 import {PerformQuery} from "./PerformQuery";
 import {NodeContext} from "./NodeContext";
 import someData from '../Data/test.json'
@@ -8,8 +9,8 @@ import limit from "../components/limit.json"
 import myData from '../Data/nodesInfo2.json'
 import { Neo4jProvider, createDriver } from 'use-neo4j'
 // Create driver instance
-//const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
-const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
+const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
+//const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
 
 
 /**const neo4j = require('neo4j-driver')
@@ -18,7 +19,7 @@ const user = 'neo4j';
 const password = '1TIT1myoa1kmE-TkrEmeZabGvLzax8DTif-SW4HFK8';*/
 //const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 
-const QueryList = () => {
+const QueryList = (props) => {
     let context = useContext(NodeContext);
     let [theData, setTheData] = context;
 
@@ -37,21 +38,22 @@ const QueryList = () => {
     const handleClick = async () => {
         //"file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json"
 
-        /*let query = `CALL apoc.export.json.query("MATCH (m:Movie)
-WHERE m.name = 'Split'
+        let query = `CALL apoc.export.json.query("MATCH (m:Movie)
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
 RETURN nodes, rels as links"
-        , "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {})`
+        , "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {jsonFormat: 'ARRAY_JSON'})`
 
-         */
-        let query = `CALL apoc.export.json.query("MATCH (m:Movie)
+
+        /**let query = `CALL apoc.export.json.query("MATCH (m:Movie)
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
 RETURN nodes, rels as links LIMIT 10"
         , "file:///C:/Users/brett/WebstormProjects/Capstone_1/Capstone/my-app/src/components/limit.json", {jsonFormat: 'ARRAY_JSON'})`
+      */
+
         let session = driver.session()
 
         let readResult = await session.readTransaction(tx =>
@@ -125,7 +127,7 @@ RETURN nodes, rels as links LIMIT 10"
             setTheData(someData2);
         }
 
-        setTheData(myData)
+        //setTheData(myData)
     }
 
     return(
@@ -141,6 +143,9 @@ RETURN nodes, rels as links LIMIT 10"
             <button className={"button"} onClick={handleClick}> Submit </button>
             <a> &nbsp; </a>
             <button className={"button"} onClick={handleClick2}> Reset </button>
+
+            <a> &nbsp; </a>
+            <ShowInfo val={props.nodeI}/>
         </nav>
     );
 };

@@ -15,7 +15,7 @@ import * as url from "url";
 
 let last = "";
 const GraphView = (props) => {
-
+        const[nodeInfo, setNodeInfo] = useState("");
         const[val, setVal] = useState(0);
 
 
@@ -35,12 +35,12 @@ const GraphView = (props) => {
         const myConfig = {
                 nodeHighlightBehavior: true,
                 height: 800,
-                width: 1400,
+                width: 1500,
                 //height: 500,
                 //width: 700,
                 maxZoom: 9000,
                 minZoom: .1,
-                highlightDegree: val,
+                highlightDegree: 1,
                 node: {
                         color: "red",
                         size: 120,
@@ -136,7 +136,20 @@ const GraphView = (props) => {
         };
 
         const onMouseOverNode = function(nodeId, node) {
-              console.log(`Mouse over node ${nodeId} in position (${node.x}, ${node.y})`);
+              //console.log(`Mouse over node ${nodeId} in position (${node.x}, ${node.y})`);
+              console.log(node);
+              let s = `Name: ` + node.id
+                s += "\nLabel: " + node.label
+                if(node.label === "Movie") {
+                        s += "\nDirector: " + node.director
+                        s += "\nGenres: " + node.genres
+                        s += "\nActors: " + node.actors
+                        s += "\nMetascore: " + node.metascore + "/100"
+                        s += "\nRevenue: " + node.revenue + "M"
+                        s += "\nRuntime: " + node.runtime + " min"
+                        s += "\nRating: " + node.rating + "/10"
+                }
+              setNodeInfo(s)
         };
 
         const onMouseOutNode = function(nodeId, node) {
@@ -188,7 +201,7 @@ const GraphView = (props) => {
                         onClickGraph={onClickGraph}
                         onZoomChange={onZoomChange}
                     />
-                    <QueryList val={val} setVal={setVal}/>
+                    <QueryList val={val} setVal={setVal} nodeI={nodeInfo}/>
             </div>
         );
 }
