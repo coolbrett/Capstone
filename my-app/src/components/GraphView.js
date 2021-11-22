@@ -143,7 +143,25 @@ const GraphView = (props) => {
                 if(node.label === "Movie") {
                         s += "\nDirector: " + node.director
                         s += "\nGenres: " + node.genres
-                        s += "\nActors: " + node.actors
+                        s += "\nActors: "
+                        let i = 0;
+                        for (const [index, value] of node.actors) {
+                                if(i >= 2){
+                                        if(i === 2) {
+                                                s += "\n" + node.actors[i] + ", "
+                                        } else {
+                                                s += node.actors[i]
+                                        }
+                                        i++
+                                } else {
+                                        if(i !== 4) {
+                                                s += node.actors[i] + ", "
+                                                i++
+                                        } else {
+                                                s += node.actors[i]
+                                        }
+                                }
+                        }
                         s += "\nMetascore: " + node.metascore + "/100"
                         s += "\nRevenue: " + node.revenue + "M"
                         s += "\nRuntime: " + node.runtime + " min"
