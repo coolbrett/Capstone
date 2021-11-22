@@ -9,8 +9,8 @@ import limit from "../components/limit.json"
 import myData from '../Data/nodesInfo2.json'
 import { Neo4jProvider, createDriver } from 'use-neo4j'
 // Create driver instance
-const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
-//const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
+//const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
+const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
 
 
 /**const neo4j = require('neo4j-driver')
@@ -24,7 +24,7 @@ const QueryList = (props) => {
     let [theData, setTheData] = context;
 
     const clear = `MATCH (n) RETURN (n) LIMIT 25`;
-    const[minRank, setMinRank] = useState("0");//Used for lower bound of rank query
+    const[minRank, setMinRank] = useState("1");//Used for lower bound of rank query
     const[maxRank, setMaxRank] = useState("1000");//Used for upperbound of rank query
 
     const[minMeta, setMinMeta] = useState("0");//Used for lower bound of meta query
@@ -38,21 +38,22 @@ const QueryList = (props) => {
     const handleClick = async () => {
         //"file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json"
 
-        let query = `CALL apoc.export.json.query("MATCH (m:Movie)
+        /*let query = `CALL apoc.export.json.query("MATCH (m:Movie)
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
 RETURN nodes, rels as links"
-        , "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {jsonFormat: 'ARRAY_JSON'})`
+        , "file:///C:/Users/dillo/Desktop/Capstone2/Capstone/my-app/src/components/limit.json", {jsonFormat: 'ARRAY_JSON'})`*/
 
 
-        /**let query = `CALL apoc.export.json.query("MATCH (m:Movie)
+        let query = `CALL apoc.export.json.query("MATCH (m:Movie)
+        WHERE m.rank >= ${minRank} AND m.rank <= ${maxRank} AND m.rating >= ${minRate} AND m.rating <= ${maxRate} AND m.metascore >= ${minMeta} AND m.metascore <= ${maxMeta}
 CALL apoc.path.subgraphAll(m, {maxLevel:1}) YIELD nodes, relationships
 WITH [node in nodes | node {.*, id:node.name, label:labels(node)[0]}] as nodes, 
      [rel in relationships | rel {.*, source:startNode(rel).name, target:endNode(rel).name}] as rels
-RETURN nodes, rels as links LIMIT 10"
+RETURN nodes, rels as links"
         , "file:///C:/Users/brett/WebstormProjects/Capstone_1/Capstone/my-app/src/components/limit.json", {jsonFormat: 'ARRAY_JSON'})`
-      */
+
 
         let session = driver.session()
 
@@ -96,7 +97,7 @@ RETURN nodes, rels as links LIMIT 10"
             setTheData(allMovies);
             theData = allMovies;
 
-        }, 1000);
+        }, 1);
 
 
         console.log("-------------------");
@@ -107,7 +108,7 @@ RETURN nodes, rels as links LIMIT 10"
     //This is to clear all fields of user input and send a query for
     //The fresh main graph of all nodes and links query
     const handleClick2 = async () => {
-        setMinRank("0");
+        setMinRank("1");
         setMaxRank("1000");
 
         setMinMeta("0");

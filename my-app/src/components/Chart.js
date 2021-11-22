@@ -5,15 +5,9 @@ import {NodeContext} from "./NodeContext";
 //import someData2 from '../Data/limit.json'
 import limit from "./limit.json"
 
-
-const sample = [
-    {category:'A', quantity: 40},
-    {category:'B', quantity: 151},
-    {category:'C', quantity: 89},
-    {category:'D', quantity: 124}
-]
-
 const Chart = (props) => {
+
+    console.log("Chart Type: " + props.type);
     let context = useContext(NodeContext);
     let [theData, setTheData] = context;
     let [chartData, setChartData] = context;
@@ -23,41 +17,20 @@ const Chart = (props) => {
     for (let i = 0; i < limit.length; i++){
         movies.push(limit[i].nodes[0]);
     }
-    console.log("Movies from query")
-    console.log(movies)
-
-    let revenue = movies.sort(function (a, b){
-        return a.revenue - b.revenue;
-    });
-    console.log("Movies sorted by revenue")
-    console.log(revenue);
-
-    let metascore = movies.sort(function (a, b){
-        return a.metascore - b.metascore;
-    });
-    console.log("Movies sorted by metascore")
-    console.log(metascore);
-
-    let rating = movies.sort(function (a, b){
-        return a.rating - b.rating;
-    });
-    console.log("Movies sorted by rating")
-    console.log(rating);
 
     const dataToChart = (obj) => {
         let arr = []
         for (let i = 0; i < obj.length; i++){
-            let temp = {category: obj[i].name, quantity: obj[i].revenue};
+            let type = props.type;
+            let temp = {category: obj[i].name, quantity: obj[i][type]};
             arr.push(temp);
         }
         arr.sort(function (a, b){
             return a.quantity - b.quantity;
         });
-        return arr;
+        //chart gets messy past 10
+        return arr.slice(-10);
     }
-
-    let temp = dataToChart(revenue);
-    console.log(temp);
 
 
     const d3Chart = useRef()
@@ -93,9 +66,28 @@ const Chart = (props) => {
         }*/
 
         // Draw chart using the data and updated dimensions
-
-        console.log("here " + chartData);
-        DrawChart(temp, dimensions)
+        if (props.type === "revenue"){
+            let revenue = movies.sort(function (a, b){
+                return a.revenue - b.revenue;
+            });
+            console.log("Drawing revenue chart");
+            DrawChart(dataToChart(revenue), dimensions);
+        }
+        else if (props.type === "metascore"){
+            let metascore = movies.sort(function (a, b){
+                return a.metascore - b.metascore;
+            });
+            console.log("Drawing metascore chart");
+            DrawChart(dataToChart(metascore), dimensions);
+        }
+        else if (props.type === "rating"){
+            let rating = movies.sort(function (a, b){
+                return a.rating - b.rating;
+            });
+            console.log("Drawing rating chart")
+            DrawChart(dataToChart(rating), dimensions);
+        }
+        //DrawChart(temp, dimensions)
 
     },[dimensions])
 
@@ -131,7 +123,7 @@ const Chart = (props) => {
             //.attr("x", -100)
             .attr("dy", ".75em")
             .attr("transform", "rotate(-90)")
-            .text("Revenue (Millions)");
+            .text(props.type.toUpperCase());
 
         // x scale
         const x = d3.scaleBand()
