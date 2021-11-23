@@ -33,6 +33,30 @@ const QueryList = (props) => {
     const[minRate, setMinRate] = useState("0");//Used for lower bound of rate query
     const[maxRate, setMaxRate] = useState("10");//Used for upperbound of rate query
 
+    const combined = function (obj) {
+        console.log("Movie object being added below")
+        console.log(obj);
+
+        let data = {'nodes': [], 'links': []};
+
+        console.log("length of obj: " + Object.keys(obj).length);
+        for (let i = 0; i < Object.keys(obj).length; i++) {
+
+            //nodes
+            for (let j = 0; j < obj[i].nodes.length; j++) {
+                data.nodes.push(obj[i].nodes[j]);
+            }
+
+            //links
+            for (let j = 0; j < obj[i].links.length; j++) {
+                data.links.push(obj[i].links[j]);
+            }
+        }
+        console.log("combined JSON below");
+        console.log(data)
+        return data;
+    }
+
     //This is to meant to eventually get all values user entered
     //And send them to perform a query
     const handleClick = async () => {
@@ -60,44 +84,12 @@ RETURN nodes, rels as links"
         let readResult = await session.readTransaction(tx =>
             tx.run(query, {})
         )
-        console.log("Wait a second for query results to write");
 
-        setTimeout(() => {
-            //console.log("QueryList: Query results below")
-            //console.log(limit);
-            //onsole.log("QueryList: theData below");
-            //console.log(theData);
 
-            let combined = function (obj){
-                console.log("Movie object being added below")
-                console.log(obj);
-
-                let data = {'nodes': [], 'links': []};
-
-                console.log("length of obj: " + Object.keys(obj).length);
-                for (let i = 0; i < Object.keys(obj).length; i++) {
-
-                    //nodes
-                    for (let j = 0; j < obj[i].nodes.length; j++){
-                        data.nodes.push(obj[i].nodes[j]);
-                    }
-
-                    //links
-                    for (let j = 0; j < obj[i].links.length; j++){
-                        data.links.push(obj[i].links[j]);
-                    }
-                }
-                console.log("combined JSON below");
-                console.log(data)
-                return data;
-            }
-
-            //console.log(combined(temp));
-            let allMovies = combined(limit);
-            setTheData(allMovies);
-            theData = allMovies;
-
-        }, 1);
+        //console.log(combined(temp));
+        let allMovies = combined(limit);
+        setTheData(allMovies);
+        theData = allMovies;
 
 
         console.log("-------------------");
@@ -127,8 +119,7 @@ RETURN nodes, rels as links"
             console.log("scratch")
             setTheData(someData2);
         }
-
-        //setTheData(myData)
+        setTheData(combined(myData))
     }
 
     return(
