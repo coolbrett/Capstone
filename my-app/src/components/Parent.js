@@ -31,12 +31,7 @@ class Parent extends Component{
                 <Router>
                     <Navbar valueFromParent={this.state.value_key} functionCallFromParent={this.parentFunction.bind(this)}/>
                     <GraphView data={myData} functionCallFromParent={this.parentFunction.bind(this)} valueFromParent={this.state.value_key}/>
-                    <b>Queried Movies by Revenue(Millions)</b>
-                    <Chart data={myData} type="revenue"/>
-                    <b>Queried Movies by Metascore</b>
-                    <Chart data={myData} type="metascore"/>
-                    <b>Queried Movies by Rating</b>
-                    <Chart data={myData} type="rating"/>
+
                 </Router>
             </NodeProvider>
             </div>

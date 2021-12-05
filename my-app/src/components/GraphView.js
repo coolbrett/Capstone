@@ -1,12 +1,9 @@
 import React, {useRef, Component, useContext, useState} from 'react';
 import Graph from '../react-d3-graph/src/components/graph/Graph'
-import "./graph.const"
 import "./GraphView.css"
 import QueryList from "./QueryList"
 import { NodeContext } from "./NodeContext.js";
 
-import DEFAULT_CONFIG from "./graph.config"
-import {useEffect} from "react/cjs/react.production.min";
 import myData from '../Data/scratch.json'
 import * as url from "url";
 //import axios from "axios";
@@ -34,10 +31,10 @@ const GraphView = (props) => {
 
         const myConfig = {
                 nodeHighlightBehavior: true,
-                height: 800,
-                width: 1500,
-                //height: 500,
-                //width: 700,
+                //height: 800,
+                //width: 1500,
+                height: 500,
+                width: 800,
                 maxZoom: 9000,
                 minZoom: .1,
                 highlightDegree: 1,
