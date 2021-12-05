@@ -1,4 +1,4 @@
-import React, {useRef, Component, useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Graph from '../react-d3-graph/src/components/graph/Graph'
 import "./GraphView.css"
 import QueryList from "./QueryList"
@@ -6,9 +6,6 @@ import { NodeContext } from "./NodeContext.js";
 
 import myData from '../Data/scratch.json'
 import * as url from "url";
-//import axios from "axios";
-//import myData from '../Data/test.json'
-//import myData from '../Data/nodesInfo2.json'
 
 let last = "";
 const GraphView = (props) => {
@@ -31,10 +28,10 @@ const GraphView = (props) => {
 
         const myConfig = {
                 nodeHighlightBehavior: true,
-                //height: 800,
-                //width: 1500,
-                height: 500,
-                width: 800,
+                height: 800,
+                width: 1500,
+                //height: 500,
+                //width: 800,
                 maxZoom: 9000,
                 minZoom: .1,
                 highlightDegree: 1,
@@ -61,9 +58,6 @@ const GraphView = (props) => {
                  * populate view
                  * @type {{[p: string]: *}}
                  */
-
-                console.log("IN GraphView");
-                console.log(modData)
                 //if JSON was a collection, we could nest the code below, may fix our app breaking when we have more than one movie
                 let selectNode = modData.nodes.filter(item => {
                         //console.log(item);
@@ -92,7 +86,6 @@ const GraphView = (props) => {
                                         items.color = "red";
                                 });
                                 last = item.id;
-                                //setPrevId(item.id);
                         } else {
                                 //Setting the previous node to be empty
                                 //For whatever reason it only works if I do this
@@ -100,9 +93,7 @@ const GraphView = (props) => {
                                 last = "";
                         }
                 });
-                //setClickedNode(selectNode);
                 props.functionCallFromParent(last);
-                //console.log(modData)
                 setData(modData);
         };
 
@@ -140,9 +131,10 @@ const GraphView = (props) => {
                 if(node.label === "Movie") {
                         s += "\nDirector: " + node.director
                         s += "\nGenres: " + node.genres
-                        s += "\nActors: "
+                        s += "\nActors: " + node.actors
+
                         let i = 0;
-                        for (const [index, value] of node.actors) {
+                        /**for (const [index, value] of node.actors) {
                                 if(i >= 2){
                                         if(i === 2) {
                                                 s += "\n" + node.actors[i] + ", "
@@ -158,7 +150,7 @@ const GraphView = (props) => {
                                                 s += node.actors[i]
                                         }
                                 }
-                        }
+                        }*/
                         s += "\nMetascore: " + node.metascore + "/100"
                         s += "\nRevenue: " + node.revenue + "M"
                         s += "\nRuntime: " + node.runtime + " min"
@@ -194,7 +186,7 @@ const GraphView = (props) => {
                 this.props.functionCallFromParent(last);
                 //http://localhost:3000/www.test.com
                 //Creates a duplicate window at link above
-                window.open(url,'www.test.com').focus();
+                //window.open(url,'www.test.com').focus();
         }
 
         return (

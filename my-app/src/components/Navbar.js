@@ -40,7 +40,6 @@ const Navbar = (props) => {
                     Visualizing the Internet Movie Database (IMDb)
                 </h3>
                <ul className={click ?  'nav-menu active' : 'nav-menu'}>
-                <FindNode />
                </ul>
                <p style={{color:"white"}}>Listed: </p>
                <p style={{color:"white"}}>{props.valueFromParent}</p>
