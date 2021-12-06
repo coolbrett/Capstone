@@ -3,14 +3,18 @@ import  Query  from './Query';
 import ShowInfo from './ShowInfo';
 import emptyGraph from "./emptyGraph.json"
 import {NodeContext} from "./NodeContext";
-
 import limit from "./limit.json"
 import myData from '../Data/nodesInfo2.json'
-import { Neo4jProvider, createDriver } from 'use-neo4j'
-// Create driver instance
+import {createDriver } from 'use-neo4j'
 const driver = createDriver('bolt', 'localhost', 7687, 'dmgorlesky', '977238')
 //const driver = createDriver('bolt', 'localhost', 7687, 'brett', 'brett123')
 
+/**
+ * This is the class for holding the list of query values
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
+ */
 const QueryList = (props) => {
     let context = useContext(NodeContext);
     let [theData, setTheData] = context;
@@ -84,10 +88,6 @@ RETURN nodes, rels as links"
         allMovies = combined(limit);
         setTheData(allMovies);
         theData = allMovies;
-
-        console.log("-------------------");
-
-       //await driver.close();
     }
 
     //This is to clear all fields of user input and send a query for
@@ -114,23 +114,13 @@ RETURN nodes, rels as links"
         let readResult = await session.readTransaction(tx =>
             tx.run(query, {})
         )
-/**
+
         let allMovies = combined(emptyGraph)
         setTheData(allMovies);
 
         allMovies = combined(limit);
         setTheData(allMovies);
-        theData = allMovies;*/
-        let val = Math.floor(Math.random() * 100);
-        //Can add more setting here easily
-
-
-
-      /**  let allMovies = combined(emptyGraph)
-        setTheData(allMovies);
-
-        allMovies = combined(myData);
-        setTheData(allMovies)*/
+        theData = allMovies;
     }
 
     return(

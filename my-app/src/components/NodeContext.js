@@ -1,7 +1,11 @@
 import React, {useState, createContext} from 'react';
 import myData from '../Data/scratch.json'
-//import myData from '../Data/nodesInfo2.json'
-
+/**
+ * This is the class that acts as an interface between classes and using and sharing data
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
+ */
 function onClickNode(nodeId, theData) {
     let clicked = "-";
     let inside = "";

@@ -1,36 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState} from 'react';
 import "./Navbar.css"
-import { NodeContext }from "./NodeContext";
-import FindNode from "./FindNode";
 
+/**
+ * This is the class for creating the navbar
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
+ */
 const Navbar = (props) => {
-    //let [nodeId, setClickedNode] = useContext(NodeContext);
     let [click, setClick] = useState(false);
 
-    //console.log("Node ID: " + nodeId);
-
-    /*const update = (e) => {
-        setClickedNode(e.target.value);
-    }
-
-    const onMouseEnter = () => {
-        if(window.innerWidth < 960){
-            setDropdown(false);
-        } else {
-            setDropdown(true);
-        }
-    };
-
-    const onMouseLeave = () => {
-        if(window.innerWidth < 960){
-            setDropdown(false);
-        } else {
-            setDropdown(false);
-        }
-    };
-*/
+    /**
+     * Send data to the parent function the pass to graph view
+     * @param e
+     */
     const childFunction = (e) =>{
-        console.log("here nav " + e)
         props.functionCallFromParent(e);
     }
 
@@ -47,5 +31,5 @@ const Navbar = (props) => {
            </nav>
    );
 };
-//               <p style={{color:"white"}}>{props.nodeId}</p>
+
 export default Navbar;

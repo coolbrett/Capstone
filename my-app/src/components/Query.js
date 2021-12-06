@@ -1,6 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, {useState} from 'react';
 import "./Query.css";
 
+/**
+ * This is the class for each individual query
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
+ */
 const Query = (props) => {
     const[name2, setName2] = useState(props.name2);
 
@@ -11,6 +17,11 @@ const Query = (props) => {
         }
     }
 
+    /**
+     * Checks if a string is numeric or not
+     * @param str
+     * @returns {boolean}
+     */
     function isNumeric(str) {
         if (typeof str != "string") return false // we only process strings!
         return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...

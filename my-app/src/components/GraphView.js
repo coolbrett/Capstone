@@ -5,8 +5,13 @@ import QueryList from "./QueryList"
 import { NodeContext } from "./NodeContext.js";
 
 import myData from '../Data/scratch.json'
-import * as url from "url";
 
+/**
+ * This is the class responsible for creating the Graph View of compiled nodes
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
+ */
 let last = "";
 const GraphView = (props) => {
         const[nodeInfo, setNodeInfo] = useState("");
@@ -14,7 +19,6 @@ const GraphView = (props) => {
 
 
         let last2 = props.valueFromParent
-        console.log(last2 + " last 2")
         let context = useContext(NodeContext);
         let [theData, setTheData] = context;
 
@@ -22,10 +26,18 @@ const GraphView = (props) => {
                 setTheData(myData);
         }
 
+        /**
+         * Setting the new data
+         * @param dataHere
+         */
         const setData = function(dataHere){
                 setTheData(dataHere);
         }
 
+        /**
+         * Configuration of the graph
+         * @type {{node: {strokeWidth: number, highlightStrokeColor: string, color: string, size: number, fontSize: number}, nodeHighlightBehavior: boolean, maxZoom: number, highlightDegree: number, width: number, link: {highlightColor: string}, minZoom: number, height: number}}
+         */
         const myConfig = {
                 nodeHighlightBehavior: true,
                 height: 800,
@@ -48,6 +60,11 @@ const GraphView = (props) => {
         };
 
 
+        /**
+         * Whenever a node is clicked it will change the color and set it to navbar
+         * to be displayed better
+         * @param nodeID
+         */
         const onClickNode = function(nodeID) {
                 let modData = {...theData};
                 /**
@@ -110,21 +127,40 @@ const GraphView = (props) => {
                     console.log(`Graph is now zoomed at ${newZoom} from ${previousZoom}`);
             };
 
+        /**
+         * Handles whenever the graph is clicked
+         * @param event
+         */
         const onClickGraph = function(event) {
                 console.log('Clicked the graph background');
         };
 
-
+        /**
+         * Handles whenever a node is double clicked
+         * @param nodeId
+         * @param node
+         */
         const onDoubleClickNode = function(nodeId, node) {
                 console.log('Double clicked node ${nodeId} in position (${node.x}, ${node.y})');
         };
 
+        /**
+         * Handles when a node is right clicked
+         * @param event
+         * @param nodeId
+         * @param node
+         */
         const onRightClickNode = function(event, nodeId, node) {
               console.log('Right clicked node ${nodeId} in position (${node.x}, ${node.y})');
         };
 
+        /**
+         * Whenever a node is hovered over it compiles its data to be displayed in a formatted
+         * manner
+         * @param nodeId
+         * @param node
+         */
         const onMouseOverNode = function(nodeId, node) {
-              //console.log(`Mouse over node ${nodeId} in position (${node.x}, ${node.y})`);
               console.log(node);
               let s = `Name: ` + node.id
                 s += "\nLabel: " + node.label
@@ -132,25 +168,6 @@ const GraphView = (props) => {
                         s += "\nDirector: " + node.director
                         s += "\nGenres: " + node.genres
                         s += "\nActors: " + node.actors
-
-                        let i = 0;
-                        /**for (const [index, value] of node.actors) {
-                                if(i >= 2){
-                                        if(i === 2) {
-                                                s += "\n" + node.actors[i] + ", "
-                                        } else {
-                                                s += node.actors[i]
-                                        }
-                                        i++
-                                } else {
-                                        if(i !== 4) {
-                                                s += node.actors[i] + ", "
-                                                i++
-                                        } else {
-                                                s += node.actors[i]
-                                        }
-                                }
-                        }*/
                         s += "\nMetascore: " + node.metascore + "/100"
                         s += "\nRevenue: " + node.revenue + "M"
                         s += "\nRuntime: " + node.runtime + " min"
@@ -159,28 +176,56 @@ const GraphView = (props) => {
               setNodeInfo(s)
         };
 
+        /**
+         * Hnaldes when a mouse is moved off a node
+         * @param nodeId
+         * @param node
+         */
         const onMouseOutNode = function(nodeId, node) {
                 console.log(`Mouse out node ${nodeId} in position (${node.x}, ${node.y})`);
         };
 
+        /**
+         * Handles when a link is clicked
+         * @param source
+         * @param target
+         */
         const onClickLink = function(source, target) {
               console.log(`Clicked link between ${source} and ${target}`);
         };
 
+        /**
+         * Handles when a link is right clicked
+         * @param source
+         * @param target
+         */
         const onRightClickLink = function(event, source, target) {
               console.log('Right clicked link between ${source} and ${target}');
          };
+
+        /**
+         * Handles when a link is hovered over
+         * @param source
+         * @param target
+         */
         const onMouseOverLink = function(source, target) {
               console.log(`Mouse over in link between ${source} and ${target}`);
          };
 
+        /**
+         * Handles when a link moved off of
+         * @param source
+         * @param target
+         */
         const onMouseOutLink = function(source, target) {
               console.log(`Mouse out link between ${source} and ${target}`);
          };
 
 
-
-
+        /**
+         * This created a second webpage to show graphs
+         * @param e
+         */
         const childFunction = (e) =>{
                 e.preventDefault();
                 this.props.functionCallFromParent(last);

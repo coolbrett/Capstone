@@ -1,9 +1,14 @@
 import React, {useState, useContext} from 'react';
 import { NodeContext } from "./NodeContext";
 import myData from "../Data/scratch.json";
-//import myData from '../Data/nodesInfo2.json'
 
 let last = "";
+/**
+ * This is the class finding the node from the search bar
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
+ */
 const FindNode = (props) => {
     let context = useContext(NodeContext)
     let [theData, setTheData] = context;
@@ -13,6 +18,10 @@ const FindNode = (props) => {
     let [prevId, setPrevId] = context;
     const [id, setId] = useState('');
 
+    /**
+     * When a new node id is searched for it sets the value
+     * @param e
+     */
     const update = (e) => {
         setId(e.target.value);
     }
@@ -25,7 +34,10 @@ const FindNode = (props) => {
         setTheData(dataHere);
     }
 
-
+    /**
+     * This sets the new color of a clicked node
+     * @param nodeID
+     */
     const testing = function(nodeID) {
         let modData = {...theData};
         let selectNode = modData.nodes.filter(item => {
@@ -65,6 +77,10 @@ const FindNode = (props) => {
         setData(modData);
     };
 
+    /**
+     * Passes information back to parent then down to GraphView
+     * @param e
+     */
     const childFunction = (e) =>{
         console.log("here")
         e.preventDefault();

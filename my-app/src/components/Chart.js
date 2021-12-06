@@ -2,17 +2,20 @@ import React, { useEffect, useRef, useState, useContext } from 'react';
 import * as d3 from 'd3';
 import "./ResponsiveBar.css"
 import {NodeContext} from "./NodeContext";
-//import someData2 from '../Data/limit.json'
 import limit from "./limit.json"
 
+/**
+ * This is the class making the charts on the GUI
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
+ */
 const Chart = (props) => {
 
-    console.log("Chart Type: " + props.type);
     let context = useContext(NodeContext);
     let [theData, setTheData] = context;
     let [chartData, setChartData] = context;
 
-    //console.log(limit)
     let movies = [];
     for (let i = 0; i < limit.length; i++){
         movies.push(limit[i].nodes[0]);
@@ -56,35 +59,24 @@ const Chart = (props) => {
                 d3.selectAll('g').remove()
             } else {update.current = true}
         })
-        /**let values = ['category', 'quantities']
-        let data = [];
-        let test = JSON.parse(someData2);
-        for(let i = 0; i < 6; i++){
-            let obj = {};
-            obj[values[i]] = test[i].nodes.id
-            data.push(obj);
-        }*/
 
         // Draw chart using the data and updated dimensions
         if (props.type === "revenue"){
             let revenue = movies.sort(function (a, b){
                 return a.revenue - b.revenue;
             });
-            console.log("Drawing revenue chart");
             DrawChart(dataToChart(revenue), dimensions);
         }
         else if (props.type === "metascore"){
             let metascore = movies.sort(function (a, b){
                 return a.metascore - b.metascore;
             });
-            console.log("Drawing metascore chart");
             DrawChart(dataToChart(metascore), dimensions);
         }
         else if (props.type === "rating"){
             let rating = movies.sort(function (a, b){
                 return a.rating - b.rating;
             });
-            console.log("Drawing rating chart")
             DrawChart(dataToChart(rating), dimensions);
         }
         //DrawChart(temp, dimensions)
