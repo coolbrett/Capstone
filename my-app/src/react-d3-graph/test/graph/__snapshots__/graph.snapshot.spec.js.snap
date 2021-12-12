@@ -1,0 +1,1394 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot - Graph Component should match snapshot 1`] = `
+<div
+  id="graphId-graph-wrapper"
+>
+  <svg
+    name="svg-container-graphId"
+    onClick={[Function]}
+    style={
+      Object {
+        "height": 600,
+        "width": 600,
+      }
+    }
+  >
+    <defs>
+      <marker
+        className="marker"
+        fill="#d3d3d3"
+        id="marker-small"
+        markerHeight={6}
+        markerWidth={6}
+        orient="auto"
+        refX={0}
+        refY="0"
+        viewBox="0 -5 10 10"
+      >
+        <path
+          d="M0,-5L10,0L0,5"
+        />
+      </marker>
+      <marker
+        className="marker"
+        fill="blue"
+        id="marker-small-highlighted"
+        markerHeight={6}
+        markerWidth={6}
+        orient="auto"
+        refX={0}
+        refY="0"
+        viewBox="0 -5 10 10"
+      >
+        <path
+          d="M0,-5L10,0L0,5"
+        />
+      </marker>
+      <marker
+        className="marker"
+        fill="#d3d3d3"
+        id="marker-medium"
+        markerHeight={6}
+        markerWidth={6}
+        orient="auto"
+        refX={0}
+        refY="0"
+        viewBox="0 -5 10 10"
+      >
+        <path
+          d="M0,-5L10,0L0,5"
+        />
+      </marker>
+      <marker
+        className="marker"
+        fill="blue"
+        id="marker-medium-highlighted"
+        markerHeight={6}
+        markerWidth={6}
+        orient="auto"
+        refX={0}
+        refY="0"
+        viewBox="0 -5 10 10"
+      >
+        <path
+          d="M0,-5L10,0L0,5"
+        />
+      </marker>
+      <marker
+        className="marker"
+        fill="#d3d3d3"
+        id="marker-large"
+        markerHeight={6}
+        markerWidth={6}
+        orient="auto"
+        refX={0}
+        refY="0"
+        viewBox="0 -5 10 10"
+      >
+        <path
+          d="M0,-5L10,0L0,5"
+        />
+      </marker>
+      <marker
+        className="marker"
+        fill="blue"
+        id="marker-large-highlighted"
+        markerHeight={6}
+        markerWidth={6}
+        orient="auto"
+        refX={0}
+        refY="0"
+        viewBox="0 -5 10 10"
+      >
+        <path
+          d="M0,-5L10,0L0,5"
+        />
+      </marker>
+    </defs>
+    <g
+      id="graphId-graph-container-zoomable"
+      style={
+        Object {
+          "transitionDuration": "0s",
+        }
+      }
+    >
+      <g>
+        <path
+          className="link"
+          d="M402.6029494893985485,200-4.685309080917388 A0,0 0 0,1 137.39705051060145,24.68530908091739"
+          id="Harry,Sally"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M40-1.1627040942275513,200-5.232168424023981 A0,0 0 0,1 21.16270409422755,115.23216842402398"
+          id="Harry,Mario"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M302.3591551111937417,1844.812676426835234 A0,0 0 0,1 302.64084488880627,740.1873235731648"
+          id="Sarah,Alice"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M2001.230871970649426,3005.2165526375142335 A0,0 0 0,1 303.76912802935055,739.7834473624857"
+          id="Eveie,Alice"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M1201.9451766013189067,2704.994372354737734 A0,0 0 0,1 303.0548233986811,740.0056276452623"
+          id="Peter,Alice"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M202.194669099098748,1104.889876764658614 A0,0 0 0,1 302.80533090090125,740.1101232353413"
+          id="Mario,Alice"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M1903.4607726849715568,6094.092739870922885 A0,0 0 0,1 301.5392273150284,740.9072601290771"
+          id="James,Alice"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M405.359080979074426,2000.0878537865422037 A0,0 0 0,1 95.64091902092558,200.9121462134578"
+          id="Harry,Carol"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M40-5.359801043703684,2000 A0,0 0 0,1 7.359801043703684,200"
+          id="Harry,Nicky"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M404-3.868474145942595,404-3.709767514314181 A0,0 0 0,1 17.868474145942596,33.70976751431418"
+          id="Bobby,Frank"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M305-2.194669099098748,745-4.889876764658614 A0,0 0 0,1 22.194669099098746,114.88987676465861"
+          id="Alice,Mario"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M40-2.472758879369286,2004.755305537248627 A0,0 0 0,1 16.472758879369287,245.24469446275137"
+          id="Harry,Lynne"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M301.8884174089776617,1845.016108742596914 A0,0 0 0,1 188.11158259102234,603.9838912574031"
+          id="Sarah,James"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M142.4079147156322325,2594.788466764041372 A0,0 0 0,1 187.59208528436776,604.2115332359587"
+          id="Roger,James"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M409-4.798325813522697,5002.388207824995315 A0,0 0 0,1 194.7983258135227,606.6117921750047"
+          id="Maddy,James"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M520-5.1761004847648815,1231.3912048733755413 A0,0 0 0,1 19.17610048476488,257.60879512662444"
+          id="Sonny,Roger"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M190-2.4079147156322325,609-4.788466764041372 A0,0 0 0,1 16.40791471563223,263.78846676404135"
+          id="James,Roger"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M305-1.9451766013189067,745-4.994372354737734 A0,0 0 0,1 121.9451766013189,274.9943723547377"
+          id="Alice,Peter"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M142.0922556386763027,204.934565185557317 A0,0 0 0,1 117.9077443613237,265.0654348144427"
+          id="Johan,Peter"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M305-1.230871970649426,745-5.2165526375142335 A0,0 0 0,1 201.23087197064942,305.2165526375142"
+          id="Alice,Eveie"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M404.545102194865424,2002.8406888717908902 A0,0 0 0,1 195.45489780513458,297.1593111282091"
+          id="Harry,Eveie"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M200-4.545102194865424,300-2.8406888717908902 A0,0 0 0,1 44.54510219486542,202.8406888717909"
+          id="Eveie,Harry"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M203.3134907219103313,14.212866775000279 A0,0 0 0,1 86.68650927808967,85.78713322499972"
+          id="Henry,Mikey"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M900,656-5.359801043703684 A0,0 0 0,1 90,95.35980104370368"
+          id="Elric,Mikey"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M190-1.8884174089776617,609-5.016108742596914 A0,0 0 0,1 31.888417408977663,189.0161087425969"
+          id="James,Sarah"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M305-2.3591551111937417,745-4.812676426835234 A0,0 0 0,1 32.35915511119374,188.81267642683522"
+          id="Alice,Sarah"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M1904.798325813522697,609-2.388207824995315 A0,0 0 0,1 404.2016741864773,502.38820782499533"
+          id="James,Maddy"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g>
+        <path
+          className="link"
+          d="M120-2.0922556386763027,270-4.934565185557317 A0,0 0 0,1 16.092255638676303,24.934565185557318"
+          id="Peter,Johan"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+              "fill": "none",
+              "opacity": 1,
+              "stroke": "#d3d3d3",
+              "strokeDasharray": 0,
+              "strokeDashoffset": 0,
+              "strokeLinecap": "butt",
+              "strokeWidth": 1.5,
+            }
+          }
+        />
+      </g>
+      <g
+        className="node"
+        cx="40"
+        cy="200"
+        id="Harry"
+        transform="translate(40,200)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Harry
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="140"
+        cy="20"
+        id="Sally"
+        transform="translate(140,20)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Sally
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="20"
+        cy="110"
+        id="Mario"
+        transform="translate(20,110)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Mario
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="30"
+        cy="184"
+        id="Sarah"
+        transform="translate(30,184)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Sarah
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="305"
+        cy="745"
+        id="Alice"
+        transform="translate(305,745)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Alice
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="200"
+        cy="300"
+        id="Eveie"
+        transform="translate(200,300)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Eveie
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="120"
+        cy="270"
+        id="Peter"
+        transform="translate(120,270)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Peter
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="190"
+        cy="609"
+        id="James"
+        transform="translate(190,609)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          James
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="101"
+        cy="201"
+        id="Carol"
+        transform="translate(101,201)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Carol
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="2"
+        cy="200"
+        id="Nicky"
+        transform="translate(2,200)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Nicky
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="404"
+        cy="404"
+        id="Bobby"
+        transform="translate(404,404)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Bobby
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="14"
+        cy="30"
+        id="Frank"
+        transform="translate(14,30)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Frank
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="14"
+        cy="250"
+        id="Lynne"
+        transform="translate(14,250)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Lynne
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="14"
+        cy="259"
+        id="Roger"
+        transform="translate(14,259)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Roger
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="409"
+        cy="500"
+        id="Maddy"
+        transform="translate(409,500)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Maddy
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="520"
+        cy="123"
+        id="Sonny"
+        transform="translate(520,123)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Sonny
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="14"
+        cy="20"
+        id="Johan"
+        transform="translate(14,20)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Johan
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="20"
+        cy="1"
+        id="Henry"
+        transform="translate(20,1)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Henry
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="90"
+        cy="90"
+        id="Mikey"
+        transform="translate(90,90)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Mikey
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="90"
+        cy="656"
+        id="Elric"
+        transform="translate(90,656)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Elric
+        </text>
+      </g>
+      <g
+        className="node"
+        cx="290"
+        cy="290"
+        id="Simba"
+        transform="translate(290,290)"
+      >
+        <path
+          cursor="pointer"
+          d="M5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,-5.641895835477563,0A5.641895835477563,5.641895835477563,0,1,1,5.641895835477563,0"
+          fill="red"
+          onClick={[Function]}
+          onContextMenu={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          opacity={1}
+          stroke="none"
+          strokeWidth={1.5}
+        />
+        <text
+          dx="10.5"
+          dy=".35em"
+          fill="black"
+          fontSize={8}
+          fontWeight="normal"
+          opacity={1}
+        >
+          Simba
+        </text>
+      </g>
+    </g>
+  </svg>
+</div>
+`;

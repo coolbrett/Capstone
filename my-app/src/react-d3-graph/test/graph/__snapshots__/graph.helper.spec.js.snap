@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Graph Helper #initializeGraphState when valid graph data is provided and received state is empty should create new graph structure with nodes and links 1`] = `
+Array [
+  Object {
+    "highlighted": false,
+    "id": "A",
+    "x": 0,
+    "y": 0,
+  },
+  Object {
+    "highlighted": false,
+    "id": "B",
+    "x": 0,
+    "y": 0,
+  },
+  Object {
+    "highlighted": false,
+    "id": "C",
+    "x": 0,
+    "y": 0,
+  },
+]
+`;
+
+exports[`Graph Helper #initializeGraphState when valid graph data is provided and received state is empty should create new graph structure with nodes and links 2`] = `
+Array [
+  Object {
+    "source": "A",
+    "target": "B",
+  },
+  Object {
+    "source": "C",
+    "target": "A",
+  },
+]
+`;
+
+exports[`Graph Helper #initializeGraphState when valid graph data is provided and received state was already initialized and the new state has nodes removed should create graph structure preserving subset of original structure 1`] = `
+Array [
+  Object {
+    "highlighted": false,
+    "id": "B",
+    "x": 40,
+    "y": 60,
+  },
+  Object {
+    "highlighted": false,
+    "id": "C",
+    "x": 60,
+    "y": 80,
+  },
+]
+`;
+
+exports[`Graph Helper #initializeGraphState when valid graph data is provided and received state was already initialized and the new state has nodes removed should create graph structure preserving subset of original structure 2`] = `
+Array [
+  Object {
+    "index": 2,
+    "isHidden": false,
+    "source": Object {
+      "highlighted": false,
+      "id": "B",
+    },
+    "target": Object {
+      "highlighted": false,
+      "id": "C",
+    },
+  },
+]
+`;
+
+exports[`Graph Helper #initializeGraphState when valid graph data is provided and received state was already initialized should create graph structure absorbing stored nodes and links behavior 1`] = `
+Array [
+  Object {
+    "highlighted": false,
+    "id": "A",
+    "x": 20,
+    "y": 40,
+  },
+  Object {
+    "highlighted": false,
+    "id": "B",
+    "x": 40,
+    "y": 60,
+  },
+  Object {
+    "highlighted": false,
+    "id": "C",
+    "x": 0,
+    "y": 0,
+  },
+]
+`;
+
+exports[`Graph Helper #initializeGraphState when valid graph data is provided and received state was already initialized should create graph structure absorbing stored nodes and links behavior 2`] = `
+Array [
+  Object {
+    "index": 0,
+    "source": Object {
+      "highlighted": false,
+      "id": "A",
+    },
+    "target": Object {
+      "highlighted": false,
+      "id": "B",
+    },
+  },
+  Object {
+    "index": 1,
+    "source": Object {
+      "highlighted": false,
+      "id": "C",
+    },
+    "target": Object {
+      "highlighted": false,
+      "id": "A",
+    },
+  },
+]
+`;

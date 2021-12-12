@@ -1,0 +1,19 @@
+[{"nodes":[
+  {"year":0,"director":"0","rating":0,"runtime":0,
+    "description":"0",
+    "label":"Movie",
+    "actors":["0","1","2","3"],
+    "revenue":0,"genres":["0","0","0"],
+    "name":"0","rank":0,"votes":0,
+    "id":"0","metascore":0},
+  {"name":"5","id":"5","label":"Director"},
+  {"name":"1","id":"1","label":"Actor"},
+  {"name":"2","id":"2","label":"Actor"},
+  {"name":"3","id":"3","label":"Actor"},
+  {"name":"4","id":"4","label":"Actor"}],
+
+  "links":[{"source":"5","target":"0"},
+    {"source":"1","target":"0"},
+    {"source":"2","target":"0"},
+    {"source":"3","target":"0"},
+    {"source":"4","target":"0"}]}]

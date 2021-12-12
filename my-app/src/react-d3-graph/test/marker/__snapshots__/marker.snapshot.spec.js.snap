@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot - Marker Component should match snapshot 1`] = `
+<marker
+  className="marker"
+  fill="green"
+  id="id"
+  orient="auto"
+  refX="5"
+  refY="0"
+  viewBox="0 -5 10 10"
+>
+  <path
+    d="M0,-5L10,0L0,5"
+  />
+</marker>
+`;

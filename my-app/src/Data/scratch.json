@@ -1,0 +1,76 @@
+
+  {
+    "nodes": [
+      {
+        "id": "Split",
+        "label": "Movie",
+        "actors": [
+          "James McAvoy",
+          "Anya Taylor-Joy",
+          "Haley Lu Richardson",
+          "Jessica Sula"
+        ],
+        "revenue": 138.12,
+        "year": 2016.0,
+        "genres": [
+          "Horror",
+          "Thriller"
+        ],
+        "director": "M. Night Shyamalan",
+        "name": "Split",
+        "rating": 7.3,
+        "runtime": 117.0,
+        "description": "Three girls are kidnapped by a man with a diagnosed 23 distinct personalities. They must try to escape before the apparent emergence of a frightful new 24th.",
+        "rank": 3.0,
+        "votes": 157606.0,
+        "metascore": 62.0
+      },
+      {
+        "id": "M. Night Shyamalan",
+        "label": "Director",
+        "name": "M. Night Shyamalan"
+      },
+      {
+        "id": "Jessica Sula",
+        "label": "Actor",
+        "name": "Jessica Sula"
+      },
+      {
+        "id": "Haley Lu Richardson",
+        "label": "Actor",
+        "name": "Haley Lu Richardson"
+      },
+      {
+        "id": "Anya Taylor-Joy",
+        "label": "Actor",
+        "name": "Anya Taylor-Joy"
+      },
+      {
+        "id": "James McAvoy",
+        "label": "Actor",
+        "name": "James McAvoy"
+      }
+    ],
+    "links": [
+      {
+        "source": "M. Night Shyamalan",
+        "target": "Split"
+      },
+      {
+        "source": "Jessica Sula",
+        "target": "Split"
+      },
+      {
+        "source": "Haley Lu Richardson",
+        "target": "Split"
+      },
+      {
+        "source": "Anya Taylor-Joy",
+        "target": "Split"
+      },
+      {
+        "source": "James McAvoy",
+        "target": "Split"
+      }
+    ]
+  }

@@ -1,31 +1,36 @@
 import React, { Component, useContext }  from "react";
-import Navbar from "./components/Navbar"
-import GraphView from "./components/GraphView";
 import './App.css';
-import {NodeProvider} from "./components/NodeContext";
-import { BrowserRouter as Router } from "react-router-dom"
-import myData from './Data/scratch.json'
-import { Graph } from "react-d3-graph";
+//import myData from './Data/scratch.json'
 //import myData from './Data/nodesInfo2.json'
+import myData from './Data/scratch.json'
+import Parent from "./components/Parent";
+//import myData from './Data/test.json'
 
+/**
+ * This is the main class of the program that properly creates the GUI
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
+ */
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: myData,
+            nodeClicked: "val",
             svgRef: React.forwardRef
         };
     }
+
     render() {
         return (
-            <NodeProvider>
-                <Router>
-                    <Navbar />
-                    <GraphView />
-                </Router>
-            </NodeProvider>
-        );
+            <Parent />
+    );
     }
 }
+
+/**
+ * <Navbar />
+ */
+
 export default App;
 

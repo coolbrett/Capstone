@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "Prometheus"
+    },
+    {
+      "id": "Noomi Rapace"
+    },
+    {
+      "id": "Logan Marshall-Green"
+    },
+    {
+      "id": "Michael Fassbender"
+    },
+    {
+      "id": "Charlize Theron"
+    }
+    ],
+    "links": [
+      {
+        "source": "Prometheus",
+        "target": "Noomi Rapace"
+      },
+      {
+        "source": "Prometheus",
+        "target": "Logan Marshall-Green"
+      },
+      {
+        "source": "Prometheus",
+        "target": "Michael Fassbender"
+      },
+      {
+        "source": "Prometheus",
+        "target": "Charlize Theron"
+      }
+    ]
+}

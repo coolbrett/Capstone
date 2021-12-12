@@ -1,56 +1,45 @@
 import React, {useState, useContext} from 'react';
 import { NodeContext } from "./NodeContext";
-//import myData from "../Data/scratch.json";
-import myData from '../Data/nodesInfo2.json'
+import myData from "../Data/scratch.json";
 
+let last = "";
 /**
- * This file handles finding nodes within our graph once the React app is launched
+ * This is the class finding the node from the search bar
+ * @Author: Dillon Gorlesky
+ * @Author Brett Dale
+ * @Date: 12/05/2021
  */
-const FindNode = () => {
-    let data = myData;
+const FindNode = (props) => {
     let context = useContext(NodeContext)
+    let [theData, setTheData] = context;
+
     let [nodeId, setClickedNode] = context;
     //This is setting the previously clicked node to be stored elsewhere
     let [prevId, setPrevId] = context;
-
-    /**
-     * State to hold and set ID data
-     */
     const [id, setId] = useState('');
 
     /**
-     * Function to update ID once new node is clicked
-     * @param e node to set ID field to
+     * When a new node id is searched for it sets the value
+     * @param e
      */
     const update = (e) => {
         setId(e.target.value);
     }
 
-    /**
-     * Function to change what node is set to the clicked node
-     * @param e node to change to
-     */
-    const changing = (e) => {
-        e.preventDefault();
-        setClickedNode(id);
-        testing(id);
-        setId('');
+    if(theData.length === 1){
+        setTheData(myData);
     }
 
-    /**
-     * Function to set the data
-     * @param dataHere data to set
-     */
     const setData = function(dataHere){
-        data = dataHere;
+        setTheData(dataHere);
     }
 
     /**
-     * This function sets the clicked node to blue, and the previous clicked node back to red
-     * @param nodeID node to set its color to blue
+     * This sets the new color of a clicked node
+     * @param nodeID
      */
     const testing = function(nodeID) {
-        let modData = {...myData};
+        let modData = {...theData};
         let selectNode = modData.nodes.filter(item => {
             return item.id === nodeID;
         });
@@ -75,22 +64,34 @@ const FindNode = () => {
                 selectPrev.forEach(items => {
                     items.color = "red";
                 });
-                setPrevId(nodeID);
+                last = item.id;
             } else {
                 //Setting the previous node to be empty
                 //For whatever reason it only works if I do this
-                setPrevId("");
+                item.color = "red"
+                last = "";
             }
         });
-        setClickedNode(nodeID);
+        props.functionCallFromParent(last);
+        //setClickedNode(nodeID);
         setData(modData);
     };
+
+    /**
+     * Passes information back to parent then down to GraphView
+     * @param e
+     */
+    const childFunction = (e) =>{
+        console.log("here")
+        e.preventDefault();
+        props.functionCallFromParent(last);
+    }
 
 
     return(
         <form action={"./"}>
             <input type={"text"} placeholder={"Search.."} name={"id"} value={id} onChange={update} />
-            <button type={"submit"} onClick={changing}>Submit</button>
+            <button type={"submit"} onClick={childFunction.bind(this)} >Submit</button>
         </form>
     );
 

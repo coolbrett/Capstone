@@ -1,0 +1,19 @@
+# https://github.com/apps/stale
+daysUntilStale: 60
+daysUntilClose: 65
+exemptLabels:
+  - pinned
+  - security
+  - bug
+  - "in progress"
+  - "good first issue"
+  - "help wanted"
+  - "priority low"
+  - "priority normal"
+  - "priority high"
+staleLabel: wontfix
+markComment: >
+  This issue has been automatically marked as stale because it has not had
+  recent activity. It will be closed if no further activity occurs. Thank you
+  for your contributions.
+closeComment: false

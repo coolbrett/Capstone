@@ -7,6 +7,7 @@
 
 const CSVToJSON = require('csvtojson');
 const fs = require("fs");
+const {error} = require("neo4j-driver");
 
 /**
  * Converts CSV file to a JSON file
@@ -117,17 +118,52 @@ function generateNodesAndLinks(filePath){
 }
 
 /**
+ * Fixes Neo4j issue where it didn't format JSON correctly
+ * @param filePath
+ */
+function fixJSON(filePath){
+    if (typeof filePath != 'string'){
+        throw new Error("fixJSON; filePath is not string");
+    }else {
+        console.log('starting fixJSON');
+        fs.readFile('my-app/src/components/limit.json', function(err, result) {
+
+             // handle errors
+            const lines = result.toString().split('\n');
+            console.log(lines[0].substring(0, 3));
+            if (lines[0].substring(0, 3) === "{\"n") {
+                for (let i = 0; i < lines.length; i++) {
+                    //console.log("i is: " + i);
+                    //console.log(lines.length);
+                    //console.log(lines[i]);
+                    if (i === 0) {
+                        lines[i] = '{\n\"movies\": [' + lines[i];
+                    } else if (i === (lines.length - 1)) {
+                        lines[i] = lines[i] + ']}';
+                    }
+                    //console.log("Line " + i + ": " + lines[i]);
+                }
+                if (err) {
+                    throw new Error("fixJSON; couldn't split lines")
+                }
+
+                fs.writeFile('my-app/src/components/limit.json', lines.toString(), 'utf8', function (err) {
+                    if (err) // handle errors
+                        console.log('The file has been saved!');
+                });
+            }
+        });
+    }
+}
+
+
+
+/**
  * Main function to manipulate the JSON data file
  */
 function main(){
     //the timeouts are needed to give time for JS to process the newly created files being made
-    convertCSVToJSON('Data/IMDB-Movie-Data.csv');
-    setTimeout(() => {
-        createArraysInJSON('Data/rawMovieData.json');
-    }, 500)
-    setTimeout(() => {
-        generateNodesAndLinks('Data/MovieData.json');
-    }, 1000);
+    fixJSON('Data/limit.json')
 }
 
-main();
+main()
