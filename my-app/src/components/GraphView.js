@@ -40,10 +40,10 @@ const GraphView = (props) => {
          */
         const myConfig = {
                 nodeHighlightBehavior: true,
-                height: 800,
-                width: 1500,
-                //height: 500,
-                //width: 800,
+                //height: 800,
+                //width: 1500,
+                height: 500,
+                width: 800,
                 maxZoom: 9000,
                 minZoom: .1,
                 highlightDegree: 1,
