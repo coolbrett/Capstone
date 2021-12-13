@@ -4,8 +4,8 @@
     const fs = require("fs");
 
     const uri = 'bolt://localhost:7687';
-    const user = 'dmgorlesky';
-    const password = '977238';
+    //const user = 'dmgorlesky';
+    //const password = '977238';
     //const user = 'brett';
     //const password = 'brett123';
 

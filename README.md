@@ -27,7 +27,27 @@ tool allowing users to query the dataset to narrow down the display.
 
 #Setup (Neo4j)
 1. Go to "https://neo4j.com/download/" and download the Desktop version. This only works on desktop because of security limitations.
-2. 
+2. Launch the setup executable and follow the guide to start the Neo4j desktop app.
+3. Once in Neo4j app, create a project using the `+` button in the top left
+4. Click on the newly created project and click the `+ Add` button, then press `Local DMBS`
+5. The name does not matter, but make sure to remember the password. Version should be `4.3.1`
+6. Click on the three dots when you hover the new DBMS and press `settings`
+7. Paste the following at the top of the file: 
+
+`apoc.export.file.enabled=true`
+
+`apoc.import.file.use_neo4j_config=false`
+9. Hover the new DBMS and press the Start button
+10. Once started, click Open (should default to Browser) and watch a new window appear
+11. Click the top left icon titled `Database Information` and in that section, `click :server user add`
+12. Enter a username and password
+13. Open up the project, and open up `create.js` in the `graph` folder
+14. The lines at the top starting with `const user` and `const password` need to be updated to the username and password you just set
+15. Go into the directory above `graph` and run the command `node graph/create.js` and the local DBMS will populate
+16. Go to `my-app/src/components/QueryList.js`
+17. At the top of the file, any lines of code that say `const driver = ...` need to be commented out, and underneath paste the following: `const driver = createDriver('bolt', 'localhost', 7687, '<username>', '<password>')
+    ` where username and password are replaced with the DBMS username and password just created
+18. Project should now run correctly! Go just inside the `my-app` directory and run `npm start`
 
 
 
