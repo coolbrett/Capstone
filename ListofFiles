@@ -18,6 +18,11 @@ Written files:
 14.	GraphView.css (Format of the GraphView class)
 15.	FindNode (Used to find nodes to highlight)
 16.	Chart (Holds the bar graphs)
+17. Transform (Turning a CSV file into JSON)
+18. Create (Split JSON and upload to Database)
+19. Example (Example of writing to Database)
+20. Sample (Basic information being written, used for testing)
+21. UpdateProperty (Catches any empty parts of the dataset)
 
 
 Edited files:
