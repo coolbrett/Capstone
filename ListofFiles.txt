@@ -1,0 +1,38 @@
+List of Written or Edited Files:
+
+Written files:
+---------------
+1.	Limit.json        => my-app/src/components/limit.json        (where our query is being written)
+2.	EmptyGraph.json   => my-app/src/components/emptyGraph.json   (empty graph json file)
+3.	ShowInfo          => my-app/src/components/ShowInfo.js       (Shows hovered over nodes information)
+4.	ResponsiveBar.css => my-app/src/components/ResponsiveBar.css (CSS File for bar graphs)
+5.	QueryList         => my-app/src/components/QueryList.js
+                                         (Holds all the queries declarations in a formatted list & handles input)
+6.	Query             => my-app/src/components/Query.js          (Each individual query option)
+7.	Query.css         => my-app/src/components/Query.css         (Format for query looks)
+8.	PerformQuery      => my-app/src/components/PerformQuery.js   (Performs a query on input)
+9.	Parent            => my-app/src/components/Parent.js         (Holds the structure of the project together)
+10.	NodeContext       => my-app/src/components/NodeContext.js    (Used for passing information)
+11.	NavBar            => my-app/src/components/Navbar.js         (Holds the components of the navbar at the top)
+12.	NavBar.css        => my-app/src/components/Navbar.css        (Format of the navbar)
+13.	GraphView         => my-app/src/components/GraphView.js      (component holding the graph)
+14.	GraphView.css     => my-app/src/components/GraphView.css     (Format of the GraphView class)
+15.	FindNode          => my-app/src/components/FindNode.js       (Used to find nodes to highlight)
+16.	Chart             => my-app/src/components/Chart.js          (Holds the bar graphs)
+17. Transform         => Data/transform.js                       (Turning a CSV file into JSON)
+18. Create            => graph/create.js                         (Split JSON and upload to Database)
+19. Example           => graph/example.js                        (Example of writing to Database)
+20. Sample            => graph/sample.js                         (Basic information being written, used for testing)
+21. UpdateProperty    => graph/updateProperty.js                 (Catches any empty parts of the dataset)
+
+
+Edited files:
+--------------
+1.	Graph => React-d3-graph/src/components/graph/Graph.jsx
+            (Package that creates the graph and has other d3 capabilities)
+
+
+Package Files:
+---------------
+1.	Package.json      (Holds the program dependencies)
+2.	Package-lock.json (lock file of sub dependencies) 
