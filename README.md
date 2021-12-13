@@ -10,8 +10,8 @@ tool allowing users to query the dataset to narrow down the display.
 
 
 #Setup (Using Webstorm)
-1a. Create a new project using React
 
+1a. Create a new project using React
 1b. Wait for it to load all the dependencies
 
 2. While waiting go to the github, hit the green "Code" button, and copy the HTTPS link.
